@@ -68,6 +68,7 @@ public interface Event extends EventBNamedCommentedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Extended</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extended</em>' attribute isn't clear,
@@ -75,11 +76,9 @@ public interface Event extends EventBNamedCommentedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extended</em>' attribute.
-	 * @see #isSetExtended()
-	 * @see #unsetExtended()
 	 * @see #setExtended(boolean)
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Extended()
-	 * @model unsettable="true"
+	 * @model default="false" required="true"
 	 * @generated
 	 */
 	boolean isExtended();
@@ -89,35 +88,10 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Extended</em>' attribute.
-	 * @see #isSetExtended()
-	 * @see #unsetExtended()
 	 * @see #isExtended()
 	 * @generated
 	 */
 	void setExtended(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eventb.emf.core.machine.Event#isExtended <em>Extended</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetExtended()
-	 * @see #isExtended()
-	 * @see #setExtended(boolean)
-	 * @generated
-	 */
-	void unsetExtended();
-
-	/**
-	 * Returns whether the value of the '{@link org.eventb.emf.core.machine.Event#isExtended <em>Extended</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Extended</em>' attribute is set.
-	 * @see #unsetExtended()
-	 * @see #isExtended()
-	 * @see #setExtended(boolean)
-	 * @generated
-	 */
-	boolean isSetExtended();
 
 	/**
 	 * Returns the value of the '<em><b>Refines</b></em>' reference list.
