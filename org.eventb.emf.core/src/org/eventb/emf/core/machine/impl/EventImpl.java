@@ -106,15 +106,6 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 	protected boolean extended = EXTENDED_EDEFAULT;
 
 	/**
-	 * This is true if the Extended attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean extendedESet;
-
-	/**
 	 * The cached value of the '{@link #getRefines() <em>Refines</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -221,33 +212,8 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 	public void setExtended(boolean newExtended) {
 		boolean oldExtended = extended;
 		extended = newExtended;
-		boolean oldExtendedESet = extendedESet;
-		extendedESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MachinePackage.EVENT__EXTENDED, oldExtended, extended, !oldExtendedESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetExtended() {
-		boolean oldExtended = extended;
-		boolean oldExtendedESet = extendedESet;
-		extended = EXTENDED_EDEFAULT;
-		extendedESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, MachinePackage.EVENT__EXTENDED, oldExtended, EXTENDED_EDEFAULT, oldExtendedESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetExtended() {
-		return extendedESet;
+			eNotify(new ENotificationImpl(this, Notification.SET, MachinePackage.EVENT__EXTENDED, oldExtended, extended));
 	}
 
 	/**
@@ -515,7 +481,7 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 				setConvergence(CONVERGENCE_EDEFAULT);
 				return;
 			case MachinePackage.EVENT__EXTENDED:
-				unsetExtended();
+				setExtended(EXTENDED_EDEFAULT);
 				return;
 			case MachinePackage.EVENT__REFINES:
 				getRefines().clear();
@@ -550,7 +516,7 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 			case MachinePackage.EVENT__CONVERGENCE:
 				return convergence != CONVERGENCE_EDEFAULT;
 			case MachinePackage.EVENT__EXTENDED:
-				return isSetExtended();
+				return extended != EXTENDED_EDEFAULT;
 			case MachinePackage.EVENT__REFINES:
 				return refines != null && !refines.isEmpty();
 			case MachinePackage.EVENT__REFINES_NAMES:
@@ -580,7 +546,7 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 		result.append(" (convergence: "); //$NON-NLS-1$
 		result.append(convergence);
 		result.append(", extended: "); //$NON-NLS-1$
-		if (extendedESet) result.append(extended); else result.append("<unset>"); //$NON-NLS-1$
+		result.append(extended);
 		result.append(')');
 		return result.toString();
 	}

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Axiom;
@@ -426,7 +427,7 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 								 return component;
 	
 					//replace dummy URI with the proper one
-					proxy.eSetProxyURI(URI.createPlatformResourceURI(getURI().segment(1), true)
+					proxy.eSetProxyURI(URI.createPlatformResourceURI(EcoreUtil.getURI(this).segment(1), true)
 						.appendSegment(fragment)
 						.appendFileExtension(External.getString("FileExtensions.context"))
 						.appendFragment(reference));
