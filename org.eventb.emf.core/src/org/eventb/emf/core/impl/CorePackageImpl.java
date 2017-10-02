@@ -906,11 +906,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(eventBObjectEClass, null, "getURI", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		ETypeParameter t1 = addETypeParameter(op, "URI"); //$NON-NLS-1$
-		g1 = createEGenericType(t1);
-		initEOperation(op, g1);
-
 		op = addEOperation(eventBObjectEClass, this.getAnnotation(), "getAnnotation", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, theEcorePackage.getEString(), "source", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
