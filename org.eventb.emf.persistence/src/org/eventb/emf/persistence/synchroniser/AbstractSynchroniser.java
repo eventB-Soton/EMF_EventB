@@ -150,7 +150,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 		if (rodinElement.hasAttribute(EventBAttributes.GENERATED_ATTRIBUTE)) {
 			eventBElement.setLocalGenerated(rodinElement.getAttributeValue(EventBAttributes.GENERATED_ATTRIBUTE));
 		} else {
-			eventBElement.unsetLocalGenerated();
+			eventBElement.setLocalGenerated(false);
 		}
 
 		if (rodinElement instanceof IConfigurationElement) {
@@ -353,9 +353,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 			rodinElement.setAttributeValue(emfIdType, eventBElement.getInternalId(), monitor);
 		}
 
-		if (eventBElement.isSetLocalGenerated()) {
-			rodinElement.setAttributeValue(EventBAttributes.GENERATED_ATTRIBUTE, eventBElement.isLocalGenerated(), monitor);
-		}
+		rodinElement.setAttributeValue(EventBAttributes.GENERATED_ATTRIBUTE, eventBElement.isLocalGenerated(), monitor);
 
 		if (rodinElement instanceof IConfigurationElement) {
 			// make sure the element has a configuration

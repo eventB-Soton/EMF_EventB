@@ -112,15 +112,6 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	protected boolean localGenerated = LOCAL_GENERATED_EDEFAULT;
 
 	/**
-	 * This is true if the Local Generated attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean localGeneratedESet;
-
-	/**
 	 * The default value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,7 +119,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INTERNAL_ID_EDEFAULT = null;
+	protected static final String INTERNAL_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInternalId() <em>Internal Id</em>}' attribute.
@@ -238,7 +229,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * @generated NOT
 	 */
 	public boolean isGenerated() {
-		return localGeneratedESet && localGenerated ? true :
+		return localGenerated ? true :
 				eContainer() instanceof EventBElement ?
 					((EventBElement)eContainer()).isGenerated() :
 					false;
@@ -249,9 +240,9 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * This sets the element to generated or not generated.
 	 * Setting the current element to generated = true sets its localGenerated Flag to true. This means that all its children
 	 * are also interpreted as generated (but no changes are made to their localGenerated flags).
-	 * Setting the current element to generated = false will either set the local Generated flag of this element to false if it
-	 * is currently set to true or, if it is unset, leave it unset,
-	 * AND do the same for all of its parents.
+	 * Setting the current element to 'generated = false' will 
+	 * 	a) set the local Generated flag of this element to false &
+	 *  b) do the same for all of its parents.
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -259,9 +250,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 		if (newGenerated == true) {
 			setLocalGenerated(true);
 		}else{
-			if (isSetLocalGenerated()){ 
-				setLocalGenerated(false);
-			}
+			setLocalGenerated(false);
 			if (eContainer instanceof EventBElement){
 				((EventBElement)eContainer()).setGenerated(false);
 			}
@@ -285,33 +274,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	public void setLocalGenerated(boolean newLocalGenerated) {
 		boolean oldLocalGenerated = localGenerated;
 		localGenerated = newLocalGenerated;
-		boolean oldLocalGeneratedESet = localGeneratedESet;
-		localGeneratedESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.EVENT_BELEMENT__LOCAL_GENERATED, oldLocalGenerated, localGenerated, !oldLocalGeneratedESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetLocalGenerated() {
-		boolean oldLocalGenerated = localGenerated;
-		boolean oldLocalGeneratedESet = localGeneratedESet;
-		localGenerated = LOCAL_GENERATED_EDEFAULT;
-		localGeneratedESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, CorePackage.EVENT_BELEMENT__LOCAL_GENERATED, oldLocalGenerated, LOCAL_GENERATED_EDEFAULT, oldLocalGeneratedESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetLocalGenerated() {
-		return localGeneratedESet;
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.EVENT_BELEMENT__LOCAL_GENERATED, oldLocalGenerated, localGenerated));
 	}
 
 	/**
@@ -427,7 +391,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				setGenerated(GENERATED_EDEFAULT);
 				return;
 			case CorePackage.EVENT_BELEMENT__LOCAL_GENERATED:
-				unsetLocalGenerated();
+				setLocalGenerated(LOCAL_GENERATED_EDEFAULT);
 				return;
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				unsetInternalId();
@@ -453,7 +417,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			case CorePackage.EVENT_BELEMENT__GENERATED:
 				return isGenerated() != GENERATED_EDEFAULT;
 			case CorePackage.EVENT_BELEMENT__LOCAL_GENERATED:
-				return isSetLocalGenerated();
+				return localGenerated != LOCAL_GENERATED_EDEFAULT;
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				return isSetInternalId();
 		}
@@ -471,7 +435,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (localGenerated: "); //$NON-NLS-1$
-		if (localGeneratedESet) result.append(localGenerated); else result.append("<unset>"); //$NON-NLS-1$
+		result.append(localGenerated);
 		result.append(", internalId: "); //$NON-NLS-1$
 		if (internalIdESet) result.append(internalId); else result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
