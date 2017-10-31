@@ -13,7 +13,6 @@ package org.eventb.emf.core.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CorePackage;
 
@@ -36,21 +35,22 @@ public abstract class AbstractExtensionImpl extends EventBElementImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExtensionId()
-	 * @generated NOT
+	 * @generated
 	 * @ordered
 	 */
-	protected static final String EXTENSION_ID_EDEFAULT = "<extension id>";
+	protected static final String EXTENSION_ID_EDEFAULT = null;
+	
 	/**
 	 * The cached value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * default implementation generates a uuid
 	 * <!-- end-user-doc -->
 	 * @see #getExtensionId()
-	 * @generated NOT
+	 * @generated
 	 * @ordered
 	 */
-	protected String extensionId = EXTENSION_ID_EDEFAULT+"."+EcoreUtil.generateUUID();
-
+	protected String extensionId = EXTENSION_ID_EDEFAULT;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

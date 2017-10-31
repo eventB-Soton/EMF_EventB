@@ -40,7 +40,7 @@ public interface AbstractExtension extends EventBElement {
 	 * @return the value of the '<em>Extension Id</em>' attribute.
 	 * @see #setExtensionId(String)
 	 * @see org.eventb.emf.core.CorePackage#getAbstractExtension_ExtensionId()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getExtensionId();
