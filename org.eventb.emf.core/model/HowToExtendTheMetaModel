@@ -46,7 +46,7 @@ Checklist of post-gen code changes (considering changing the Jet templates for t
          </synchroniser>
       </emfPackage>
    </extension>
-3) in the impl class for your extension element, set up the ExtensionID with the last segment a UUID generated for each segment [TBD: Add more detail here]   
+3) optional: (ExtensionId is no longer 'required' but some behaviour may need it) in the impl class for your extension element, set up the ExtensionID with the last segment a UUID generated for each segment [TBD: Add more detail here]   
 4) optional: make customisations as in the core packages for inter-resource referencing (i.e. reference names derived attributes)
 5) optional: make customisations for lazy proxy construction.
 
