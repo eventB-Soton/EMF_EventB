@@ -204,7 +204,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 		if (this instanceof EventBNamed){
 			return ((EventBNamed)this).getName();
 		}else{
-			if (getInternalId() == null) {
+			if (!isSetInternalId()) {
 				setInternalId(EcoreUtil.generateUUID());
 			}
 			return getInternalId();
@@ -456,8 +456,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * @generated NOT
 	 */	
 	public String getInternalId(){
-		//if (this instanceof EventBNamed) return null;   //Allow named elements to use the internal ID for now.
-		return internalId;
+		if (isSetInternalId()) return internalId;
+		else return "<ERROR: ID is not set for this element>";
 	}
 	
 	/**
