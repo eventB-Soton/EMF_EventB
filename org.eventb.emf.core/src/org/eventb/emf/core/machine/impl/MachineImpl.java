@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Context;
@@ -653,7 +654,7 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 				  String extension = proxy instanceof Machine ? 
 						External.getString("FileExtensions.machine") : 
 						External.getString("FileExtensions.context");
-				  proxy.eSetProxyURI(URI.createPlatformResourceURI(getURI().segment(1), true) //project name
+				  proxy.eSetProxyURI(URI.createPlatformResourceURI(EcoreUtil.getURI(this).segment(1), true) //project name
 						  .appendSegment(fragment)		//resource name
 						  .appendFileExtension(extension)
 						  .appendFragment(reference));

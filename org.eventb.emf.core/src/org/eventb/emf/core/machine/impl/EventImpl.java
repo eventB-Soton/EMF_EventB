@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.impl.EventBElementImpl;
@@ -583,7 +584,7 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 						  fragment = fragment.substring(fragment.lastIndexOf(".",fragment.length())+1, fragment.length());
 					  }
 					String reference = ((EventBElementImpl)proxy).getElementTypePrefix()+"::"+refinedMachine.getName()+"."+fragment;
-					proxy.eSetProxyURI(refinedMachine.getURI().appendFragment(reference));	
+					proxy.eSetProxyURI(EcoreUtil.getURI(refinedMachine).appendFragment(reference));	
 				} catch (Exception e){
 					Status st = new Status(Status.ERROR, "org.eventb.emf.core", "Cannot resolve: " + proxy, e);
 					 IStatusHandler sh = DebugPlugin.getDefault().getStatusHandler(st);

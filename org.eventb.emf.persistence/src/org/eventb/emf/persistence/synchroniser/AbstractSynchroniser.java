@@ -58,15 +58,15 @@ import org.rodinp.core.RodinDBException;
 
 /**
  * Abstract basis for synchronisers that save/load between EMF and Rodin
- * 
+ *
  * cfs (04/01/12) Update the Annotation for rodin internal names when a new name
  * is allocated. if updating an existing entry, disable notifications on the
  * entry so that the transactional editing adapter doesn't object.
- * 
+ *
  * cfs (20/06/13) catch unknown attributes when saving generic attributes
- * 
+ *
  * @author cfs/ff
- * 
+ *
  */
 
 public abstract class AbstractSynchroniser implements ISynchroniser {
@@ -103,8 +103,8 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	protected abstract Set<IAttributeType> getHandledAttributeTypes();
 
 	@SuppressWarnings("unchecked")
-	public <T extends EventBElement> EventBElement load(final IRodinElement rodinElement, final EventBElement emfParent, final IProgressMonitor monitor) throws RodinDBException,
-			CoreException {
+	public <T extends EventBElement> EventBElement load(final IRodinElement rodinElement, final EventBElement emfParent, final IProgressMonitor monitor)
+			throws RodinDBException, CoreException {
 		if (!(rodinElement instanceof IInternalElement))
 			throw new RodinDBException(new Exception("Not an Internal Element"), IRodinDBStatusConstants.CORE_EXCEPTION);
 
@@ -150,7 +150,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 		if (rodinElement.hasAttribute(EventBAttributes.GENERATED_ATTRIBUTE)) {
 			eventBElement.setLocalGenerated(rodinElement.getAttributeValue(EventBAttributes.GENERATED_ATTRIBUTE));
 		} else {
-			eventBElement.unsetLocalGenerated();
+			eventBElement.setLocalGenerated(false);
 		}
 
 		if (rodinElement instanceof IConfigurationElement) {
@@ -189,7 +189,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	/**
 	 * Loads all attributes which have not been handled by this class or the
 	 * concrete implementing synchroniser into an annotation with the source
-	 * 
+	 *
 	 * @param rodinElement
 	 * @param eventBElement
 	 * @throws RodinDBException
@@ -282,7 +282,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	 * Checks whether the given set of {@link IAttributeType}s intersect with
 	 * the {@link IAttributeType}s handled by this class. In this case an
 	 * exception is thrown.
-	 * 
+	 *
 	 * @param otherwiseTypes
 	 * @throws CoreException
 	 */
@@ -353,9 +353,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 			rodinElement.setAttributeValue(emfIdType, eventBElement.getInternalId(), monitor);
 		}
 
-		if (eventBElement.isSetLocalGenerated()) {
-			rodinElement.setAttributeValue(EventBAttributes.GENERATED_ATTRIBUTE, eventBElement.isLocalGenerated(), monitor);
-		}
+		rodinElement.setAttributeValue(EventBAttributes.GENERATED_ATTRIBUTE, eventBElement.isLocalGenerated(), monitor);
 
 		if (rodinElement instanceof IConfigurationElement) {
 			// make sure the element has a configuration
@@ -419,11 +417,8 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 				default:
 				}
 			} catch (IllegalArgumentException iae) {
-				PersistencePlugin
-						.getDefault()
-						.getLog()
-						.log(new Status(IStatus.WARNING, PersistencePlugin.PLUGIN_ID, "Attribute of unknown type " + id + " was saved in " + UNKNOWN_ATTRIBUTES + " \n value = "
-								+ value));
+				PersistencePlugin.getDefault().getLog().log(new Status(IStatus.WARNING, PersistencePlugin.PLUGIN_ID,
+						"Attribute of unknown type " + id + " was saved in " + UNKNOWN_ATTRIBUTES + " \n value = " + value));
 				// this is a mechanism to persist the unknown attribute in string form so that it is not lost
 				// (it will be converted back to a Event-B_EMF generic attribute if the file is loaded again)
 				String currentValue = "";
@@ -450,7 +445,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 		}
 		// if no usuable name was obtained ...
 		if (name == null || "".equals(name)) {
-			//get a new name 
+			//get a new name
 			name = getNewName();
 			//remember the new name for next time
 			//(if a name entry already existed disable notifications so that TransactionChangeRecorder doesn't know we are changing it)
@@ -477,11 +472,11 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	 * Transactional Command Framework. (Only background annotations/properties
 	 * should be changed in this way since editors need to know of any major
 	 * changes to the model).
-	 * 
+	 *
 	 * Any object, including null, can be passed to this method. Anything that
 	 * is not a notifier or has no TransactionChangeRecorder adapters will be
 	 * ignored.
-	 * 
+	 *
 	 * @param elements
 	 */
 	protected void disableTransactionChangeRecorders(Object... elements) {
@@ -507,11 +502,11 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	 * Replace TransactionChangeRecorder adapters that have previously been
 	 * removed via 'diableTransactionChangeRecorders' for all the elements in
 	 * the parameter list.
-	 * 
+	 *
 	 * Any object, including null, can be passed to this method. Anything that
 	 * is not a notifier that is in the cached map of previously disabled
 	 * elements will be ignored.
-	 * 
+	 *
 	 * @param elements
 	 */
 	protected void reEnableTransactionChangeRecorders(Object... elements) {
@@ -526,7 +521,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Support for adding an annotation to record the internal name of a rodin reference element so that it can be reused on save 
+	// Support for adding an annotation to record the internal name of a rodin reference element so that it can be reused on save
 	// (to avoid create a new name on each save which causes unnecessary changes which are a nuisance for comparisons)
 
 	/**
@@ -536,7 +531,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	 * emf element. (This is intended to be called during load operations. if
 	 * called from a save it may be necessary to disable transactional change
 	 * recorders first)
-	 * 
+	 *
 	 * @param emfElement
 	 * @param kind
 	 * @param referencedElementName
@@ -561,7 +556,7 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	 * attached to the provided parent emf element, this will be retrieved using
 	 * the key 'kind+" "+referencedElementName' otherwise a new name will be
 	 * generated (and saved in an annotation for future use).
-	 * 
+	 *
 	 * @param emfElement
 	 * @param kind
 	 * @param referencedElementName

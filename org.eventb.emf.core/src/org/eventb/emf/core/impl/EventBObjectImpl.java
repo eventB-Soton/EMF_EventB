@@ -126,23 +126,6 @@ public abstract class EventBObjectImpl extends EObjectImpl implements EventBObje
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * deprecated - use EcoreUtil.getURI(EObject) instead
-	 * 
-	 * returns the URI of this element.
-	 * (If the element is not loaded, the URI is obtained from the proxy without loading the element)
-	 *
-	 * [AFTER RE-GENERATING REMOVE THE TYPE PARAMETER <URI>]
-	 * 
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 * @deprecated - use EcoreUtil.getURI(EObject);
-	 */
-	public  URI getURI() {
-			return EcoreUtil.getURI(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

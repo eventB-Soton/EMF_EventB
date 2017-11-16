@@ -114,7 +114,7 @@ public interface EventBElement extends EventBObject {
 
 	/**
 	 * Returns the value of the '<em><b>Local Generated</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Local Generated</em>' attribute isn't clear,
@@ -122,11 +122,9 @@ public interface EventBElement extends EventBObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Local Generated</em>' attribute.
-	 * @see #isSetLocalGenerated()
-	 * @see #unsetLocalGenerated()
 	 * @see #setLocalGenerated(boolean)
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_LocalGenerated()
-	 * @model default="" unsettable="true"
+	 * @model default="false" required="true"
 	 * @generated
 	 */
 	boolean isLocalGenerated();
@@ -136,38 +134,14 @@ public interface EventBElement extends EventBObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Local Generated</em>' attribute.
-	 * @see #isSetLocalGenerated()
-	 * @see #unsetLocalGenerated()
 	 * @see #isLocalGenerated()
 	 * @generated
 	 */
 	void setLocalGenerated(boolean value);
 
 	/**
-	 * Unsets the value of the '{@link org.eventb.emf.core.EventBElement#isLocalGenerated <em>Local Generated</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetLocalGenerated()
-	 * @see #isLocalGenerated()
-	 * @see #setLocalGenerated(boolean)
-	 * @generated
-	 */
-	void unsetLocalGenerated();
-
-	/**
-	 * Returns whether the value of the '{@link org.eventb.emf.core.EventBElement#isLocalGenerated <em>Local Generated</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Local Generated</em>' attribute is set.
-	 * @see #unsetLocalGenerated()
-	 * @see #isLocalGenerated()
-	 * @see #setLocalGenerated(boolean)
-	 * @generated
-	 */
-	boolean isSetLocalGenerated();
-
-	/**
 	 * Returns the value of the '<em><b>Internal Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Internal Id</em>' attribute isn't clear,
@@ -179,7 +153,7 @@ public interface EventBElement extends EventBObject {
 	 * @see #unsetInternalId()
 	 * @see #setInternalId(String)
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_InternalId()
-	 * @model unsettable="true"
+	 * @model default="" unsettable="true"
 	 * @generated
 	 */
 	String getInternalId();

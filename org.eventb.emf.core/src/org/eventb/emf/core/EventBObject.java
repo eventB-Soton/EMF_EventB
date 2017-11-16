@@ -98,18 +98,6 @@ public interface EventBObject extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * returns the URI of this element.
-	 * (If the element is not loaded, the URI is obtained from the proxy without loading the element)
-	 *
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @deprecated - use use EcoreUtil.getURI(EObject);
-	 * @generated NOT
-	 */
-	URI getURI();
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * returns the annotation with the specified source or null if no such annotation is contained by this element
