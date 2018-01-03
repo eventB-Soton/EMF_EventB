@@ -34,7 +34,6 @@ import org.eclipse.emf.workspace.AbstractEMFOperation;
  * marked as modified. If no collection of resources is passed, all modified
  * resources will be saved.
  * 
- * If the resource has not contents it is deleted instead of saving
  *
  * @since 3.6
  */
