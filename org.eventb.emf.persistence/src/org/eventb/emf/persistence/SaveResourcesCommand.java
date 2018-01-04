@@ -34,6 +34,7 @@ import org.eclipse.emf.workspace.AbstractEMFOperation;
  * marked as modified. If no collection of resources is passed, all modified
  * resources will be saved.
  * 
+ * @author cfs
  *
  * @since 3.6
  */
@@ -49,20 +50,11 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 	 * @param resources
 	 *            to be saved (or null for all modified resources)
 	 */
-	public SaveResourcesCommand(TransactionalEditingDomain editingDomain, Resource[] resources) {
+	public SaveResourcesCommand(TransactionalEditingDomain editingDomain, Resource ... resources) {
 		super(editingDomain, "Saving Event-B EMF resources", null);
-		init(editingDomain, resources);
-	}
-
-	public SaveResourcesCommand(TransactionalEditingDomain editingDomain, Resource resource) {
-		super(editingDomain, "Saving Event-B EMF resources", null);
-		Resource[] resources = {resource};
-		init(editingDomain, resources);
-	}
-	
-	public SaveResourcesCommand(TransactionalEditingDomain editingDomain) {
-		super(editingDomain, "Saving Event-B EMF resources", null);
-		Resource[] resources = editingDomain.getResourceSet().getResources().toArray(new Resource[0]);
+		if (resources.length == 0){
+			resources = editingDomain.getResourceSet().getResources().toArray(new Resource[0]);
+		}
 		init(editingDomain, resources);
 	}
 	
