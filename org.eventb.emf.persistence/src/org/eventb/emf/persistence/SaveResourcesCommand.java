@@ -38,6 +38,7 @@ import org.eclipse.emf.workspace.AbstractEMFOperation;
  *
  * @since 3.6
  */
+//TODO: this is not specific to Event-B/Rodin - it could be moved to a generic EMF feature/plug-in if we had one
 public class SaveResourcesCommand extends AbstractEMFOperation {
 
 	private final List<Resource> resources = new ArrayList<Resource>();
