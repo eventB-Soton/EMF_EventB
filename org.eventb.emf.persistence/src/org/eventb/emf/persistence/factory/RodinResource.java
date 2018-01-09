@@ -321,4 +321,39 @@ public class RodinResource extends XMIResourceImpl {
 		// does file exist?
 		return rodinFile == null ? file.exists() : rodinFile.exists();
 	}
+	
+	/**
+	 * Deletes the resource. 
+	 * This consists of 
+	 *  unloading the resource from emf and
+	 *  removing it from the containing resource set
+	 *  deleting the underlying rodin file from the rodin database
+	 *  
+	 */
+	@Override
+	public void delete(Map<?,?> options) throws IOException{
+		
+		//+++ copied from the extended XMIResourceImpl
+	    unload();
+	    ResourceSet resourceSet = getResourceSet();
+	    if (resourceSet != null) {
+	      resourceSet.getResources().remove(this);
+	    }
+		//--- end of copied from the extended XMIResourceImpl
+	    
+	    // Tell Rodin to delete the rodin file.
+	    // This is done last otherwise EMF editors see the change as a reason to ask the user if they want to reload.
+	    // It is not clear that the runnable is needed
+		try {
+			RodinCore.run(new IWorkspaceRunnable() {
+				public void run(final IProgressMonitor monitor) throws CoreException {
+					rodinFile.delete(true, null);
+				}
+			}, rodinFile.getSchedulingRule() , null);
+		} catch (RodinDBException e) {
+			throw new IOException(e);
+		}
+
+	}
+	
 }
