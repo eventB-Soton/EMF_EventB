@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.Transaction;
@@ -25,14 +26,13 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
 
 /**
- * Save resources EMF transactional command. This command can be used to save
- * multiple Event-B EMF models into Rodin resources. It wraps the saves in an
- * EMF transaction (this is useful because the save may modify attributes of the
- * source model)
+ * Save modifiedResources using an EMF transactional command. This command can be used to save
+ * multiple EMF models. It wraps the saves in an EMF transaction 
+ * (this is useful because the Rodin save may modify attributes of the source model)
  *
  * Resources must all be in the given editing domain's resource set and must be
- * marked as modified. If no collection of resources is passed, all modified
- * resources will be saved.
+ * marked as modified. If no collection of modifiedResources is passed, all modified
+ * modifiedResources will be saved.
  * 
  * @author cfs
  *
@@ -40,37 +40,38 @@ import org.eclipse.emf.workspace.AbstractEMFOperation;
  */
 //TODO: this is not specific to Event-B/Rodin - it could be moved to a generic EMF feature/plug-in if we had one
 public class SaveResourcesCommand extends AbstractEMFOperation {
-
-	private final List<Resource> resources = new ArrayList<Resource>();
-
+	
+	private final List<Resource> deletedResources = new ArrayList<Resource>();
+	private final List<Resource> modifiedResources = new ArrayList<Resource>();
+	
 	/**
-	 * An EMF transactional command to save the given modified resources or, if
-	 * null, all modified resources in the editing domain
+	 * An EMF transactional command to save the given modified 
+	 * Resources or, if null, all modified Resources in the editing domain
 	 *
 	 * @param editingdomain
-	 * @param resources
-	 *            to be saved (or null for all modified resources)
+	 * @param modifiedResources
+	 *            to be saved (or null for all modified Resources)
 	 */
 	public SaveResourcesCommand(TransactionalEditingDomain editingDomain, Resource ... resources) {
-		super(editingDomain, "Saving Event-B EMF resources", null);
+		super(editingDomain, "Saving Event-B EMF modifiedResources", null);
 		if (resources.length == 0){
 			resources = editingDomain.getResourceSet().getResources().toArray(new Resource[0]);
 		}
-		init(editingDomain, resources);
-	}
-	
-	private void init(TransactionalEditingDomain editingDomain, Resource[] resources){
 		setOptions(Collections.singletonMap(Transaction.OPTION_UNPROTECTED, Boolean.TRUE));
 		for (Resource resource : resources) {
 			if (resource.isModified() && editingDomain.getResourceSet().getResources().contains(resource)) {
-				this.resources.add(resource);
+				if (resource.getContents().isEmpty()){
+					deletedResources.add(resource);
+				}else{
+					modifiedResources.add(resource);
+				}
 			}
 		}
 	}
 	
 	@Override
 	public boolean canExecute() {
-		return resources.size() > 0;
+		return modifiedResources.size() > 0 || deletedResources.size()>0;
 	}
 
 	@Override
@@ -85,20 +86,35 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 
 	@Override
 	protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) {
-		IStatus status = Status.OK_STATUS;
-		monitor.beginTask("Saving " + resources.size() + " modified resources", 2 * resources.size());
-		for (final Resource resource : resources) {
-			try {
-				resource.save(Collections.emptyMap());
-				monitor.worked(2);
+		List<IStatus> status = new ArrayList<IStatus>(); //Status.OK_STATUS;
+		monitor.beginTask("Saving " + modifiedResources.size() + " modified modifiedResources", 2 * modifiedResources.size());
+
+		for (final Resource resource : deletedResources) {
+			try{
+				resource.delete(Collections.emptyMap());
 			} catch (IOException e) {
-				e.printStackTrace();
-				status = new Status(Status.ERROR, PersistencePlugin.PLUGIN_ID, "IO Exception while saving resource : " + resource.getURI() + " :- \n" + e.getMessage(), e);
-				PersistencePlugin.getDefault().getLog().log(status);
+				IStatus newStatus = new Status(Status.ERROR, PersistencePlugin.PLUGIN_ID, "IO Exception while deleting resource : " + resource.getURI() + " :- \n" + e.getMessage(), e);
+				status.add(newStatus); 
+				PersistencePlugin.getDefault().getLog().log(newStatus);
 			}
+			monitor.worked(2);
 		}
+		
+		for (final Resource resource : modifiedResources) {
+			try{
+				resource.save(Collections.emptyMap());
+			} catch (IOException e) {
+				IStatus newStatus = new Status(Status.ERROR, PersistencePlugin.PLUGIN_ID, "IO Exception while saving resource : " + resource.getURI() + " :- \n" + e.getMessage(), e);
+				status.add(newStatus); 
+				PersistencePlugin.getDefault().getLog().log(newStatus);
+			}
+			monitor.worked(2);
+		}
+
 		monitor.done();
-		return status;
+		
+		return status.size()==0? Status.OK_STATUS : 
+			new MultiStatus(PersistencePlugin.PLUGIN_ID, 0, status.toArray(new IStatus[0]), "Save command failed to save resources", null);
 	}
 
 }
