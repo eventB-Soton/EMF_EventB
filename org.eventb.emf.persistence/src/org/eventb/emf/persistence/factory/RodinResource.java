@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eventb.emf.core.EventBElement;
@@ -138,8 +139,6 @@ public class RodinResource extends XMIResourceImpl {
 						map.clear();
 						EventBElement element = syncManager.loadRodinElement(rodinFile.getRoot(), null, map, null);
 						this.getContents().add(element);
-						// syncManager.loadRodinRoot((IEventBRoot)
-						// rodinFile.getRoot(), this, null);
 					} catch (Exception e) {
 						throw new IOException("Error while loading rodin file: " + e.getLocalizedMessage());
 					}
@@ -202,7 +201,7 @@ public class RodinResource extends XMIResourceImpl {
 						}
 						rodinFile.save(null, true);
 					}
-				}, project, null);
+				}, rodinFile.getSchedulingRule() , null);
 
 			} catch (Exception e) {
 				throw new IOException("Error while saving rodin file: " + e.getLocalizedMessage());
