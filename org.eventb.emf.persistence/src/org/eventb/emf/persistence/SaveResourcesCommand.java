@@ -26,13 +26,13 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
 
 /**
- * Save modifiedResources using an EMF transactional command. This command can be used to save
+ * Save resources using an EMF transactional command. This command can be used to save
  * multiple EMF models. It wraps the saves in an EMF transaction 
  * (this is useful because the Rodin save may modify attributes of the source model)
  *
  * Resources must all be in the given editing domain's resource set and must be
- * marked as modified. If no collection of modifiedResources is passed, all modified
- * modifiedResources will be saved.
+ * marked as modified. If no collection of resources is passed, all modified
+ * resources will be saved.
  * 
  * @author cfs
  *
@@ -49,11 +49,11 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 	 * Resources or, if null, all modified Resources in the editing domain
 	 *
 	 * @param editingdomain
-	 * @param modifiedResources
+	 * @param resources
 	 *            to be saved (or null for all modified Resources)
 	 */
 	public SaveResourcesCommand(TransactionalEditingDomain editingDomain, Resource ... resources) {
-		super(editingDomain, "Saving Event-B EMF modifiedResources", null);
+		super(editingDomain, "Saving Event-B EMF resources", null);
 		if (resources.length == 0){
 			resources = editingDomain.getResourceSet().getResources().toArray(new Resource[0]);
 		}
@@ -87,7 +87,7 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 	@Override
 	protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) {
 		List<IStatus> status = new ArrayList<IStatus>(); //Status.OK_STATUS;
-		monitor.beginTask("Saving " + modifiedResources.size() + " modified modifiedResources", 2 * modifiedResources.size());
+		monitor.beginTask("Deleting " + deletedResources.size() + " resources", 2 * deletedResources.size());
 
 		for (final Resource resource : deletedResources) {
 			try{
@@ -99,7 +99,8 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 			}
 			monitor.worked(2);
 		}
-		
+
+		monitor.beginTask("Saving " + modifiedResources.size() + " modified resources", 2 * modifiedResources.size());
 		for (final Resource resource : modifiedResources) {
 			try{
 				resource.save(Collections.emptyMap());
