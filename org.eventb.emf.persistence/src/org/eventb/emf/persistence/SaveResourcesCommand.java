@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
@@ -43,6 +44,7 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 	
 	private final List<Resource> deletedResources = new ArrayList<Resource>();
 	private final List<Resource> modifiedResources = new ArrayList<Resource>();
+	ResourceSet resourceSet = null;
 	
 	/**
 	 * An EMF transactional command to save the given modified 
@@ -54,12 +56,15 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 	 */
 	public SaveResourcesCommand(TransactionalEditingDomain editingDomain, Resource ... resources) {
 		super(editingDomain, "Saving Event-B EMF resources", null);
+		resourceSet = editingDomain.getResourceSet();
 		if (resources.length == 0){
-			resources = editingDomain.getResourceSet().getResources().toArray(new Resource[0]);
+			resources = resourceSet.getResources().toArray(new Resource[0]);
 		}
 		setOptions(Collections.singletonMap(Transaction.OPTION_UNPROTECTED, Boolean.TRUE));
 		for (Resource resource : resources) {
-			if (resource.isModified() && editingDomain.getResourceSet().getResources().contains(resource)) {
+			if (	resource.isLoaded() &&
+					resource.isModified() &&
+					editingDomain.getResourceSet().getResources().contains(resource)) {
 				if (resource.getContents().isEmpty()){
 					deletedResources.add(resource);
 				}else{
@@ -91,6 +96,7 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 
 		for (final Resource resource : deletedResources) {
 			try{
+				resource.setModified(false);
 				resource.delete(Collections.emptyMap());
 			} catch (IOException e) {
 				IStatus newStatus = new Status(Status.ERROR, PersistencePlugin.PLUGIN_ID, "IO Exception while deleting resource : " + resource.getURI() + " :- \n" + e.getMessage(), e);
@@ -104,6 +110,7 @@ public class SaveResourcesCommand extends AbstractEMFOperation {
 		for (final Resource resource : modifiedResources) {
 			try{
 				resource.save(Collections.emptyMap());
+				resource.setModified(false);
 			} catch (IOException e) {
 				IStatus newStatus = new Status(Status.ERROR, PersistencePlugin.PLUGIN_ID, "IO Exception while saving resource : " + resource.getURI() + " :- \n" + e.getMessage(), e);
 				status.add(newStatus); 
