@@ -365,14 +365,19 @@ public class <%=genClass.getProviderClassName()%>
       <%} else if (createFeature.isReferenceType()) { GenClass createClass = (GenClass)createClassifier;%>
 <%@ include file="ItemProvider/newChildDescriptorsReferenceFeature.override.javajetinc" fail="alternative"%>
 <%@ start %>
-
-		newChildDescriptors.add
-			(createChildParameter
-				(<%=createFeature.getQualifiedFeatureAccessor()%>,
+		<%if ("CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS".equals(createFeature.getQualifiedFeatureAccessor())) {%>
+			<%genModel.addImport("org.eclipse.emf.ecore.EObject");%>
+		if (object instanceof EObject && 
+			<%=createClass.getQualifiedClassifierAccessor()%>.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			<%=createClass.getQualifiedClassifierAccessor()%>.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		<%}%>
+			newChildDescriptors.add
+				(createChildParameter
+					(<%=createFeature.getQualifiedFeatureAccessor()%>,
         <%if (createClass.isMapEntry()) { %>
-				 <%=createClass.getGenPackage().getQualifiedEFactoryInstanceAccessor()%>.create(<%=createClass.getQualifiedClassifierAccessor()%>)));
+				 	<%=createClass.getGenPackage().getQualifiedEFactoryInstanceAccessor()%>.create(<%=createClass.getQualifiedClassifierAccessor()%>)));
         <%} else {%>
-				 <%=createClass.getGenPackage().getQualifiedFactoryInstanceAccessor()%>.create<%=createClass.getName()%>()));
+				 	<%=createClass.getGenPackage().getQualifiedFactoryInstanceAccessor()%>.create<%=createClass.getName()%>()));
         <%}%>
 <%@ include file="ItemProvider/newChildDescriptorsReferenceFeature.insert.javajetinc" fail="silent"%>
 <%@ end %><%//ItemProvider/newChildDescriptorsReferenceFeature.override.javajetinc %>
