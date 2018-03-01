@@ -177,11 +177,11 @@ public class StringToAttributeMapEntryItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.STRING_TO_ATTRIBUTE_MAP_ENTRY__VALUE,
-				 CoreFactory.eINSTANCE.createAttribute()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.STRING_TO_ATTRIBUTE_MAP_ENTRY__VALUE,
+				 	CoreFactory.eINSTANCE.createAttribute()));
 	}
 
 	/**

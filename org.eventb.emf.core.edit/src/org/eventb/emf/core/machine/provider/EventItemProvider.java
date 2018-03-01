@@ -268,26 +268,26 @@ public class EventItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.EVENT__PARAMETERS,
-				 MachineFactory.eINSTANCE.createParameter()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.EVENT__GUARDS,
-				 MachineFactory.eINSTANCE.createGuard()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.EVENT__WITNESSES,
-				 MachineFactory.eINSTANCE.createWitness()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.EVENT__ACTIONS,
-				 MachineFactory.eINSTANCE.createAction()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.EVENT__PARAMETERS,
+				 	MachineFactory.eINSTANCE.createParameter()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.EVENT__GUARDS,
+				 	MachineFactory.eINSTANCE.createGuard()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.EVENT__WITNESSES,
+				 	MachineFactory.eINSTANCE.createWitness()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.EVENT__ACTIONS,
+				 	MachineFactory.eINSTANCE.createAction()));
 	}
 	
 	/**

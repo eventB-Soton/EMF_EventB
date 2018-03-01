@@ -149,16 +149,16 @@ public class ProjectItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.PROJECT__COMPONENTS,
-				 MachineFactory.eINSTANCE.createMachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.PROJECT__COMPONENTS,
-				 ContextFactory.eINSTANCE.createContext()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.PROJECT__COMPONENTS,
+				 	MachineFactory.eINSTANCE.createMachine()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.PROJECT__COMPONENTS,
+				 	ContextFactory.eINSTANCE.createContext()));
 	}
 
 }

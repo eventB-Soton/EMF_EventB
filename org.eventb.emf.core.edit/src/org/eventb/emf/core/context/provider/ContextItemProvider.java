@@ -212,21 +212,21 @@ public class ContextItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ContextPackage.Literals.CONTEXT__SETS,
-				 ContextFactory.eINSTANCE.createCarrierSet()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ContextPackage.Literals.CONTEXT__CONSTANTS,
-				 ContextFactory.eINSTANCE.createConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ContextPackage.Literals.CONTEXT__AXIOMS,
-				 ContextFactory.eINSTANCE.createAxiom()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ContextPackage.Literals.CONTEXT__SETS,
+				 	ContextFactory.eINSTANCE.createCarrierSet()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ContextPackage.Literals.CONTEXT__CONSTANTS,
+				 	ContextFactory.eINSTANCE.createConstant()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(ContextPackage.Literals.CONTEXT__AXIOMS,
+				 	ContextFactory.eINSTANCE.createAxiom()));
 	}
 
 }
