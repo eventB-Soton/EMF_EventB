@@ -260,26 +260,26 @@ public class MachineItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.MACHINE__VARIABLES,
-				 MachineFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.MACHINE__INVARIANTS,
-				 MachineFactory.eINSTANCE.createInvariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.MACHINE__VARIANT,
-				 MachineFactory.eINSTANCE.createVariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.MACHINE__EVENTS,
-				 MachineFactory.eINSTANCE.createEvent()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.MACHINE__VARIABLES,
+				 	MachineFactory.eINSTANCE.createVariable()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.MACHINE__INVARIANTS,
+				 	MachineFactory.eINSTANCE.createInvariant()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.MACHINE__VARIANT,
+				 	MachineFactory.eINSTANCE.createVariant()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(MachinePackage.Literals.MACHINE__EVENTS,
+				 	MachineFactory.eINSTANCE.createEvent()));
 	}
 
 }

@@ -55,38 +55,30 @@ Thats it! the rest is just notes about the customised code generators
 ----------------------------------------------------------------
 
 Customisations made to the Dynamic Templates (Under development)
-
-This allows the code generation to be customised so that the post-gen code changes above are not needed.
+This allows the code generation to be customised so that post-gen code changes are not needed.
 The EMF templates have been copied from org.eclipse.emf.codegen.ecore into org.eventb.emf.core
 The templates have been customised as listed below.
 
-Checklist of customisations to the code generation templates
-1)ItemProviderAdapterFactory -This obviates the need for code change 1)
+1)ItemProviderAdapterFactory
 added: (in case method of creation switch (4th clause) - n.b. this may need to be done in other clauses in this method)
 				EAnnotation annotation = <%=createClass.getQualifiedClassifierAccessor()%>.getEAnnotation("org.eventb.emf.core.extendedMetaClasses");
 				if (annotation == null  || annotation.getReferences().contains(object.eClass()))
 
-
-TBD: the mechanism 1) above works for parents in OTHER packages but it doesn't stop new children being offered all over THIS package. This is because the collectNewChildren 
-methods are hard generated code for the itemproviders of the current package - they do not use the child extenders themselves. Currently, I have customised these methods as
- shown below but this could also be done in the jet templates to make it conditional on the extendedMetaClasses annotation references.
- 
- 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		//newChildDescriptors.add(createChildParameter(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS, RecordsFactory.eINSTANCE.createRecordCollection()));
-
-		newChildDescriptors.add(createChildParameter(RecordsPackage.Literals.RECORD_COLLECTION__RECORD_DECLARATIONS, RecordsFactory.eINSTANCE.createRecord()));
-
-		newChildDescriptors.add(createChildParameter(RecordsPackage.Literals.RECORD_COLLECTION__RECORD_EXTENSIONS, RecordsFactory.eINSTANCE
-				.createRecordExtension()));
-	}
- 
-TBD: Automatically select the correct sub package in the edit plugin childCreationExtender extension.
+2)ItemProvider - Similar to 1 but for current package rather than extensible child providers.
+		<%if ("CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS".equals(createFeature.getQualifiedFeatureAccessor())) {%>
+			<%genModel.addImport("org.eventb.emf.core.EventBObject");%>
+		if (<%=createClass.getQualifiedClassifierAccessor()%>.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			<%=createClass.getQualifiedClassifierAccessor()%>.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EventBObject)object).eClass()))
+		<%}%>
+			newChildDescriptors.add
+				(createChildParameter
+					(<%=createFeature.getQualifiedFeatureAccessor()%>,
+        <%if (createClass.isMapEntry()) { %>
+				 	<%=createClass.getGenPackage().getQualifiedEFactoryInstanceAccessor()%>.create(<%=createClass.getQualifiedClassifierAccessor()%>)));
+        <%} else {%>
+				 	<%=createClass.getGenPackage().getQualifiedFactoryInstanceAccessor()%>.create<%=createClass.getName()%>()));
+        <%}%>
+        
+        
+3) TBD: Automatically select the correct sub package in the edit plugin childCreationExtender extension.
 

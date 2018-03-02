@@ -137,11 +137,11 @@ public class EventBObjectItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS,
-				 CoreFactory.eINSTANCE.createAnnotation()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS,
+				 	CoreFactory.eINSTANCE.createAnnotation()));
 	}
 
 	/**

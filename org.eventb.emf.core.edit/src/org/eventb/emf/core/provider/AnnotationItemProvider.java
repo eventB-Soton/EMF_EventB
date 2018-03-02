@@ -204,101 +204,101 @@ public class AnnotationItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__DETAILS,
-				 CoreFactory.eINSTANCE.create(CorePackage.Literals.STRING_TO_STRING_MAP_ENTRY)));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 CoreFactory.eINSTANCE.createProject()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 CoreFactory.eINSTANCE.createExtension()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 CoreFactory.eINSTANCE.createAttribute()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 CoreFactory.eINSTANCE.createAnnotation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createMachine()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createInvariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createVariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createEvent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createParameter()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createGuard()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createWitness()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 MachineFactory.eINSTANCE.createAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 ContextFactory.eINSTANCE.createContext()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 ContextFactory.eINSTANCE.createConstant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 ContextFactory.eINSTANCE.createCarrierSet()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 ContextFactory.eINSTANCE.createAxiom()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 EcoreFactory.eINSTANCE.createEObject()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__DETAILS,
+				 	CoreFactory.eINSTANCE.create(CorePackage.Literals.STRING_TO_STRING_MAP_ENTRY)));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	CoreFactory.eINSTANCE.createProject()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	CoreFactory.eINSTANCE.createExtension()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	CoreFactory.eINSTANCE.createAttribute()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	CoreFactory.eINSTANCE.createAnnotation()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createMachine()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createVariable()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createInvariant()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createVariant()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createEvent()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createParameter()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createGuard()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createWitness()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	MachineFactory.eINSTANCE.createAction()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	ContextFactory.eINSTANCE.createContext()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	ContextFactory.eINSTANCE.createConstant()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	ContextFactory.eINSTANCE.createCarrierSet()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	ContextFactory.eINSTANCE.createAxiom()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	EcoreFactory.eINSTANCE.createEObject()));
 	}
 
 	/**
