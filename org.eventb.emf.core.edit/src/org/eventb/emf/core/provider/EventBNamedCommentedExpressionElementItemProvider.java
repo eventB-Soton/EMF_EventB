@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2009 
+ * Copyright (c) 2006-2014
  * University of Southampton, Heinrich-Heine University Dusseldorf and others.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,26 +27,32 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBCommentedExpressionElement;
+import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 
 /**
- * This is the item provider adapter for a {@link org.eventb.emf.core.EventBCommentedExpressionElement} object.
+ * This is the item provider adapter for a {@link org.eventb.emf.core.EventBNamedCommentedExpressionElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EventBCommentedExpressionElementItemProvider
-	extends EventBCommentedElementItemProvider
+public class EventBNamedCommentedExpressionElementItemProvider
+	extends EventBNamedCommentedElementItemProvider
 	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource,
+		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventBCommentedExpressionElementItemProvider(AdapterFactory adapterFactory) {
+	public EventBNamedCommentedExpressionElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -95,10 +102,10 @@ public class EventBCommentedExpressionElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EventBCommentedExpressionElement)object).getReference();
+		String label = ((EventBNamedCommentedExpressionElement)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_EventBCommentedExpressionElement_type") : //$NON-NLS-1$
-			getString("_UI_EventBCommentedExpressionElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_EventBNamedCommentedExpressionElement_type") : //$NON-NLS-1$
+			getString("_UI_EventBNamedCommentedExpressionElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -112,8 +119,8 @@ public class EventBCommentedExpressionElementItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(EventBCommentedExpressionElement.class)) {
-			case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
+		switch (notification.getFeatureID(EventBNamedCommentedExpressionElement.class)) {
+			case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

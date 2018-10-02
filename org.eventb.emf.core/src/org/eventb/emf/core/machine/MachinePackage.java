@@ -211,13 +211,13 @@ public interface MachinePackage extends EPackage {
 	int MACHINE__INVARIANTS = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Variant</b></em>' containment reference.
+	 * The feature id for the '<em><b>Variants</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE__VARIANT = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT_FEATURE_COUNT + 6;
+	int MACHINE__VARIANTS = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -472,7 +472,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__ANNOTATIONS = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__ANNOTATIONS;
+	int VARIANT__ANNOTATIONS = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
@@ -481,7 +481,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__EXTENSIONS = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXTENSIONS;
+	int VARIANT__EXTENSIONS = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' map.
@@ -490,7 +490,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__ATTRIBUTES = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__ATTRIBUTES;
+	int VARIANT__ATTRIBUTES = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -499,7 +499,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__REFERENCE = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__REFERENCE;
+	int VARIANT__REFERENCE = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -508,7 +508,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__GENERATED = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__GENERATED;
+	int VARIANT__GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
@@ -517,7 +517,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__LOCAL_GENERATED = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__LOCAL_GENERATED;
+	int VARIANT__LOCAL_GENERATED = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__LOCAL_GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
@@ -526,7 +526,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__INTERNAL_ID = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__INTERNAL_ID;
+	int VARIANT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -535,7 +535,16 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__COMMENT = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__COMMENT;
+	int VARIANT__COMMENT = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIANT__NAME = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute.
@@ -544,7 +553,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT__EXPRESSION = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION;
+	int VARIANT__EXPRESSION = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION;
 
 	/**
 	 * The number of structural features of the '<em>Variant</em>' class.
@@ -553,7 +562,7 @@ public interface MachinePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIANT_FEATURE_COUNT = CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT_FEATURE_COUNT + 0;
+	int VARIANT_FEATURE_COUNT = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eventb.emf.core.machine.impl.EventImpl <em>Event</em>}' class.
@@ -1251,15 +1260,15 @@ public interface MachinePackage extends EPackage {
 	EReference getMachine_Invariants();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eventb.emf.core.machine.Machine#getVariant <em>Variant</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eventb.emf.core.machine.Machine#getVariants <em>Variants</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Variant</em>'.
-	 * @see org.eventb.emf.core.machine.Machine#getVariant()
+	 * @return the meta object for the containment reference list '<em>Variants</em>'.
+	 * @see org.eventb.emf.core.machine.Machine#getVariants()
 	 * @see #getMachine()
 	 * @generated
 	 */
-	EReference getMachine_Variant();
+	EReference getMachine_Variants();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eventb.emf.core.machine.Machine#getEvents <em>Events</em>}'.
@@ -1531,12 +1540,12 @@ public interface MachinePackage extends EPackage {
 		EReference MACHINE__INVARIANTS = eINSTANCE.getMachine_Invariants();
 
 		/**
-		 * The meta object literal for the '<em><b>Variant</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Variants</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MACHINE__VARIANT = eINSTANCE.getMachine_Variant();
+		EReference MACHINE__VARIANTS = eINSTANCE.getMachine_Variants();
 
 		/**
 		 * The meta object literal for the '<em><b>Events</b></em>' containment reference list feature.

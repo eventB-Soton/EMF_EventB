@@ -11,7 +11,7 @@
 package org.eventb.emf.core.machine.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eventb.emf.core.impl.EventBCommentedExpressionElementImpl;
+import org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Variant;
 
@@ -24,7 +24,9 @@ import org.eventb.emf.core.machine.Variant;
  *
  * @generated
  */
-public class VariantImpl extends EventBCommentedExpressionElementImpl implements Variant {
+public class VariantImpl extends EventBNamedCommentedExpressionElementImpl implements Variant {
+	private static final String DEFAULT_NAME = "vrt";
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42,6 +44,15 @@ public class VariantImpl extends EventBCommentedExpressionElementImpl implements
 	@Override
 	protected EClass eStaticClass() {
 		return MachinePackage.Literals.VARIANT;
+	}
+	
+	/**
+	 * Overridden to provide a default
+	 * @custom
+	 */
+	public String getName() {
+		name = super.getName();
+		return name ==""? DEFAULT_NAME : name;
 	}
 
 } //VariantImpl

@@ -91,7 +91,7 @@ public interface EventBObject extends EObject {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @model many="false" eClassRequired="true" resolveRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList<EObject> typeObjects = new BasicEList<EObject>();\ntypeObjects.add(null);\t//include the null object\nfor (TreeIterator<EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){\n\tEObject o = trit.next();\n\tif (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);\n}\nreturn typeObjects;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList&lt;EObject&gt; typeObjects = new BasicEList&lt;EObject&gt;();\ntypeObjects.add(null);\t//include the null object\nfor (TreeIterator&lt;EObject&gt;trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){\n\tEObject o = trit.next();\n\tif (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);\n}\nreturn typeObjects;'"
 	 * @generated
 	 */
 	EList<EObject> getAllContained(EClass eClass, boolean resolve);

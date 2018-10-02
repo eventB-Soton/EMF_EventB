@@ -177,6 +177,11 @@
             kind="string"
             name="EMF Identifier">
       </attributeType>
+      <attributeType
+            id="variant_label"
+            kind="string"
+            name="Variant Name">
+      </attributeType>
    </extension>
    <extension
          point="org.rodinp.core.itemRelations">
@@ -194,6 +199,12 @@
                typeId="org.eventb.emf.persistence.emf_id">
          </attributeType>
       </ubiquitous>
+      <relationship
+            parentTypeId="org.eventb.core.variant">
+         <attributeType
+               typeId="org.eventb.emf.persistence.variant_label">
+         </attributeType>
+      </relationship>
    </extension>
 
 </plugin>

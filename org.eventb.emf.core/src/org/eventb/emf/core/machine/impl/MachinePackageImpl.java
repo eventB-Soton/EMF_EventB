@@ -251,7 +251,7 @@ public class MachinePackageImpl extends EPackageImpl implements MachinePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMachine_Variant() {
+	public EReference getMachine_Variants() {
 		return (EReference)machineEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -452,7 +452,7 @@ public class MachinePackageImpl extends EPackageImpl implements MachinePackage {
 		createEAttribute(machineEClass, MACHINE__SEES_NAMES);
 		createEReference(machineEClass, MACHINE__VARIABLES);
 		createEReference(machineEClass, MACHINE__INVARIANTS);
-		createEReference(machineEClass, MACHINE__VARIANT);
+		createEReference(machineEClass, MACHINE__VARIANTS);
 		createEReference(machineEClass, MACHINE__EVENTS);
 
 		variableEClass = createEClass(VARIABLE);
@@ -518,7 +518,7 @@ public class MachinePackageImpl extends EPackageImpl implements MachinePackage {
 		machineEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedComponentElement());
 		variableEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedElement());
 		invariantEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedDerivedPredicateElement());
-		variantEClass.getESuperTypes().add(theCorePackage.getEventBCommentedExpressionElement());
+		variantEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedExpressionElement());
 		eventEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedElement());
 		parameterEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedElement());
 		guardEClass.getESuperTypes().add(theCorePackage.getEventBNamedCommentedDerivedPredicateElement());
@@ -533,7 +533,7 @@ public class MachinePackageImpl extends EPackageImpl implements MachinePackage {
 		initEAttribute(getMachine_SeesNames(), ecorePackage.getEString(), "seesNames", null, 0, -1, Machine.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMachine_Variables(), this.getVariable(), null, "variables", null, 0, -1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMachine_Invariants(), this.getInvariant(), null, "invariants", null, 0, -1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getMachine_Variant(), this.getVariant(), null, "variant", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getMachine_Variants(), this.getVariant(), null, "variants", null, 0, -1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getMachine_Events(), this.getEvent(), null, "events", null, 0, -1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

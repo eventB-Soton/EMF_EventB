@@ -179,7 +179,7 @@ public class MachineItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(MachinePackage.Literals.MACHINE__VARIABLES);
 			childrenFeatures.add(MachinePackage.Literals.MACHINE__INVARIANTS);
-			childrenFeatures.add(MachinePackage.Literals.MACHINE__VARIANT);
+			childrenFeatures.add(MachinePackage.Literals.MACHINE__VARIANTS);
 			childrenFeatures.add(MachinePackage.Literals.MACHINE__EVENTS);
 		}
 		return childrenFeatures;
@@ -242,7 +242,7 @@ public class MachineItemProvider
 				return;
 			case MachinePackage.MACHINE__VARIABLES:
 			case MachinePackage.MACHINE__INVARIANTS:
-			case MachinePackage.MACHINE__VARIANT:
+			case MachinePackage.MACHINE__VARIANTS:
 			case MachinePackage.MACHINE__EVENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -273,7 +273,7 @@ public class MachineItemProvider
 		
 			newChildDescriptors.add
 				(createChildParameter
-					(MachinePackage.Literals.MACHINE__VARIANT,
+					(MachinePackage.Literals.MACHINE__VARIANTS,
 				 	MachineFactory.eINSTANCE.createVariant()));
 		
 			newChildDescriptors.add

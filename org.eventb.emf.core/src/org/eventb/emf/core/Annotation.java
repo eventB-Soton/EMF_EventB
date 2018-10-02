@@ -73,7 +73,7 @@ public interface Annotation extends EventBObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Details</em>' map.
 	 * @see org.eventb.emf.core.CorePackage#getAnnotation_Details()
-	 * @model mapType="org.eventb.emf.core.StringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @model mapType="org.eventb.emf.core.StringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
 	EMap<String, String> getDetails();

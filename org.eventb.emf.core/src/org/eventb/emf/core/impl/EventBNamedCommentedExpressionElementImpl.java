@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2009 
+ * Copyright (c) 2006-2014
  * University of Southampton, Heinrich-Heine University Dusseldorf and others.
  * All rights reserved. This program and the accompanying materials  are made
  * available under the terms of the Eclipse Public License v1.0 which accompanies this 
@@ -11,26 +11,29 @@
 package org.eventb.emf.core.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBCommentedExpressionElement;
 import org.eventb.emf.core.EventBExpression;
+import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Event BCommented Expression Element</b></em>'.
+ * An implementation of the model object '<em><b>Event BNamed Commented Expression Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eventb.emf.core.impl.EventBCommentedExpressionElementImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class EventBCommentedExpressionElementImpl extends EventBCommentedElementImpl implements EventBCommentedExpressionElement {
+public abstract class EventBNamedCommentedExpressionElementImpl extends EventBNamedCommentedElementImpl implements EventBNamedCommentedExpressionElement {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,7 +42,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String EXPRESSION_EDEFAULT = "\"\"";
+	protected static final String EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
@@ -56,7 +59,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EventBCommentedExpressionElementImpl() {
+	protected EventBNamedCommentedExpressionElementImpl() {
 		super();
 	}
 
@@ -67,7 +70,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.EVENT_BCOMMENTED_EXPRESSION_ELEMENT;
+		return CorePackage.Literals.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT;
 	}
 
 	/**
@@ -88,7 +91,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 		String oldExpression = expression;
 		expression = newExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION, oldExpression, expression));
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION, oldExpression, expression));
 	}
 
 	/**
@@ -99,7 +102,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
+			case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
 				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -113,7 +116,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
+			case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
 				setExpression((String)newValue);
 				return;
 		}
@@ -128,7 +131,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
+			case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
 				setExpression(EXPRESSION_EDEFAULT);
 				return;
 		}
@@ -143,7 +146,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
+			case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION:
 				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
 		}
 		return super.eIsSet(featureID);
@@ -158,7 +161,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == EventBExpression.class) {
 			switch (derivedFeatureID) {
-				case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION: return CorePackage.EVENT_BEXPRESSION__EXPRESSION;
+				case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION: return CorePackage.EVENT_BEXPRESSION__EXPRESSION;
 				default: return -1;
 			}
 		}
@@ -174,7 +177,7 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == EventBExpression.class) {
 			switch (baseFeatureID) {
-				case CorePackage.EVENT_BEXPRESSION__EXPRESSION: return CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION;
+				case CorePackage.EVENT_BEXPRESSION__EXPRESSION: return CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION;
 				default: return -1;
 			}
 		}
@@ -197,4 +200,4 @@ public abstract class EventBCommentedExpressionElementImpl extends EventBComment
 		return result.toString();
 	}
 
-} //EventBCommentedExpressionElementImpl
+} //EventBNamedCommentedExpressionElementImpl

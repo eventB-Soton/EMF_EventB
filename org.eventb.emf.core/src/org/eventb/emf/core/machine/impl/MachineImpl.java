@@ -60,7 +60,7 @@ import org.eventb.emf.core.machine.Variant;
  *   <li>{@link org.eventb.emf.core.machine.impl.MachineImpl#getSeesNames <em>Sees Names</em>}</li>
  *   <li>{@link org.eventb.emf.core.machine.impl.MachineImpl#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.eventb.emf.core.machine.impl.MachineImpl#getInvariants <em>Invariants</em>}</li>
- *   <li>{@link org.eventb.emf.core.machine.impl.MachineImpl#getVariant <em>Variant</em>}</li>
+ *   <li>{@link org.eventb.emf.core.machine.impl.MachineImpl#getVariants <em>Variants</em>}</li>
  *   <li>{@link org.eventb.emf.core.machine.impl.MachineImpl#getEvents <em>Events</em>}</li>
  * </ul>
  * </p>
@@ -109,14 +109,14 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 	protected EList<Invariant> invariants;
 
 	/**
-	 * The cached value of the '{@link #getVariant() <em>Variant</em>}' containment reference.
+	 * The cached value of the '{@link #getVariants() <em>Variants</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariant()
+	 * @see #getVariants()
 	 * @generated
 	 * @ordered
 	 */
-	protected Variant variant;
+	protected EList<Variant> variants;
 
 	/**
 	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
@@ -408,42 +408,11 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variant getVariant() {
-		return variant;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetVariant(Variant newVariant, NotificationChain msgs) {
-		Variant oldVariant = variant;
-		variant = newVariant;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MachinePackage.MACHINE__VARIANT, oldVariant, newVariant);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Variant> getVariants() {
+		if (variants == null) {
+			variants = new EObjectContainmentEList<Variant>(Variant.class, this, MachinePackage.MACHINE__VARIANTS);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVariant(Variant newVariant) {
-		if (newVariant != variant) {
-			NotificationChain msgs = null;
-			if (variant != null)
-				msgs = ((InternalEObject)variant).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MachinePackage.MACHINE__VARIANT, null, msgs);
-			if (newVariant != null)
-				msgs = ((InternalEObject)newVariant).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MachinePackage.MACHINE__VARIANT, null, msgs);
-			msgs = basicSetVariant(newVariant, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MachinePackage.MACHINE__VARIANT, newVariant, newVariant));
+		return variants;
 	}
 
 	/**
@@ -470,8 +439,8 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 			case MachinePackage.MACHINE__INVARIANTS:
 				return ((InternalEList<?>)getInvariants()).basicRemove(otherEnd, msgs);
-			case MachinePackage.MACHINE__VARIANT:
-				return basicSetVariant(null, msgs);
+			case MachinePackage.MACHINE__VARIANTS:
+				return ((InternalEList<?>)getVariants()).basicRemove(otherEnd, msgs);
 			case MachinePackage.MACHINE__EVENTS:
 				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 		}
@@ -498,8 +467,8 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 				return getVariables();
 			case MachinePackage.MACHINE__INVARIANTS:
 				return getInvariants();
-			case MachinePackage.MACHINE__VARIANT:
-				return getVariant();
+			case MachinePackage.MACHINE__VARIANTS:
+				return getVariants();
 			case MachinePackage.MACHINE__EVENTS:
 				return getEvents();
 		}
@@ -539,8 +508,9 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 				getInvariants().clear();
 				getInvariants().addAll((Collection<? extends Invariant>)newValue);
 				return;
-			case MachinePackage.MACHINE__VARIANT:
-				setVariant((Variant)newValue);
+			case MachinePackage.MACHINE__VARIANTS:
+				getVariants().clear();
+				getVariants().addAll((Collection<? extends Variant>)newValue);
 				return;
 			case MachinePackage.MACHINE__EVENTS:
 				getEvents().clear();
@@ -576,8 +546,8 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 			case MachinePackage.MACHINE__INVARIANTS:
 				getInvariants().clear();
 				return;
-			case MachinePackage.MACHINE__VARIANT:
-				setVariant((Variant)null);
+			case MachinePackage.MACHINE__VARIANTS:
+				getVariants().clear();
 				return;
 			case MachinePackage.MACHINE__EVENTS:
 				getEvents().clear();
@@ -606,8 +576,8 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 				return variables != null && !variables.isEmpty();
 			case MachinePackage.MACHINE__INVARIANTS:
 				return invariants != null && !invariants.isEmpty();
-			case MachinePackage.MACHINE__VARIANT:
-				return variant != null;
+			case MachinePackage.MACHINE__VARIANTS:
+				return variants != null && !variants.isEmpty();
 			case MachinePackage.MACHINE__EVENTS:
 				return events != null && !events.isEmpty();
 		}

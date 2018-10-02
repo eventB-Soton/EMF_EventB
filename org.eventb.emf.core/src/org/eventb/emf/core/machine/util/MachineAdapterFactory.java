@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eventb.emf.core.EventBAction;
 import org.eventb.emf.core.EventBCommented;
 import org.eventb.emf.core.EventBCommentedElement;
-import org.eventb.emf.core.EventBCommentedExpressionElement;
 import org.eventb.emf.core.EventBDerived;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
@@ -26,6 +25,7 @@ import org.eventb.emf.core.EventBNamedCommentedActionElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBNamedCommentedDerivedPredicateElement;
 import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
@@ -181,8 +181,8 @@ public class MachineAdapterFactory extends AdapterFactoryImpl {
 				return createEventBExpressionAdapter();
 			}
 			@Override
-			public Adapter caseEventBCommentedExpressionElement(EventBCommentedExpressionElement object) {
-				return createEventBCommentedExpressionElementAdapter();
+			public Adapter caseEventBNamedCommentedExpressionElement(EventBNamedCommentedExpressionElement object) {
+				return createEventBNamedCommentedExpressionElementAdapter();
 			}
 			@Override
 			public Adapter caseEventBAction(EventBAction object) {
@@ -507,16 +507,16 @@ public class MachineAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBCommentedExpressionElement <em>Event BCommented Expression Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBNamedCommentedExpressionElement <em>Event BNamed Commented Expression Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBCommentedExpressionElement
+	 * @see org.eventb.emf.core.EventBNamedCommentedExpressionElement
 	 * @generated
 	 */
-	public Adapter createEventBCommentedExpressionElementAdapter() {
+	public Adapter createEventBNamedCommentedExpressionElementAdapter() {
 		return null;
 	}
 

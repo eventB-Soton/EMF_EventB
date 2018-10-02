@@ -324,106 +324,6 @@ public interface CorePackage extends EPackage {
 	int EVENT_BEXPRESSION_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBCommentedExpressionElementImpl <em>Event BCommented Expression Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eventb.emf.core.impl.EventBCommentedExpressionElementImpl
-	 * @see org.eventb.emf.core.impl.CorePackageImpl#getEventBCommentedExpressionElement()
-	 * @generated
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT = 5;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__ANNOTATIONS = EVENT_BCOMMENTED_ELEMENT__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXTENSIONS = EVENT_BCOMMENTED_ELEMENT__EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__ATTRIBUTES = EVENT_BCOMMENTED_ELEMENT__ATTRIBUTES;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__REFERENCE = EVENT_BCOMMENTED_ELEMENT__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__GENERATED = EVENT_BCOMMENTED_ELEMENT__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__LOCAL_GENERATED = EVENT_BCOMMENTED_ELEMENT__LOCAL_GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__INTERNAL_ID = EVENT_BCOMMENTED_ELEMENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__COMMENT = EVENT_BCOMMENTED_ELEMENT__COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT__EXPRESSION = EVENT_BCOMMENTED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Event BCommented Expression Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BCOMMENTED_EXPRESSION_ELEMENT_FEATURE_COUNT = EVENT_BCOMMENTED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBNamedImpl <em>Event BNamed</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -432,24 +332,6 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	int EVENT_BNAMED = 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BNAMED__NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>Event BNamed</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_BNAMED_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBNamedCommentedElementImpl <em>Event BNamed Commented Element</em>}' class.
@@ -550,6 +432,133 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT = EVENT_BCOMMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl <em>Event BNamed Commented Expression Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl
+	 * @see org.eventb.emf.core.impl.CorePackageImpl#getEventBNamedCommentedExpressionElement()
+	 * @generated
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ANNOTATIONS = EVENT_BNAMED_COMMENTED_ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXTENSIONS = EVENT_BNAMED_COMMENTED_ELEMENT__EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ATTRIBUTES = EVENT_BNAMED_COMMENTED_ELEMENT__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__REFERENCE = EVENT_BNAMED_COMMENTED_ELEMENT__REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__GENERATED = EVENT_BNAMED_COMMENTED_ELEMENT__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__LOCAL_GENERATED = EVENT_BNAMED_COMMENTED_ELEMENT__LOCAL_GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__COMMENT = EVENT_BNAMED_COMMENTED_ELEMENT__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__NAME = EVENT_BNAMED_COMMENTED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__EXPRESSION = EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Event BNamed Commented Expression Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT_FEATURE_COUNT = EVENT_BNAMED_COMMENTED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Event BNamed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_BNAMED_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBPredicateImpl <em>Event BPredicate</em>}' class.
@@ -1716,14 +1725,14 @@ public interface CorePackage extends EPackage {
 	EAttribute getEventBExpression_Expression();
 
 	/**
-	 * Returns the meta object for class '{@link org.eventb.emf.core.EventBCommentedExpressionElement <em>Event BCommented Expression Element</em>}'.
+	 * Returns the meta object for class '{@link org.eventb.emf.core.EventBNamedCommentedExpressionElement <em>Event BNamed Commented Expression Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Event BCommented Expression Element</em>'.
-	 * @see org.eventb.emf.core.EventBCommentedExpressionElement
+	 * @return the meta object for class '<em>Event BNamed Commented Expression Element</em>'.
+	 * @see org.eventb.emf.core.EventBNamedCommentedExpressionElement
 	 * @generated
 	 */
-	EClass getEventBCommentedExpressionElement();
+	EClass getEventBNamedCommentedExpressionElement();
 
 	/**
 	 * Returns the meta object for class '{@link org.eventb.emf.core.EventBNamed <em>Event BNamed</em>}'.
@@ -2231,14 +2240,14 @@ public interface CorePackage extends EPackage {
 		EAttribute EVENT_BEXPRESSION__EXPRESSION = eINSTANCE.getEventBExpression_Expression();
 
 		/**
-		 * The meta object literal for the '{@link org.eventb.emf.core.impl.EventBCommentedExpressionElementImpl <em>Event BCommented Expression Element</em>}' class.
+		 * The meta object literal for the '{@link org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl <em>Event BNamed Commented Expression Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eventb.emf.core.impl.EventBCommentedExpressionElementImpl
-		 * @see org.eventb.emf.core.impl.CorePackageImpl#getEventBCommentedExpressionElement()
+		 * @see org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl
+		 * @see org.eventb.emf.core.impl.CorePackageImpl#getEventBNamedCommentedExpressionElement()
 		 * @generated
 		 */
-		EClass EVENT_BCOMMENTED_EXPRESSION_ELEMENT = eINSTANCE.getEventBCommentedExpressionElement();
+		EClass EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT = eINSTANCE.getEventBNamedCommentedExpressionElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eventb.emf.core.impl.EventBNamedImpl <em>Event BNamed</em>}' class.

@@ -28,7 +28,7 @@ import org.eventb.emf.core.context.Context;
  *   <li>{@link org.eventb.emf.core.machine.Machine#getSeesNames <em>Sees Names</em>}</li>
  *   <li>{@link org.eventb.emf.core.machine.Machine#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.eventb.emf.core.machine.Machine#getInvariants <em>Invariants</em>}</li>
- *   <li>{@link org.eventb.emf.core.machine.Machine#getVariant <em>Variant</em>}</li>
+ *   <li>{@link org.eventb.emf.core.machine.Machine#getVariants <em>Variants</em>}</li>
  *   <li>{@link org.eventb.emf.core.machine.Machine#getEvents <em>Events</em>}</li>
  * </ul>
  * </p>
@@ -135,30 +135,20 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	EList<Invariant> getInvariants();
 
 	/**
-	 * Returns the value of the '<em><b>Variant</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Variants</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eventb.emf.core.machine.Variant}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variant</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Variants</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variant</em>' containment reference.
-	 * @see #setVariant(Variant)
-	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variant()
+	 * @return the value of the '<em>Variants</em>' containment reference list.
+	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variants()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Variant getVariant();
-
-	/**
-	 * Sets the value of the '{@link org.eventb.emf.core.machine.Machine#getVariant <em>Variant</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variant</em>' containment reference.
-	 * @see #getVariant()
-	 * @generated
-	 */
-	void setVariant(Variant value);
+	EList<Variant> getVariants();
 
 	/**
 	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.

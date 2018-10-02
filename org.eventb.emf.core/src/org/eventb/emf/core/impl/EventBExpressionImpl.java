@@ -39,7 +39,7 @@ public abstract class EventBExpressionImpl extends EObjectImpl implements EventB
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String EXPRESSION_EDEFAULT = "\"\"";
+	protected static final String EXPRESSION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
