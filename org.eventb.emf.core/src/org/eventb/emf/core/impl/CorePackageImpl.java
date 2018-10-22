@@ -31,7 +31,6 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBAction;
 import org.eventb.emf.core.EventBCommented;
 import org.eventb.emf.core.EventBCommentedElement;
-import org.eventb.emf.core.EventBCommentedExpressionElement;
 import org.eventb.emf.core.EventBDerived;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
@@ -40,6 +39,7 @@ import org.eventb.emf.core.EventBNamedCommentedActionElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBNamedCommentedDerivedPredicateElement;
 import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
@@ -97,7 +97,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass eventBCommentedExpressionElementEClass = null;
+	private EClass eventBNamedCommentedExpressionElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -421,8 +421,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEventBCommentedExpressionElement() {
-		return eventBCommentedExpressionElementEClass;
+	public EClass getEventBNamedCommentedExpressionElement() {
+		return eventBNamedCommentedExpressionElementEClass;
 	}
 
 	/**
@@ -778,7 +778,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		eventBExpressionEClass = createEClass(EVENT_BEXPRESSION);
 		createEAttribute(eventBExpressionEClass, EVENT_BEXPRESSION__EXPRESSION);
 
-		eventBCommentedExpressionElementEClass = createEClass(EVENT_BCOMMENTED_EXPRESSION_ELEMENT);
+		eventBNamedCommentedExpressionElementEClass = createEClass(EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT);
 
 		eventBNamedEClass = createEClass(EVENT_BNAMED);
 		createEAttribute(eventBNamedEClass, EVENT_BNAMED__NAME);
@@ -874,8 +874,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		eventBElementEClass.getESuperTypes().add(this.getEventBObject());
 		eventBCommentedElementEClass.getESuperTypes().add(this.getEventBElement());
 		eventBCommentedElementEClass.getESuperTypes().add(this.getEventBCommented());
-		eventBCommentedExpressionElementEClass.getESuperTypes().add(this.getEventBCommentedElement());
-		eventBCommentedExpressionElementEClass.getESuperTypes().add(this.getEventBExpression());
+		eventBNamedCommentedExpressionElementEClass.getESuperTypes().add(this.getEventBNamedCommentedElement());
+		eventBNamedCommentedExpressionElementEClass.getESuperTypes().add(this.getEventBExpression());
 		eventBNamedCommentedElementEClass.getESuperTypes().add(this.getEventBCommentedElement());
 		eventBNamedCommentedElementEClass.getESuperTypes().add(this.getEventBNamed());
 		eventBNamedCommentedPredicateElementEClass.getESuperTypes().add(this.getEventBNamedCommentedElement());
@@ -928,9 +928,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(eventBCommentedElementEClass, EventBCommentedElement.class, "EventBCommentedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(eventBExpressionEClass, EventBExpression.class, "EventBExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getEventBExpression_Expression(), ecorePackage.getEString(), "expression", "\"\"", 1, 1, EventBExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		initEAttribute(getEventBExpression_Expression(), ecorePackage.getEString(), "expression", "", 1, 1, EventBExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
-		initEClass(eventBCommentedExpressionElementEClass, EventBCommentedExpressionElement.class, "EventBCommentedExpressionElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(eventBNamedCommentedExpressionElementEClass, EventBNamedCommentedExpressionElement.class, "EventBNamedCommentedExpressionElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(eventBNamedEClass, EventBNamed.class, "EventBNamed", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getEventBNamed_Name(), ecorePackage.getEString(), "name", "", 1, 1, EventBNamed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$

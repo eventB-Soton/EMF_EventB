@@ -48,7 +48,7 @@
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBExpression/expression"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBCommentedExpressionElement"/>
+    <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBNamedCommentedExpressionElement"/>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBNamed">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBNamed/name"/>
       <genOperations ecoreOperation="eventbcore.ecore#//EventBNamed/doGetName"/>
@@ -110,7 +110,7 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//machine/Machine/seesNames"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//machine/Machine/variables"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//machine/Machine/invariants"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//machine/Machine/variant"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//machine/Machine/variants"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//machine/Machine/events"/>
       </genClasses>
       <genClasses ecoreClass="eventbcore.ecore#//machine/Variable"/>

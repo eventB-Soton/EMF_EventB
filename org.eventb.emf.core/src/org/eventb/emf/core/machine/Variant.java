@@ -10,7 +10,7 @@
  */
 package org.eventb.emf.core.machine;
 
-import org.eventb.emf.core.EventBCommentedExpressionElement;
+import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,5 +22,5 @@ import org.eventb.emf.core.EventBCommentedExpressionElement;
  * @model
  * @generated
  */
-public interface Variant extends EventBCommentedExpressionElement {
+public interface Variant extends EventBNamedCommentedExpressionElement {
 } // Variant

@@ -25,7 +25,7 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eventb.emf.core.machine.Variant;
-import org.eventb.emf.core.provider.EventBCommentedExpressionElementItemProvider;
+import org.eventb.emf.core.provider.EventBNamedCommentedExpressionElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eventb.emf.core.machine.Variant} object.
@@ -34,7 +34,7 @@ import org.eventb.emf.core.provider.EventBCommentedExpressionElementItemProvider
  * @generated
  */
 public class VariantItemProvider
-	extends EventBCommentedExpressionElementItemProvider
+	extends EventBNamedCommentedExpressionElementItemProvider
 	implements
 		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
 	
@@ -85,7 +85,7 @@ public class VariantItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = "Variant"; //((Variant)object).getReference();
+		String label = ((Variant)object).getName();
 		String expression = ((Variant)object).getExpression();
 		String kind = getString("_UI_Variant_type"); //$NON-NLS-1$
 		return label == null || label.length() == 0 ?

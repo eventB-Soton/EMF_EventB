@@ -63,7 +63,7 @@ public interface EventBElement extends EventBObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' map.
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_Attributes()
-	 * @model mapType="org.eventb.emf.core.StringToAttributeMapEntry<org.eclipse.emf.ecore.EString, org.eventb.emf.core.Attribute>"
+	 * @model mapType="org.eventb.emf.core.StringToAttributeMapEntry&lt;org.eclipse.emf.ecore.EString, org.eventb.emf.core.Attribute&gt;"
 	 * @generated
 	 */
 	EMap<String, Attribute> getAttributes();
@@ -201,7 +201,7 @@ public interface EventBElement extends EventBObject {
 	 * <PackageNSURI>::<class>::<parentageBelowProject>.<id>
 	 * Where id is either the 'name' attribute or a UUID
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.eIsProxy()){\n\treturn ((InternalEObject)this).eProxyURI().fragment();\n}else{\n\tString ref = getElementIdentification();\n\tEObject container = this.eContainer();\n\twhile (container instanceof EventBElementImpl && !(container instanceof Project)){\n\t\tref = ((EventBElementImpl)container).getElementIdentification()+\".\"+ref;\n\t\tcontainer = container.eContainer();\n\t}\n\tref = getElementTypePrefix()+\"::\"+ref;\n\treturn ref;\n}'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.eIsProxy()){\n\treturn ((InternalEObject)this).eProxyURI().fragment();\n}else{\n\tString ref = getElementIdentification();\n\tEObject container = this.eContainer();\n\twhile (container instanceof EventBElementImpl &amp;&amp; !(container instanceof Project)){\n\t\tref = ((EventBElementImpl)container).getElementIdentification()+\".\"+ref;\n\t\tcontainer = container.eContainer();\n\t}\n\tref = getElementTypePrefix()+\"::\"+ref;\n\treturn ref;\n}'"
 	 * @generated
 	 */
 	String doGetReference();

@@ -12,13 +12,19 @@ import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.MachineFactory;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Variant;
+import org.eventb.emf.persistence.PersistencePlugin;
 import org.rodinp.core.IAttributeType;
+import org.rodinp.core.IInternalElement;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
+import org.rodinp.core.RodinCore;
 import org.rodinp.core.RodinDBException;
 
 public class VariantSynchroniser extends AbstractSynchroniser {
 
+	private static final String VARIANT_LABEL = PersistencePlugin.PLUGIN_ID + ".variant_label";
+	private static final IAttributeType.String variantLabelAttributesType = RodinCore.getStringAttrType(VARIANT_LABEL);
+	
 	private static final Set<IAttributeType> handledAttributes = new HashSet<IAttributeType>();
 
 	static {
@@ -37,7 +43,7 @@ public class VariantSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getMachine_Variant();
+		return MachinePackage.eINSTANCE.getMachine_Variants();
 	}
 
 	@Override
@@ -53,6 +59,11 @@ public class VariantSynchroniser extends AbstractSynchroniser {
 			if (((IVariant) rodinElement).hasExpressionString()) {
 				eventBElement.setExpression(((IVariant) rodinElement).getExpressionString());
 			}
+			// for backwards compatibility - Rodin Variant may not have a label attribute
+			if (!((IVariant) rodinElement).hasAttribute(EventBAttributes.LABEL_ATTRIBUTE) && ((IVariant) rodinElement).hasAttribute(variantLabelAttributesType)){
+				String name = ((IInternalElement) rodinElement).getAttributeValue(variantLabelAttributesType);
+				eventBElement.setName(name);
+			}
 		}
 		return eventBElement;
 	}
@@ -64,6 +75,10 @@ public class VariantSynchroniser extends AbstractSynchroniser {
 		if (rodinElement instanceof IVariant && emfElement instanceof Variant) {
 			if (((Variant) emfElement).getExpression() != null) {
 				((IVariant) rodinElement).setExpressionString(((Variant) emfElement).getExpression(), monitor);
+			}
+			// for backwards compatibility - Rodin Variant may not have a label attribute
+			if (!((IVariant) rodinElement).hasAttribute(EventBAttributes.LABEL_ATTRIBUTE)){
+				((IInternalElement) rodinElement).setAttributeValue(variantLabelAttributesType, ((Variant) emfElement).getName(), monitor);
 			}
 		}
 		return rodinElement;

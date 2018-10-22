@@ -22,7 +22,6 @@ import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBAction;
 import org.eventb.emf.core.EventBCommented;
 import org.eventb.emf.core.EventBCommentedElement;
-import org.eventb.emf.core.EventBCommentedExpressionElement;
 import org.eventb.emf.core.EventBDerived;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
@@ -31,6 +30,7 @@ import org.eventb.emf.core.EventBNamedCommentedActionElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBNamedCommentedDerivedPredicateElement;
 import org.eventb.emf.core.EventBNamedCommentedElement;
+import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
@@ -145,14 +145,16 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.EVENT_BCOMMENTED_EXPRESSION_ELEMENT: {
-				EventBCommentedExpressionElement eventBCommentedExpressionElement = (EventBCommentedExpressionElement)theEObject;
-				T result = caseEventBCommentedExpressionElement(eventBCommentedExpressionElement);
-				if (result == null) result = caseEventBCommentedElement(eventBCommentedExpressionElement);
-				if (result == null) result = caseEventBExpression(eventBCommentedExpressionElement);
-				if (result == null) result = caseEventBElement(eventBCommentedExpressionElement);
-				if (result == null) result = caseEventBCommented(eventBCommentedExpressionElement);
-				if (result == null) result = caseEventBObject(eventBCommentedExpressionElement);
+			case CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT: {
+				EventBNamedCommentedExpressionElement eventBNamedCommentedExpressionElement = (EventBNamedCommentedExpressionElement)theEObject;
+				T result = caseEventBNamedCommentedExpressionElement(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBNamedCommentedElement(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBExpression(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBCommentedElement(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBNamed(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBElement(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBCommented(eventBNamedCommentedExpressionElement);
+				if (result == null) result = caseEventBObject(eventBNamedCommentedExpressionElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -379,17 +381,17 @@ public class CoreSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BCommented Expression Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Event BNamed Commented Expression Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BCommented Expression Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Event BNamed Commented Expression Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEventBCommentedExpressionElement(EventBCommentedExpressionElement object) {
+	public T caseEventBNamedCommentedExpressionElement(EventBNamedCommentedExpressionElement object) {
 		return null;
 	}
 
