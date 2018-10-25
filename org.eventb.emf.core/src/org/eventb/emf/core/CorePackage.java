@@ -436,6 +436,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl <em>Event BNamed Commented Expression Element</em>}' class.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @see org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl
 	 * @see org.eventb.emf.core.impl.CorePackageImpl#getEventBNamedCommentedExpressionElement()
@@ -446,6 +447,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -455,6 +457,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -464,6 +467,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' map.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -473,6 +477,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -482,6 +487,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -491,6 +497,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -500,6 +507,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -509,6 +517,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -518,6 +527,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -527,6 +537,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -536,6 +547,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Event BNamed Commented Expression Element</em>' class.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1727,6 +1739,7 @@ public interface CorePackage extends EPackage {
 	/**
 	 * Returns the meta object for class '{@link org.eventb.emf.core.EventBNamedCommentedExpressionElement <em>Event BNamed Commented Expression Element</em>}'.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Event BNamed Commented Expression Element</em>'.
 	 * @see org.eventb.emf.core.EventBNamedCommentedExpressionElement
@@ -2242,6 +2255,7 @@ public interface CorePackage extends EPackage {
 		/**
 		 * The meta object literal for the '{@link org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl <em>Event BNamed Commented Expression Element</em>}' class.
 		 * <!-- begin-user-doc -->
+		 * @since 5.0
 		 * <!-- end-user-doc -->
 		 * @see org.eventb.emf.core.impl.EventBNamedCommentedExpressionElementImpl
 		 * @see org.eventb.emf.core.impl.CorePackageImpl#getEventBNamedCommentedExpressionElement()

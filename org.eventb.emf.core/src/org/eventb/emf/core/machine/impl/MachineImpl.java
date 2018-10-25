@@ -111,6 +111,7 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 	/**
 	 * The cached value of the '{@link #getVariants() <em>Variants</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @see #getVariants()
 	 * @generated

@@ -142,6 +142,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * If the meaning of the '<em>Variants</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variants</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variants()
