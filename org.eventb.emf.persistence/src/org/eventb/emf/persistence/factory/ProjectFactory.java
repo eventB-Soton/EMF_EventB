@@ -29,6 +29,7 @@ public class ProjectFactory implements Resource.Factory {
 		return resource;
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	public void removeResource(final ProjectResource resource) {
 		IResource key = (IResource) resource.getResourceSet();
 		Collection<ProjectResource> collection = handledResources.get(key);

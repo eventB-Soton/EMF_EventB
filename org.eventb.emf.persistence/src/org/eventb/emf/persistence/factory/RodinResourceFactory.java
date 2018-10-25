@@ -31,6 +31,7 @@ public class RodinResourceFactory implements Resource.Factory {
 		return resource;
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	public void removeResource(final RodinResource resource) {
 		IResource key = resource.getUnderlyingResource();
 		Collection<RodinResource> collection = handledResources.get(key);

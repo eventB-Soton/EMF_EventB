@@ -408,6 +408,7 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * @custom
 	 */
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public EObject eResolveProxy(InternalEObject proxy){
 		if (proxy instanceof Context && proxy.eIsProxy() && getExtends().contains(proxy) && eResource()!=null){
