@@ -3,8 +3,8 @@ Bundle-Localization: plugin
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eventb.emf.persistence.tests
-Bundle-Version: 0.0.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %pluginVendor
 Require-Bundle: ch.ethz.eventb.utils.tests;bundle-version="[0.2.0,1.0.0)",
  org.eventb.emf.core,
@@ -18,3 +18,4 @@ Require-Bundle: ch.ethz.eventb.utils.tests;bundle-version="[0.2.0,1.0.0)",
  org.eclipse.emf.transaction;bundle-version="1.8.0"
 Import-Package: org.eclipse.core.resources
 Export-Package: org.eventb.emf.persistence.tests
+Automatic-Module-Name: org.eventb.emf.persistence.tests

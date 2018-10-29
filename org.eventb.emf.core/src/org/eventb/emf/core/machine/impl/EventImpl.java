@@ -569,6 +569,7 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 	 * @custom
 	 */
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public EObject eResolveProxy(InternalEObject proxy){
 		if (proxy instanceof Event && proxy.eIsProxy() && getRefines().contains(proxy) && eResource()!=null){

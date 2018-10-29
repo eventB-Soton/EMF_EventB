@@ -389,14 +389,12 @@ public abstract class AbstractEventBEMFTests extends AbstractEventBTests {
 	 */
 	protected void testMachineVariants(String msg, Machine mch,
 			String... expected) {
-		Variant variant = mch.getVariant();
-		if (variant == null) {
-			assertEquals(msg + ": Incorrect number of variants",
-					expected.length, 0);
-		} else {
-			assertEquals(msg + ": Incorrect number of variants",
-					expected.length, 1);
-			testVariant(msg, variant, expected[0]);
+		EList<Variant> variants = mch.getVariants();
+		assertEquals(msg + ": Incorrect number of variants",
+				expected.length, variants.size());
+		Iterator<Variant> iterator = variants.iterator();
+		for (int i = 0; i < expected.length; i++) {
+			testVariant(msg, iterator.next(), expected[i]);
 		}
 	}
 

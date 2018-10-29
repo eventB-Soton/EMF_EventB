@@ -34,6 +34,7 @@ import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 /**
  * This is the item provider adapter for a {@link org.eventb.emf.core.EventBNamedCommentedExpressionElement} object.
  * <!-- begin-user-doc -->
+ * @since 2.0
  * <!-- end-user-doc -->
  * @generated
  */

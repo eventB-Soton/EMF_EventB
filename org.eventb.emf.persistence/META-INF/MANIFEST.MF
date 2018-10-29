@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: org.eventb.emf.persistence;singleton:=true
 Bundle-Version: 3.6.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
  org.eventb.core;bundle-version="[3.0.0,4.0.0)",
  org.rodinp.core;bundle-version="[1.5.0,2.0.0)",
@@ -19,3 +19,4 @@ Bundle-Activator: org.eventb.emf.persistence.PersistencePlugin
 Bundle-Localization: plugin
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eventb.emf.persistence

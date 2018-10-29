@@ -14,6 +14,7 @@ package org.eventb.emf.core;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Event BNamed Commented Expression Element</b></em>'.
+ * @since 5.0
  * <!-- end-user-doc -->
  *
  *

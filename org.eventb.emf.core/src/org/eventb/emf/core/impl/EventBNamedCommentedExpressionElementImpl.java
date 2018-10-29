@@ -23,6 +23,7 @@ import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Event BNamed Commented Expression Element</b></em>'.
+ * @since 5.0
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:

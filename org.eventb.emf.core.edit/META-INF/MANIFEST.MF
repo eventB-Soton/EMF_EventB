@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eventb.emf.core.edit;singleton:=true
-Bundle-Version: 1.1.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eventb.emf.core.provider.EventbcoreEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eventb.emf.core.context.provider,
  org.eventb.emf.core.machine.provider,
  org.eventb.emf.core.provider
@@ -21,3 +21,4 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.emf.ecore.edit;bundle-version="[2.7.0,3.0.0)",
  org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)"
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eventb.emf.core.edit

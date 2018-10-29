@@ -213,6 +213,7 @@ public interface MachinePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Variants</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -540,6 +541,7 @@ public interface MachinePackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -1262,6 +1264,7 @@ public interface MachinePackage extends EPackage {
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.eventb.emf.core.machine.Machine#getVariants <em>Variants</em>}'.
 	 * <!-- begin-user-doc -->
+	 * @since 5.0
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Variants</em>'.
 	 * @see org.eventb.emf.core.machine.Machine#getVariants()
@@ -1542,6 +1545,7 @@ public interface MachinePackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Variants</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
+		 * @since 5.0
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
