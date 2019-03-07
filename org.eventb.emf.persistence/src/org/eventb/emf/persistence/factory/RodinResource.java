@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2019 University of Southampton.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.eventb.emf.persistence.factory;
 
 import java.io.IOException;
@@ -23,6 +30,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
@@ -160,11 +168,14 @@ public class RodinResource extends XMIResourceImpl {
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void save(final Map<?, ?> options) throws IOException {
 		if (isXmi) {
 			unresolveRefs();
-			super.save(options);
+			Map options_encoded_attributes = new HashMap( options);
+			options_encoded_attributes.put(XMIResourceImpl.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+			super.save(options_encoded_attributes);
 			return;
 		} else {
 			saveAsRodin(options);
