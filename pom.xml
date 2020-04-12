@@ -1,0 +1,35 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>org.eventb.emf</groupId>
+  <!-- Name of this artifact -->
+  <artifactId>root</artifactId>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>EMF Event-B Root</name>
+  <description>Root artifact for EMF Event-B</description>
+  <!-- REQUIRED: Version number (using semantic versioning) -->
+  <version>6.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>org.eventb.emf</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>6.0.1-SNAPSHOT</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>./org.eventb.emf.releng</relativePath>
+  </parent>
+
+  <modules>
+    <!-- LATER: List of modules in this build -->
+    <module>org.eventb.emf.core</module>
+    <module>org.eventb.emf.core.edit</module>
+    <module>org.eventb.emf.formulas</module>
+    <module>org.eventb.emf.persistence</module>
+    <module>org.eventb.emf.persistence.tests</module>
+    <module>org.eventb.emf.feature</module>
+    <module>org.eventb.emf.sdk</module>
+    <module>org.rodinp.licence</module>
+  </modules>
+</project>
