@@ -30,6 +30,5 @@
     <module>org.eventb.emf.persistence.tests</module>
     <module>org.eventb.emf.feature</module>
     <module>org.eventb.emf.sdk</module>
-    <module>org.rodinp.licence</module>
   </modules>
 </project>
