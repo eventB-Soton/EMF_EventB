@@ -203,31 +203,25 @@ public final class EMFRodinDB {
 	 */
 	public Resource loadResource(URI fileURI) {
 		Resource resource = null;
-		try {
-			resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
-			if (resource == null) {
-				resource = resourceSet.createResource(fileURI);
-			}
-		} catch (Exception e) {
-			System.out.println("Unable to load resource for " + fileURI + "\n" + e.getMessage());
-			return null;
-		}
-		if (!resource.isLoaded()) {
-			boolean deliver = resource.eDeliver();
-			resource.eSetDeliver(false); // turn off notifications while loading
-			try {
-				resource.load(Collections.emptyMap());
-			} catch (IOException e) {
-				return null;
-			} finally {
-				resource.eSetDeliver(deliver);
-			}
-
-		}
-		if (resource.isLoaded()) {
+		resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
+		if (resource == null) {
+			// @htson return the newly created resource, do not try to load.
+			resource = resourceSet.createResource(fileURI);
 			return resource;
 		} else {
-			return null;
+			if (!resource.isLoaded()) {
+				boolean deliver = resource.eDeliver();
+				resource.eSetDeliver(false); // turn off notifications while loading
+				try {
+					resource.load(Collections.emptyMap());
+					// TODO throw exception instead (break API)
+				} catch (IOException e) {
+					return null;
+				} finally {
+					resource.eSetDeliver(deliver);
+				}
+			}
+			return resource;
 		}
 	}
 
