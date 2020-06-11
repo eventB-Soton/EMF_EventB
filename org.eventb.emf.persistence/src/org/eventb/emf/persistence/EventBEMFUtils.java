@@ -18,11 +18,13 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eventb.core.IConfigurationElement;
 import org.eventb.core.IContextRoot;
 import org.eventb.core.IEventBProject;
 import org.eventb.core.IMachineRoot;
+import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
@@ -50,8 +52,10 @@ import org.rodinp.core.RodinDBException;
  * This class contains utility methods for manipulating Event-B EMF elements.
  * </p>
  *
- * @author htson
- * @version 0.1
+ * @author htson - 0.1 - Initial implementation
+ * @author htson - 0.2 - Use editing domain command stack to avoid modification
+ * 				without write transaction.
+ * @version 0.2
  * @since 3.4.2
  */
 public class EventBEMFUtils {
@@ -114,7 +118,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createExtendsContextClause(TransactionalEditingDomain domain, Context ctx, String absCtxName) {
 		Command cmd = AddCommand.create(domain, ctx, ContextPackage.Literals.CONTEXT__EXTENDS_NAMES, absCtxName);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -128,7 +132,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createExtendsContextClause(TransactionalEditingDomain domain, Context ctx, Context absCtx) {
 		Command cmd = AddCommand.create(domain, ctx, ContextPackage.Literals.CONTEXT__EXTENDS, absCtx);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -146,8 +150,8 @@ public class EventBEMFUtils {
 		set.setName(identifierString);
 
 		Command cmd = AddCommand.create(domain, ctx, ContextPackage.Literals.CONTEXT__SETS, set);
-		cmd.execute();
-
+		domain.getCommandStack().execute(cmd);
+		
 		return set;
 	}
 
@@ -166,7 +170,7 @@ public class EventBEMFUtils {
 		cst.setName(identifierString);
 
 		Command cmd = AddCommand.create(domain, ctx, ContextPackage.Literals.CONTEXT__CONSTANTS, cst);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 
 		return cst;
 	}
@@ -193,7 +197,7 @@ public class EventBEMFUtils {
 		axm.setTheorem(isTheorem);
 
 		Command cmd = AddCommand.create(domain, ctx, ContextPackage.Literals.CONTEXT__AXIOMS, axm);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 		return axm;
 	}
 
@@ -249,7 +253,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createRefinesMachineClause(TransactionalEditingDomain domain, Machine mch, String absMchName) {
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__REFINES_NAMES, absMchName);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -263,7 +267,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createRefinesMachineClause(TransactionalEditingDomain domain, Machine mch, Machine absMch) {
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__REFINES, absMch);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -277,7 +281,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createSeesContextClause(TransactionalEditingDomain domain, Machine mch, String ctxName) {
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__SEES_NAMES, ctxName);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -291,7 +295,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createSeesContextClause(TransactionalEditingDomain domain, Machine mch, Context ctx) {
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__SEES, ctx);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -309,7 +313,7 @@ public class EventBEMFUtils {
 		var.setName(identifierString);
 
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__VARIABLES, var);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 
 		return var;
 	}
@@ -333,7 +337,7 @@ public class EventBEMFUtils {
 		inv.setTheorem(isTheorem);
 
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__INVARIANTS, inv);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 
 		return inv;
 	}
@@ -355,7 +359,30 @@ public class EventBEMFUtils {
 		evt.setName(label);
 
 		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__EVENTS, evt);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
+		return evt;
+	}
+
+	/**
+	 * Utility method to create an event within the input machine with the given
+	 * label. By default, the extended attribute of the event is set to
+	 * <code>false</code>. and the convergence status is set to
+	 * <code>ordinary</code>
+	 *
+	 * @param mch
+	 *            a machine.
+	 * @param label
+	 *            the label of the event.
+	 * @return the newly created event.
+	 * @since 3.7
+	 */
+	public static Event createEvent(TransactionalEditingDomain domain, Machine mch, String label, boolean extended) {
+		Event evt = MachineFactory.eINSTANCE.createEvent();
+		evt.setName(label);
+		evt.setExtended(extended);
+
+		Command cmd = AddCommand.create(domain, mch, MachinePackage.Literals.MACHINE__EVENTS, evt);
+		domain.getCommandStack().execute(cmd);
 		return evt;
 	}
 
@@ -370,7 +397,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createRefinesEventClause(TransactionalEditingDomain domain, Event evt, String absEvtLabel) {
 		Command cmd = AddCommand.create(domain, evt, MachinePackage.Literals.EVENT__REFINES_NAMES, absEvtLabel);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -384,7 +411,7 @@ public class EventBEMFUtils {
 	 */
 	public static void createRefinesEventClause(TransactionalEditingDomain domain, Event evt, Event absEvt) {
 		Command cmd = AddCommand.create(domain, evt, MachinePackage.Literals.EVENT__REFINES, absEvt);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 	}
 
 	/**
@@ -402,7 +429,7 @@ public class EventBEMFUtils {
 		par.setName(identifierString);
 
 		Command cmd = AddCommand.create(domain, evt, MachinePackage.Literals.EVENT__PARAMETERS, par);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 		return par;
 	}
 
@@ -427,7 +454,7 @@ public class EventBEMFUtils {
 		grd.setTheorem(isTheorem);
 
 		Command cmd = AddCommand.create(domain, evt, MachinePackage.Literals.EVENT__GUARDS, grd);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 		return grd;
 	}
 
@@ -449,7 +476,7 @@ public class EventBEMFUtils {
 		wit.setPredicate(predicateString);
 
 		Command cmd = AddCommand.create(domain, evt, MachinePackage.Literals.EVENT__WITNESSES, wit);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 		return wit;
 	}
 
@@ -471,7 +498,7 @@ public class EventBEMFUtils {
 		act.setAction(assignmentString);
 
 		Command cmd = AddCommand.create(domain, evt, MachinePackage.Literals.EVENT__ACTIONS, act);
-		cmd.execute();
+		domain.getCommandStack().execute(cmd);
 
 		return act;
 	}
@@ -485,7 +512,17 @@ public class EventBEMFUtils {
 	 *            the element to be saved.
 	 */
 	public static void save(EMFRodinDB emfRodinDB, EventBElement element) {
-		emfRodinDB.saveResource(EcoreUtil.getURI(element), element);
+		// TODO @htson -> cfs Should this be done within EMFRodinDB.saveResource 
+		TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
+		Command command = new RecordingCommand(editingDomain, "Saving") {
+			public void doExecute() {
+				emfRodinDB.saveResource(EcoreUtil.getURI(element), element);
+			}
+		};
+		if (command.canExecute()){
+			editingDomain.getCommandStack().execute(command);
+		}
+
 	}
 
 	/**
