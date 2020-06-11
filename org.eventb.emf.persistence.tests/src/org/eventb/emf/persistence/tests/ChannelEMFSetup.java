@@ -407,8 +407,7 @@ public class ChannelEMFSetup {
 		// act5: channel := {}
 		// END
 		EO_init = EventBEMFUtils.createEvent(domain, EOMch,
-				IEvent.INITIALISATION);
-		EO_init.setExtended(true);
+				IEvent.INITIALISATION, true);
 		EO_init_act_3 = EventBEMFUtils.createAction(domain, EO_init, "act3",
 				"sents ≔ ∅");
 		EO_init_act_4 = EventBEMFUtils.createAction(domain, EO_init, "act4",
@@ -427,8 +426,7 @@ public class ChannelEMFSetup {
 		// act2: sents(s_count + 1) := msg
 		// act3: channel := channel \/ {s_count + 1}
 		// END
-		EO_sends = EventBEMFUtils.createEvent(domain, EOMch, "sends");
-		EO_sends.setExtended(true);
+		EO_sends = EventBEMFUtils.createEvent(domain, EOMch, "sends", true);
 		EventBEMFUtils.createRefinesEventClause(domain, EO_sends, "sends");
 		EO_sends_grd_2 = EventBEMFUtils.createGuard(domain, EO_sends, "grd2",
 				"card(channel) ≠ max_size", false);
@@ -516,16 +514,14 @@ public class ChannelEMFSetup {
 		// STATUS ordinary
 		// END
 		EOIO_init = EventBEMFUtils.createEvent(domain, EOIOMch,
-				IEvent.INITIALISATION);
-		EOIO_init.setExtended(true);
+				IEvent.INITIALISATION, true);
 
 		// sends
 		// extended
 		// STATUS ordinary
 		// REFINES sends
 		// END
-		EOIO_sends = EventBEMFUtils.createEvent(domain, EOIOMch, "sends");
-		EOIO_sends.setExtended(true);
+		EOIO_sends = EventBEMFUtils.createEvent(domain, EOIOMch, "sends", true);
 		EventBEMFUtils.createRefinesEventClause(domain, EOIO_sends, "sends");
 
 		// receives
@@ -538,8 +534,7 @@ public class ChannelEMFSetup {
 		// THEN
 		// ...
 		// END
-		EOIO_receives = EventBEMFUtils.createEvent(domain, EOIOMch, "receives");
-		EOIO_receives.setExtended(true);
+		EOIO_receives = EventBEMFUtils.createEvent(domain, EOIOMch, "receives", true);
 		EventBEMFUtils.createRefinesEventClause(domain, EOIO_receives,
 				"receives");
 		EOIO_receives_grd_2 = EventBEMFUtils.createGuard(domain, EOIO_receives,
