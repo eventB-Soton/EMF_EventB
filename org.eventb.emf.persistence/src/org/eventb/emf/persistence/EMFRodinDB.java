@@ -196,10 +196,13 @@ public final class EMFRodinDB {
 	}
 
 	/**
-	 * loads an Event-B component (URI) as an EMF Resource
+	 * Loads a EMF resource given its URI.
 	 *
-	 * @param root
-	 * @return
+	 * @param fileURI the input URI.
+	 * 
+	 * @return the resource loaded into the containing resource set or
+	 *         <code>null</code> if the loading fails, e.g., when the file does
+	 *         not exist.
 	 */
 	public Resource loadResource(URI fileURI) {
 		Resource resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
@@ -214,12 +217,28 @@ public final class EMFRodinDB {
 				resource.load(Collections.emptyMap());
 				// TODO throw exception instead (break API)
 			} catch (IOException e) {
-				// @htson exception occurs when the resource does not exist
-				// In this case, return the resource
-				return resource;
+				return null;
 			} finally {
 				resource.eSetDeliver(deliver);
 			}
+		}
+		return resource;
+	}
+
+	/**
+	 * Utility method to get the resource from the file URI.
+	 * 
+	 * @param fileURI the URI of the file
+	 * 
+	 * @return the resource corresponding to the input URI. If the resource is
+	 *         already contained in the resource set, it is returned. Otherwise,
+	 *         a new resource is created for the input URI in the resource set.
+	 * @since 3.7
+	 */
+	public Resource getResource(URI fileURI) {
+		Resource resource = resourceSet.getResource(fileURI, false);
+		if (resource == null) {
+			resource = resourceSet.createResource(fileURI);
 		}
 		return resource;
 	}
