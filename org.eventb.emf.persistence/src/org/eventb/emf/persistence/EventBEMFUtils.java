@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 University of Southampton.
+ * Copyright (c) 2015-2020 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.eventb.core.IConfigurationElement;
 import org.eventb.core.IContextRoot;
 import org.eventb.core.IEventBProject;
 import org.eventb.core.IMachineRoot;
-import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
@@ -510,9 +509,10 @@ public class EventBEMFUtils {
 	 *            the EMF Rodin DB to save the resource.
 	 * @param element
 	 *            the element to be saved.
+	 *            
+	 * @deprecated - use {@link SaveResourcesCommand} 
 	 */
-	public static void save(EMFRodinDB emfRodinDB, EventBElement element) {
-		// TODO @htson -> cfs Should this be done within EMFRodinDB.saveResource 
+	public static void save(EMFRodinDB emfRodinDB, EventBElement element) { 
 		TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
 		Command command = new RecordingCommand(editingDomain, "Saving") {
 			public void doExecute() {
@@ -522,7 +522,6 @@ public class EventBEMFUtils {
 		if (command.canExecute()){
 			editingDomain.getCommandStack().execute(command);
 		}
-
 	}
 
 	/**
