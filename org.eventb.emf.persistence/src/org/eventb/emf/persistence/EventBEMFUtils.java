@@ -509,9 +509,10 @@ public class EventBEMFUtils {
 	 *            the EMF Rodin DB to save the resource.
 	 * @param element
 	 *            the element to be saved.
+	 *            
+	 * @deprecated - use {@link SaveResourcesCommand} 
 	 */
-	public static void save(EMFRodinDB emfRodinDB, EventBElement element) {
-		// TODO @htson -> cfs Should this be done within EMFRodinDB.saveResource 
+	public static void save(EMFRodinDB emfRodinDB, EventBElement element) { 
 		TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
 		Command command = new RecordingCommand(editingDomain, "Saving") {
 			public void doExecute() {
@@ -521,7 +522,6 @@ public class EventBEMFUtils {
 		if (command.canExecute()){
 			editingDomain.getCommandStack().execute(command);
 		}
-
 	}
 
 	/**
