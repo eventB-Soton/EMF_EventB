@@ -10,11 +10,13 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eventb.core.IContextRoot;
@@ -270,10 +272,13 @@ public final class EMFRodinDB {
 	}
 
 	/**
+	 * 
 	 * saves an Event-B component (URI) as an EMF Resource
 	 *
 	 * @param uri
 	 * @return the saved Resource
+	 * 
+	 * @deprecated - use {@link #getResource(URI)}, {@link #setContent(Resource, EventBElement)}, {@link SaveResourcesCommand} 
 	 */
 	public Resource saveResource(URI fileURI, EventBElement element) {
 		Resource resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
@@ -294,6 +299,26 @@ public final class EMFRodinDB {
 			resource.eSetDeliver(deliver); // turn notifications back on
 		}
 		return resource;
+	}
+	
+	/**
+	 * Set the contents of the resource to the given element
+	 * 
+	 * @param resource the resource that will have its content set
+	 * @param element the element to put in the resource
+	 * 
+	 * @since 3.7
+	 */
+	public void setContent(Resource resource, EventBElement element) {
+		Command command = new RecordingCommand(editingDomain, "setting contents of resource") {
+			public void doExecute() {
+				resource.getContents().clear();
+				resource.getContents().add(element);
+			}
+		};
+		if (command.canExecute()){
+			editingDomain.getCommandStack().execute(command);
+		}
 	}
 
 	/**
