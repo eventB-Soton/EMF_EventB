@@ -55,7 +55,8 @@ public class SyncManager {
 								if (eClassifier != null) {
 									emfMapping.put((EClass) eClassifier, synchroniser);
 								}
-							} catch (final CoreException e) {
+							} catch (final Exception e) {
+								System.out.print(e);
 								// to log an error we would need to give this
 								// plugin an
 								// Activator Class
