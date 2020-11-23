@@ -201,7 +201,7 @@ public interface EventBElement extends EventBObject {
 	 * <PackageNSURI>::<class>::<parentageBelowProject>.<id>
 	 * Where id is either the 'name' attribute or a UUID
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.eIsProxy()){\n\treturn ((InternalEObject)this).eProxyURI().fragment();\n}else{\n\tString ref = getElementIdentification();\n\tEObject container = this.eContainer();\n\twhile (container instanceof EventBElementImpl &amp;&amp; !(container instanceof Project)){\n\t\tref = ((EventBElementImpl)container).getElementIdentification()+\".\"+ref;\n\t\tcontainer = container.eContainer();\n\t}\n\tref = getElementTypePrefix()+\"::\"+ref;\n\treturn ref;\n}'"
+	 * @model
 	 * @generated
 	 */
 	String doGetReference();
@@ -213,7 +213,6 @@ public interface EventBElement extends EventBObject {
 	 * This returns the prefix part of a reference for the type of this element
 	 * <!-- end-model-doc -->
 	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.eClass().getEPackage().getNsURI()+\"::\"+this.eClass().getName();'"
 	 * @generated
 	 */
 	String getElementTypePrefix();

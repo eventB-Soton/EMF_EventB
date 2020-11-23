@@ -6,7 +6,7 @@
     dynamicTemplates="true" modelName="Eventbcore" editPluginClass="org.eventb.emf.core.provider.EventbcoreEditPlugin"
     nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
     complianceLevel="6.0" copyrightFields="false" providerRootExtendsClass="" tableProviders="true"
-    language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    language="">
   <foreignModel>eventbcore.ecore</foreignModel>
   <genPackages prefix="Core" basePackage="org.eventb.emf" disposableProviderFactory="true"
       extensibleProviderFactory="true" childCreationExtenders="true" contentTypeIdentifier=""
@@ -20,14 +20,17 @@
     </genEnums>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBObject">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//EventBObject/annotations"/>
-      <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getContaining">
+      <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getContaining"
+          body="EventBObject bObject = this;&#xA;while (!eClass.isSuperTypeOf(bObject.eClass()))&#xA;&#x9;if (bObject.eContainer() instanceof EventBObject) bObject=(EventBObject)bObject.eContainer();&#xA;&#x9;else return null;&#xA;return bObject;">
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getContaining/eClass"/>
       </genOperations>
-      <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getAllContained">
+      <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getAllContained"
+          body="EList&lt;EObject> typeObjects = new BasicEList&lt;EObject>();&#xA;typeObjects.add(null);&#x9;//include the null object&#xA;for (TreeIterator&lt;EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){&#xA;&#x9;EObject o = trit.next();&#xA;&#x9;if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);&#xA;}&#xA;return typeObjects;">
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getAllContained/eClass"/>
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getAllContained/resolve"/>
       </genOperations>
-      <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getAnnotation">
+      <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getAnnotation"
+          body="for (Annotation annotation : getAnnotations()){&#xA;&#x9;if (source.equals(annotation.getSource())) return annotation;&#xA;}&#xA;return null;">
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getAnnotation/source"/>
       </genOperations>
     </genClasses>
@@ -38,8 +41,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/generated"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/localGenerated"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/internalId"/>
-      <genOperations ecoreOperation="eventbcore.ecore#//EventBElement/doGetReference"/>
-      <genOperations ecoreOperation="eventbcore.ecore#//EventBElement/getElementTypePrefix"/>
+      <genOperations ecoreOperation="eventbcore.ecore#//EventBElement/doGetReference"
+          body="if (this.eIsProxy()){&#xA;&#x9;return ((InternalEObject)this).eProxyURI().fragment();&#xA;}else{&#xA;&#x9;String ref = getElementIdentification();&#xA;&#x9;EObject container = this.eContainer();&#xA;&#x9;while (container instanceof EventBElementImpl &amp;&amp; !(container instanceof Project)){&#xA;&#x9;&#x9;ref = ((EventBElementImpl)container).getElementIdentification()+&quot;.&quot;+ref;&#xA;&#x9;&#x9;container = container.eContainer();&#xA;&#x9;}&#xA;&#x9;ref = getElementTypePrefix()+&quot;::&quot;+ref;&#xA;&#x9;return ref;&#xA;}"/>
+      <genOperations ecoreOperation="eventbcore.ecore#//EventBElement/getElementTypePrefix"
+          body="return this.eClass().getEPackage().getNsURI()+&quot;::&quot;+this.eClass().getName();"/>
     </genClasses>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBCommented">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBCommented/comment"/>
@@ -51,7 +56,7 @@
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBNamedCommentedExpressionElement"/>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBNamed">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBNamed/name"/>
-      <genOperations ecoreOperation="eventbcore.ecore#//EventBNamed/doGetName"/>
+      <genOperations ecoreOperation="eventbcore.ecore#//EventBNamed/doGetName" body="if (this.eIsProxy()){&#xA;&#x9;String fragment = ((InternalEObject)this).eProxyURI().fragment();&#xA;&#x9;int ind = fragment.lastIndexOf(&quot;::&quot;);&#xA;&#x9;if (ind>-1) fragment = fragment.substring(ind+2);&#xA;&#x9;fragment = fragment.substring(fragment.lastIndexOf('.')+1);&#xA;&#x9;return fragment;&#xA;}else{&#xA;&#x9;return name;&#xA;}"/>
     </genClasses>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBNamedCommentedElement"/>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBPredicate">

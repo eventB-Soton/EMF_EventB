@@ -142,11 +142,13 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * initialise internalId with a UUID
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EventBElementImpl() {
 		super();
+		setInternalId(EcoreUtil.generateUUID());
 	}
 
 	/**
