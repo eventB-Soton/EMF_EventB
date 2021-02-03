@@ -44,7 +44,8 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
-        eType="#//AbstractExtension" containment="true"/>
+        eType="#//AbstractExtension" volatile="true" transient="true" derived="true"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//StringToAttributeMapEntry" containment="true" eKeys="#//StringToAttributeMapEntry/key"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reference" lowerBound="1"
@@ -57,6 +58,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedChildren" upperBound="-1"
+        eType="#//EventBElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventBCommented" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -205,11 +208,14 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sets" upperBound="-1"
-          eType="#//context/CarrierSet" containment="true" resolveProxies="false"/>
+          eType="#//context/CarrierSet" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="constants" upperBound="-1"
-          eType="#//context/Constant" containment="true" resolveProxies="false"/>
+          eType="#//context/Constant" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="axioms" upperBound="-1"
-          eType="#//context/Axiom" containment="true" resolveProxies="false"/>
+          eType="#//context/Axiom" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//EventBNamedCommentedElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="CarrierSet" eSuperTypes="#//EventBNamedCommentedElement"/>

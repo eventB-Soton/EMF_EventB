@@ -41,6 +41,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/generated"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/localGenerated"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/internalId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//EventBElement/orderedChildren"/>
       <genOperations ecoreOperation="eventbcore.ecore#//EventBElement/doGetReference"
           body="if (this.eIsProxy()){&#xA;&#x9;return ((InternalEObject)this).eProxyURI().fragment();&#xA;}else{&#xA;&#x9;String ref = getElementIdentification();&#xA;&#x9;EObject container = this.eContainer();&#xA;&#x9;while (container instanceof EventBElementImpl &amp;&amp; !(container instanceof Project)){&#xA;&#x9;&#x9;ref = ((EventBElementImpl)container).getElementIdentification()+&quot;.&quot;+ref;&#xA;&#x9;&#x9;container = container.eContainer();&#xA;&#x9;}&#xA;&#x9;ref = getElementTypePrefix()+&quot;::&quot;+ref;&#xA;&#x9;return ref;&#xA;}"/>
       <genOperations ecoreOperation="eventbcore.ecore#//EventBElement/getElementTypePrefix"
