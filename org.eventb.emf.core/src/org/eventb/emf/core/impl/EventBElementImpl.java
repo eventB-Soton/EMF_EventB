@@ -45,22 +45,13 @@ import org.eventb.emf.core.Project;
  *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#isGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#isLocalGenerated <em>Local Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#getInternalId <em>Internal Id</em>}</li>
+ *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#getOrderedChildren <em>Ordered Children</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public abstract class EventBElementImpl extends EventBObjectImpl implements EventBElement {
-	/**
-	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractExtension> extensions;
-
 	/**
 	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' map.
 	 * <!-- begin-user-doc -->
@@ -141,6 +132,16 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	protected boolean internalIdESet;
 
 	/**
+	 * The cached value of the '{@link #getOrderedChildren() <em>Ordered Children</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrderedChildren()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EventBElement> orderedChildren;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * initialise internalId with a UUID
 	 * <!-- end-user-doc -->
@@ -167,10 +168,11 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * @generated
 	 */
 	public EList<AbstractExtension> getExtensions() {
-		if (extensions == null) {
-			extensions = new EObjectContainmentEList.Resolving<AbstractExtension>(AbstractExtension.class, this, CorePackage.EVENT_BELEMENT__EXTENSIONS);
-		}
-		return extensions;
+		// TODO: implement this method to return the 'Extensions' containment reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -312,6 +314,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				return ((InternalEList<?>)getExtensions()).basicRemove(otherEnd, msgs);
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
 				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				return ((InternalEList<?>)getOrderedChildren()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -340,6 +344,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				return isLocalGenerated();
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				return getInternalId();
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				return getOrderedChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -370,6 +376,10 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				setInternalId((String)newValue);
 				return;
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				getOrderedChildren().clear();
+				getOrderedChildren().addAll((Collection<? extends EventBElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -398,6 +408,9 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				unsetInternalId();
 				return;
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				getOrderedChildren().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -411,7 +424,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
-				return extensions != null && !extensions.isEmpty();
+				return !getExtensions().isEmpty();
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
 				return attributes != null && !attributes.isEmpty();
 			case CorePackage.EVENT_BELEMENT__REFERENCE:
@@ -422,6 +435,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				return localGenerated != LOCAL_GENERATED_EDEFAULT;
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				return isSetInternalId();
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				return orderedChildren != null && !orderedChildren.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -502,6 +517,18 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 */
 	public boolean isSetInternalId() {
 		return internalIdESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<EventBElement> getOrderedChildren() {
+		if (orderedChildren == null) {
+			orderedChildren = new EObjectContainmentEList.Resolving<EventBElement>(EventBElement.class, this, CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN);
+		}
+		return orderedChildren;
 	}
 	
 	

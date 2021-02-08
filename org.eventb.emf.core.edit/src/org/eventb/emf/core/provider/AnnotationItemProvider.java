@@ -223,7 +223,17 @@ public class AnnotationItemProvider
 			newChildDescriptors.add
 				(createChildParameter
 					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	CoreFactory.eINSTANCE.create(CorePackage.Literals.STRING_TO_ATTRIBUTE_MAP_ENTRY)));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
 				 	CoreFactory.eINSTANCE.createAttribute()));
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.ANNOTATION__CONTENTS,
+				 	CoreFactory.eINSTANCE.create(CorePackage.Literals.STRING_TO_STRING_MAP_ENTRY)));
 		
 			newChildDescriptors.add
 				(createChildParameter
@@ -294,11 +304,6 @@ public class AnnotationItemProvider
 				(createChildParameter
 					(CorePackage.Literals.ANNOTATION__CONTENTS,
 				 	ContextFactory.eINSTANCE.createAxiom()));
-		
-			newChildDescriptors.add
-				(createChildParameter
-					(CorePackage.Literals.ANNOTATION__CONTENTS,
-				 	EcoreFactory.eINSTANCE.createEObject()));
 	}
 
 	/**
@@ -314,7 +319,8 @@ public class AnnotationItemProvider
 
 		boolean qualify =
 			childFeature == CorePackage.Literals.EVENT_BOBJECT__ANNOTATIONS ||
-			childFeature == CorePackage.Literals.ANNOTATION__CONTENTS;
+			childFeature == CorePackage.Literals.ANNOTATION__CONTENTS ||
+			childFeature == CorePackage.Literals.ANNOTATION__DETAILS;
 
 		if (qualify) {
 			return getString

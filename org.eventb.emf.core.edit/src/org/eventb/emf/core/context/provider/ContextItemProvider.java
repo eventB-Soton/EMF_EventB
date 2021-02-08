@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.swt.graphics.Image;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.context.ContextFactory;
 import org.eventb.emf.core.context.ContextPackage;
@@ -227,6 +228,32 @@ public class ContextItemProvider
 				(createChildParameter
 					(ContextPackage.Literals.CONTEXT__AXIOMS,
 				 	ContextFactory.eINSTANCE.createAxiom()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS ||
+			childFeature == CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN ||
+			childFeature == ContextPackage.Literals.CONTEXT__CONSTANTS ||
+			childFeature == ContextPackage.Literals.CONTEXT__SETS ||
+			childFeature == ContextPackage.Literals.CONTEXT__AXIOMS;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

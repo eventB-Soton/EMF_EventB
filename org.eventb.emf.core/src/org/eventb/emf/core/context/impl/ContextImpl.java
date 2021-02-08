@@ -72,36 +72,6 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 	protected EList<Context> extends_;
 
 	/**
-	 * The cached value of the '{@link #getSets() <em>Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSets()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CarrierSet> sets;
-
-	/**
-	 * The cached value of the '{@link #getConstants() <em>Constants</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstants()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Constant> constants;
-
-	/**
-	 * The cached value of the '{@link #getAxioms() <em>Axioms</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAxioms()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Axiom> axioms;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -239,10 +209,11 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * @generated
 	 */
 	public EList<CarrierSet> getSets() {
-		if (sets == null) {
-			sets = new EObjectContainmentEList<CarrierSet>(CarrierSet.class, this, ContextPackage.CONTEXT__SETS);
-		}
-		return sets;
+		// TODO: implement this method to return the 'Sets' containment reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -251,10 +222,11 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * @generated
 	 */
 	public EList<Constant> getConstants() {
-		if (constants == null) {
-			constants = new EObjectContainmentEList<Constant>(Constant.class, this, ContextPackage.CONTEXT__CONSTANTS);
-		}
-		return constants;
+		// TODO: implement this method to return the 'Constants' containment reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -263,10 +235,11 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * @generated
 	 */
 	public EList<Axiom> getAxioms() {
-		if (axioms == null) {
-			axioms = new EObjectContainmentEList<Axiom>(Axiom.class, this, ContextPackage.CONTEXT__AXIOMS);
-		}
-		return axioms;
+		// TODO: implement this method to return the 'Axioms' containment reference list
+		// Ensure that you remove @generated or mark it @generated NOT
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -382,11 +355,11 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 			case ContextPackage.CONTEXT__EXTENDS_NAMES:
 				return !getExtendsNames().isEmpty();
 			case ContextPackage.CONTEXT__SETS:
-				return sets != null && !sets.isEmpty();
+				return !getSets().isEmpty();
 			case ContextPackage.CONTEXT__CONSTANTS:
-				return constants != null && !constants.isEmpty();
+				return !getConstants().isEmpty();
 			case ContextPackage.CONTEXT__AXIOMS:
-				return axioms != null && !axioms.isEmpty();
+				return !getAxioms().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

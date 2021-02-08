@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.swt.graphics.Image;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.MachineFactory;
 import org.eventb.emf.core.machine.MachinePackage;
@@ -290,6 +291,33 @@ public class EventItemProvider
 				 	MachineFactory.eINSTANCE.createAction()));
 	}
 	
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS ||
+			childFeature == CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN ||
+			childFeature == MachinePackage.Literals.EVENT__PARAMETERS ||
+			childFeature == MachinePackage.Literals.EVENT__GUARDS ||
+			childFeature == MachinePackage.Literals.EVENT__WITNESSES ||
+			childFeature == MachinePackage.Literals.EVENT__ACTIONS;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
+	}
+
 	/**
 	 * getColumnText is implemented for ITableItemLabelProvider
 	 * first column is the event label,

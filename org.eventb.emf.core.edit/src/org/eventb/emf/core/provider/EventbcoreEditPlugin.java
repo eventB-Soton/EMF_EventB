@@ -60,7 +60,6 @@ public final class EventbcoreEditPlugin extends EMFPlugin {
 	public EventbcoreEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
 

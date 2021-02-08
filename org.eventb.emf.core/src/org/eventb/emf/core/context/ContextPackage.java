@@ -138,6 +138,15 @@ public interface ContextPackage extends EPackage {
 	int CONTEXT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,6 +292,15 @@ public interface ContextPackage extends EPackage {
 	int CONSTANT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -383,6 +401,15 @@ public interface ContextPackage extends EPackage {
 	int CARRIER_SET__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_SET__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -481,6 +508,15 @@ public interface ContextPackage extends EPackage {
 	 * @ordered
 	 */
 	int AXIOM__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AXIOM__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.

@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.EMap;
  *   <li>{@link org.eventb.emf.core.EventBElement#isGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.EventBElement#isLocalGenerated <em>Local Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.EventBElement#getInternalId <em>Internal Id</em>}</li>
+ *   <li>{@link org.eventb.emf.core.EventBElement#getOrderedChildren <em>Ordered Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,7 +47,7 @@ public interface EventBElement extends EventBObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extensions</em>' containment reference list.
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_Extensions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<AbstractExtension> getExtensions();
@@ -192,6 +193,22 @@ public interface EventBElement extends EventBObject {
 	 * @generated
 	 */
 	boolean isSetInternalId();
+
+	/**
+	 * Returns the value of the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eventb.emf.core.EventBElement}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ordered Children</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ordered Children</em>' containment reference list.
+	 * @see org.eventb.emf.core.CorePackage#getEventBElement_OrderedChildren()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<EventBElement> getOrderedChildren();
 
 	/**
 	 * <!-- begin-user-doc -->

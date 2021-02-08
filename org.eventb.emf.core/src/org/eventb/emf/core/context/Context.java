@@ -77,7 +77,7 @@ public interface Context extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sets</em>' containment reference list.
 	 * @see org.eventb.emf.core.context.ContextPackage#getContext_Sets()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<CarrierSet> getSets();
@@ -93,7 +93,7 @@ public interface Context extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constants</em>' containment reference list.
 	 * @see org.eventb.emf.core.context.ContextPackage#getContext_Constants()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Constant> getConstants();
@@ -109,7 +109,7 @@ public interface Context extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Axioms</em>' containment reference list.
 	 * @see org.eventb.emf.core.context.ContextPackage#getContext_Axioms()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Axiom> getAxioms();
