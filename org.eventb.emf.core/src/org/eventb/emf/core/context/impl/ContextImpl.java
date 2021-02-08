@@ -25,13 +25,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -205,43 +206,40 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of CarrierSet from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<CarrierSet> getSets() {
-		// TODO: implement this method to return the 'Sets' containment reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		throw new UnsupportedOperationException();
+		return getDerivedChildren(CarrierSet.class, ContextPackage.CONTEXT__SETS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Constant from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Constant> getConstants() {
-		// TODO: implement this method to return the 'Constants' containment reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		throw new UnsupportedOperationException();
+		return getDerivedChildren(Constant.class, ContextPackage.CONTEXT__CONSTANTS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Axiom from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Axiom> getAxioms() {
-		// TODO: implement this method to return the 'Axioms' containment reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		throw new UnsupportedOperationException();
+		return getDerivedChildren(Axiom.class, ContextPackage.CONTEXT__AXIOMS);
 	}
 
+	
+
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,8 +477,97 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 				break;
 			default: break;
 			}
+			
+		} else 	if (
+				//FIXME: Is there a way to check that this feature is derived from orderedChildren?
+				notification.getFeature() instanceof EReference
+				 && ((EReference)notification.getFeature()).isDerived()
+				 && notification.getNewValue() instanceof EventBElement
+				//&& ((EObjectResolvingEList)notification.getOldValue()).
+				){
+			
+			int position = notification.getPosition();
+			EventBElement element = (EventBElement)notification.getNewValue();
+			EList<EventBElement> children = getOrderedChildren();
+			
+			switch (notification.getEventType()){
+			case Notification.SET:
+
+				break;
+			case Notification.UNSET:
+
+				break;
+			case Notification.ADD: {
+			//	children.add(findTargetPos(position, element, children), element);
+				if (position>=0 && position < children.size()) {
+					int index = 0;
+					int sui = 0;
+					for (EventBElement ch : children) {
+						index++;
+						if (element.getClass().isInstance(ch)) {
+							sui++;
+							if (sui==position) {
+								break;
+							}
+						}
+					}
+					children.add(index, (EventBElement)element);	
+				}else {
+					children.add((EventBElement)element);
+				}
+				break;
+			}
+			case Notification.REMOVE: {
+				//getExtends().remove(notification.getPosition());
+				break;
+			}
+			case Notification.ADD_MANY: {
+				for (Object newName : (List<Object>)notification.getNewValue()){
+				}
+				break;
+			}
+			case Notification.REMOVE_MANY: {
+				if (notification.getNewValue()==null && notification.getPosition()==-1){
+					
+				}
+				break;
+			}
+			case Notification.MOVE: {
+				children.move(findTargetPos(position, element, children), element);
+				break;
+			}
+			default: break;
+			}
+			
 		}
 		super.eNotify(notification);
 	}
 
+	/**
+	 * @param position
+	 * @param element
+	 * @param children
+	 * @param targetPosition
+	 * @return
+	 */
+	private int findTargetPos(int position, EventBElement element, EList<EventBElement> children) {
+		int targetPosition = 0;
+		if (position>=0 && position < children.size()) {
+			int count = 0;
+			for (EventBElement ch : children) {
+				if (element.getClass().isInstance(ch)) {
+					if (count==position) {
+						break;
+					}
+					count++;
+				}
+				targetPosition++;
+			}
+		}
+		return targetPosition;
+	}
+
+	
+		
+		
 } //ContextImpl

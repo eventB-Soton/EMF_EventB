@@ -10,10 +10,13 @@
  */
 package org.eventb.emf.core.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
@@ -22,6 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -164,15 +168,13 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Extension from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<AbstractExtension> getExtensions() {
-		// TODO: implement this method to return the 'Extensions' containment reference list
-		// Ensure that you remove @generated or mark it @generated NOT
-		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-		throw new UnsupportedOperationException();
+		return getDerivedChildren(AbstractExtension.class, CorePackage.EVENT_BELEMENT__EXTENSIONS);
 	}
 
 	/**
@@ -531,5 +533,28 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 		return orderedChildren;
 	}
 	
+	
+	/**
+	 * This is for deriving type specific containments from orderedChildren
+	 * 
+	 * @param <T>
+	 * @param dataClass - the class of the sub-type EventBElement
+	 * @param featureId	- the feature id of the derived feature
+	 * @return
+	 * 
+	 * @custom
+	 */
+	@SuppressWarnings("unchecked")
+	protected <T extends EventBElement> EList<T> getDerivedChildren(Class<T> dataClass,  int featureId ){
+		List<T> typeData = new ArrayList<T>();
+	    for (EventBElement element : getOrderedChildren()) {
+	      if (dataClass.isInstance(element)) {
+	    	  typeData.add((T) element);	        
+	      }
+	    }
+		EList<T> ret = new EObjectResolvingEList<T>(dataClass, this, featureId);
+	    ((BasicEList<T>)ret).setData(typeData.size(), typeData.toArray());
+		return 	ret;
+	}
 	
 } //EventBElementImpl
