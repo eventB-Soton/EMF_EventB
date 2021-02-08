@@ -8,10 +8,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IAxiom;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.ContextFactory;
-import org.eventb.emf.core.context.ContextPackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
@@ -38,7 +38,8 @@ public class AxiomSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return ContextPackage.eINSTANCE.getContext_Axioms();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
+		//return ContextPackage.eINSTANCE.getContext_Axioms();
 	}
 
 	@Override

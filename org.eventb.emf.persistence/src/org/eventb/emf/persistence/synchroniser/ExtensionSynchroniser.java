@@ -45,7 +45,8 @@ public class ExtensionSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return CorePackage.eINSTANCE.getEventBElement_Extensions();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
+		//return CorePackage.eINSTANCE.getEventBElement_Extensions();
 	}
 
 	@Override
