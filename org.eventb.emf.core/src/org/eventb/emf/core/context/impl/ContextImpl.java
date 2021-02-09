@@ -25,14 +25,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -476,98 +474,9 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 				getExtends().move(newpos, oldpos);
 				break;
 			default: break;
-			}
-			
-		} else 	if (
-				//FIXME: Is there a way to check that this feature is derived from orderedChildren?
-				notification.getFeature() instanceof EReference
-				 && ((EReference)notification.getFeature()).isDerived()
-				 && notification.getNewValue() instanceof EventBElement
-				//&& ((EObjectResolvingEList)notification.getOldValue()).
-				){
-			
-			int position = notification.getPosition();
-			EventBElement element = (EventBElement)notification.getNewValue();
-			EList<EventBElement> children = getOrderedChildren();
-			
-			switch (notification.getEventType()){
-			case Notification.SET:
-
-				break;
-			case Notification.UNSET:
-
-				break;
-			case Notification.ADD: {
-			//	children.add(findTargetPos(position, element, children), element);
-				if (position>=0 && position < children.size()) {
-					int index = 0;
-					int sui = 0;
-					for (EventBElement ch : children) {
-						index++;
-						if (element.getClass().isInstance(ch)) {
-							sui++;
-							if (sui==position) {
-								break;
-							}
-						}
-					}
-					children.add(index, (EventBElement)element);	
-				}else {
-					children.add((EventBElement)element);
-				}
-				break;
-			}
-			case Notification.REMOVE: {
-				//getExtends().remove(notification.getPosition());
-				break;
-			}
-			case Notification.ADD_MANY: {
-				for (Object newName : (List<Object>)notification.getNewValue()){
-				}
-				break;
-			}
-			case Notification.REMOVE_MANY: {
-				if (notification.getNewValue()==null && notification.getPosition()==-1){
-					
-				}
-				break;
-			}
-			case Notification.MOVE: {
-				children.move(findTargetPos(position, element, children), element);
-				break;
-			}
-			default: break;
-			}
-			
+			}			
 		}
 		super.eNotify(notification);
-	}
-
-	/**
-	 * @param position
-	 * @param element
-	 * @param children
-	 * @param targetPosition
-	 * @return
-	 */
-	private int findTargetPos(int position, EventBElement element, EList<EventBElement> children) {
-		int targetPosition = 0;
-		if (position>=0 && position < children.size()) {
-			int count = 0;
-			for (EventBElement ch : children) {
-				if (element.getClass().isInstance(ch)) {
-					if (count==position) {
-						break;
-					}
-					count++;
-				}
-				targetPosition++;
-			}
-		}
-		return targetPosition;
-	}
-
-	
-		
+	}	
 		
 } //ContextImpl

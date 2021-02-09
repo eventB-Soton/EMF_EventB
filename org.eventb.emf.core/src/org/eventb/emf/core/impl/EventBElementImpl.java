@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -555,6 +556,113 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 		EList<T> ret = new EObjectResolvingEList<T>(dataClass, this, featureId);
 	    ((BasicEList<T>)ret).setData(typeData.size(), typeData.toArray());
 		return 	ret;
+	}
+	
+	/**
+	 * Overriden to always require notification. This is to ensure that changes to derived features can be reflected in the 
+	 * main features from which they are derived
+	 */
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotificationRequired()
+	 */
+	@Override
+	public boolean eNotificationRequired(){return true;}
+	
+	/**
+	 * Updates the ordered children if changes are made to any derived collections
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eNotify(Notification notification){
+	if (//FIXME: Is there a way to check that this feature is derived from orderedChildren?
+		notification.getFeature() instanceof EReference
+		 && ((EReference)notification.getFeature()).isDerived()
+		 && ((EReference)notification.getFeature()).getEType() instanceof EClass
+		 && CorePackage.Literals.EVENT_BELEMENT.isSuperTypeOf((EClass) ((EReference)notification.getFeature()).getEType())
+		){
+			int position = notification.getPosition();
+			EList<EventBElement> children = getOrderedChildren();
+			
+			switch (notification.getEventType()){
+			case Notification.SET: {
+				List<EventBElement> newElements = (List<EventBElement>)notification.getNewValue();
+				children.addAll(newElements);
+				break;
+			}
+			case Notification.UNSET: {
+				List<EventBElement> oldElements = (List<EventBElement>)notification.getOldValue();
+				children.removeAll(oldElements);
+				break;
+			}
+			case Notification.ADD: {
+				EventBElement newElement = (EventBElement)notification.getNewValue();
+				children.add(findTargetPos(position, newElement, children), newElement);
+				break;
+			}
+			case Notification.REMOVE: {
+				EventBElement oldElement = (EventBElement)notification.getOldValue();
+				children.remove(oldElement);
+				break;
+			}
+			case Notification.ADD_MANY: {
+				List<EventBElement> newElements = (List<EventBElement>)notification.getNewValue();
+				int targetPos = findTargetPos(position, newElements.get(0), children);
+				children.addAll(targetPos, newElements);
+				break;
+			}
+			case Notification.REMOVE_MANY: {
+				List<EventBElement> oldElements = (List<EventBElement>)notification.getOldValue();
+				children.removeAll(oldElements);
+				break;
+			}
+			case Notification.MOVE: {
+				EventBElement newElement = (EventBElement)notification.getNewValue();
+				children.move(findTargetPos(position, newElement, children), newElement);
+				break;
+			}
+			default: break;
+			}
+			
+		}
+		super.eNotify(notification);
+	}
+
+	/**
+	 * Calculate a target position in orderedChildren for an element to be added or moved.
+	 * Position is the new position in a derived list of elements of that kind.
+	 * 
+	 * The element is moved to be just behind the element at position-1 in the derived list.
+	 * if position is 0 the element is placed at the beginning of children
+	 * 
+	 * @param derivedposition - the new position of the element in a derived list of elements of that kind.
+	 * @param element - the element being moved or added
+	 * @param children - the list of all ordered children in which the element needs to be moved or added
+	 * @param newPosition - the new position for the element to be placed in children
+	 * @return
+	 */
+	private int findTargetPos(int derivedPosition, EventBElement element, EList<EventBElement> children) {
+		if (children.isEmpty() || derivedPosition==0) {
+			return 0;
+		}
+		int newPosition = 0;
+		if (derivedPosition>0 && derivedPosition < children.size()) {
+			int count = 0;
+			for (EventBElement ch : children) {
+				newPosition++;
+				if (element.getClass().isInstance(ch)) {
+					if (element.equals(ch)) { 	// if the element is being moved further on in its derived list do not count it
+						newPosition--;
+					}else {
+						if (count==derivedPosition-1) {
+						break;
+						}
+						count++;
+					}
+				}
+			}
+		}
+		return newPosition;
 	}
 	
 } //EventBElementImpl
