@@ -3,12 +3,9 @@ package org.eventb.emf.persistence.synchroniser;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.ICarrierSet;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.ContextFactory;
-import org.eventb.emf.core.context.ContextPackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 
@@ -24,12 +21,6 @@ public class CarrierSetSynchroniser extends AbstractSynchroniser {
 	@Override
 	protected EventBElement createEventBElement() {
 		return ContextFactory.eINSTANCE.createCarrierSet();
-	}
-
-	@Override
-	protected EStructuralFeature getFeature() {
-		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
-		//return ContextPackage.eINSTANCE.getContext_Sets();
 	}
 
 	@Override

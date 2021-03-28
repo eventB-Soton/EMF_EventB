@@ -5,12 +5,10 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IVariant;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.MachineFactory;
-import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Variant;
 import org.eventb.emf.persistence.PersistencePlugin;
 import org.rodinp.core.IAttributeType;
@@ -39,11 +37,6 @@ public class VariantSynchroniser extends AbstractSynchroniser {
 	@Override
 	protected EventBElement createEventBElement() {
 		return MachineFactory.eINSTANCE.createVariant();
-	}
-
-	@Override
-	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getMachine_Variants();
 	}
 
 	@Override

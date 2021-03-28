@@ -5,10 +5,8 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IAxiom;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.ContextFactory;
@@ -34,12 +32,6 @@ public class AxiomSynchroniser extends AbstractSynchroniser {
 	@Override
 	protected EventBElement createEventBElement() {
 		return ContextFactory.eINSTANCE.createAxiom();
-	}
-
-	@Override
-	protected EStructuralFeature getFeature() {
-		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
-		//return ContextPackage.eINSTANCE.getContext_Axioms();
 	}
 
 	@Override

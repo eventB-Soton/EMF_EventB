@@ -6,7 +6,6 @@ import java.util.Set;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IConvergenceElement.Convergence;
 import org.eventb.core.IEvent;
@@ -14,7 +13,6 @@ import org.eventb.core.IRefinesEvent;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.MachineFactory;
-import org.eventb.emf.core.machine.MachinePackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
@@ -40,11 +38,6 @@ public class EventSynchroniser extends AbstractSynchroniser {
 	@Override
 	protected EventBElement createEventBElement() {
 		return MachineFactory.eINSTANCE.createEvent();
-	}
-
-	@Override
-	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getMachine_Events();
 	}
 
 	@Override
