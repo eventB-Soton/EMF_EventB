@@ -159,13 +159,17 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-          eType="#//machine/Variable" containment="true" resolveProxies="false"/>
+          eType="#//machine/Variable" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="invariants" upperBound="-1"
-          eType="#//machine/Invariant" containment="true" resolveProxies="false"/>
+          eType="#//machine/Invariant" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variants" upperBound="-1"
-          eType="#//machine/Variant" containment="true" resolveProxies="false"/>
+          eType="#//machine/Variant" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
-          eType="#//machine/Event" containment="true" resolveProxies="false"/>
+          eType="#//machine/Event" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//EventBNamedCommentedElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Invariant" eSuperTypes="#//EventBNamedCommentedDerivedPredicateElement"/>
@@ -181,13 +185,17 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-          eType="#//machine/Parameter" containment="true" resolveProxies="false"/>
+          eType="#//machine/Parameter" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="guards" upperBound="-1"
-          eType="#//machine/Guard" containment="true" resolveProxies="false"/>
+          eType="#//machine/Guard" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="witnesses" upperBound="-1"
-          eType="#//machine/Witness" containment="true" resolveProxies="false"/>
+          eType="#//machine/Witness" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-          eType="#//machine/Action" containment="true" resolveProxies="false"/>
+          eType="#//machine/Action" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="Convergence">
       <eLiterals name="ordinary" literal="ordinary"/>
