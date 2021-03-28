@@ -1,5 +1,7 @@
 [nn] = page reference to EMF book, Steinberg et al. Second Edition.
 
+cfs 28/03/2021 - these notes are way out of date - not sure how much is still relevant. 
+Note that this version now derives type-specific containments from 'orderedChildren' in EventBElement. 
 
 WARNINGS:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
