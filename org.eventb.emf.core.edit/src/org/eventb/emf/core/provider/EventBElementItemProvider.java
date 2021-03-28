@@ -175,7 +175,7 @@ public class EventBElementItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES);
-//			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
+			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
 		}
 		return childrenFeatures;
 	}
@@ -227,7 +227,7 @@ public class EventBElementItemProvider
 				return;
 			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
-//			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -259,104 +259,6 @@ public class EventBElementItemProvider
 				(createChildParameter
 					(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES,
 				 	CoreFactory.eINSTANCE.create(CorePackage.Literals.STRING_TO_ATTRIBUTE_MAP_ENTRY)));
-		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	CoreFactory.eINSTANCE.createProject()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	CoreFactory.eINSTANCE.createExtension()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createMachine()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createVariable()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createInvariant()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createVariant()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createEvent()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createParameter()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createGuard()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createWitness()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	MachineFactory.eINSTANCE.createAction()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	ContextFactory.eINSTANCE.createContext()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	ContextFactory.eINSTANCE.createConstant()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	ContextFactory.eINSTANCE.createCarrierSet()));
-//		
-//			newChildDescriptors.add
-//				(createChildParameter
-//					(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN,
-//				 	ContextFactory.eINSTANCE.createAxiom()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS ||
-			childFeature == CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

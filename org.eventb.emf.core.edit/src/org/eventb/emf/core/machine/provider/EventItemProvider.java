@@ -174,39 +174,6 @@ public class EventItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(MachinePackage.Literals.EVENT__PARAMETERS);
-			childrenFeatures.add(MachinePackage.Literals.EVENT__GUARDS);
-			childrenFeatures.add(MachinePackage.Literals.EVENT__WITNESSES);
-			childrenFeatures.add(MachinePackage.Literals.EVENT__ACTIONS);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
 	 * 
 	 * <!-- begin-user-doc -->
 	 * Returns the corresponding Rodin Event B image or a default image if this has not been found.
@@ -247,13 +214,11 @@ public class EventItemProvider
 			case MachinePackage.EVENT__CONVERGENCE:
 			case MachinePackage.EVENT__EXTENDED:
 			case MachinePackage.EVENT__REFINES_NAMES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case MachinePackage.EVENT__PARAMETERS:
 			case MachinePackage.EVENT__GUARDS:
 			case MachinePackage.EVENT__WITNESSES:
 			case MachinePackage.EVENT__ACTIONS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -291,33 +256,6 @@ public class EventItemProvider
 				 	MachineFactory.eINSTANCE.createAction()));
 	}
 	
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS ||
-			childFeature == CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN ||
-			childFeature == MachinePackage.Literals.EVENT__PARAMETERS ||
-			childFeature == MachinePackage.Literals.EVENT__GUARDS ||
-			childFeature == MachinePackage.Literals.EVENT__WITNESSES ||
-			childFeature == MachinePackage.Literals.EVENT__ACTIONS;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
-	}
-
 	/**
 	 * getColumnText is implemented for ITableItemLabelProvider
 	 * first column is the event label,
