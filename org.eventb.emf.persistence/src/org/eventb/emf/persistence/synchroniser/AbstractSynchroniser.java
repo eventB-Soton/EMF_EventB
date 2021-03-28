@@ -96,7 +96,18 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 
 	protected abstract EventBElement createEventBElement();
 
-	protected abstract EStructuralFeature getFeature();
+	/**
+	 * This returns the feature (meta) that is used to load and save elements of the type that this synchroniser synchronises
+	 * 
+	 * This default returns the EventBElement orderedChildren feature, which is correct for all features that at derived from orderedChildren
+	 * 
+	 * OVERRIDE THIS METHOD IF THE SYNCHRONISER IS FOR A CONTAINMENT THAT IS NOT DERIVED FROM ORDERED CHILDREN
+	 * 
+	 * @return the feature used to load/save the elements of this synchroniser
+	 */
+	protected EStructuralFeature getFeature() {
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
+	}
 
 	protected abstract IInternalElementType<?> getRodinType();
 
