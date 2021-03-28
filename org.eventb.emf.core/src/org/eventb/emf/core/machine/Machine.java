@@ -113,7 +113,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variables</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variables()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Variable> getVariables();
@@ -129,7 +129,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Invariants</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Invariants()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Invariant> getInvariants();
@@ -146,7 +146,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variants</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variants()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Variant> getVariants();
@@ -162,7 +162,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Events()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Event> getEvents();

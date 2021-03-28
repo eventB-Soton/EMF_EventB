@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -86,47 +85,6 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * @ordered
 	 */
 	protected EList<Context> sees;
-
-	/**
-	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> variables;
-
-	/**
-	 * The cached value of the '{@link #getInvariants() <em>Invariants</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInvariants()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Invariant> invariants;
-
-	/**
-	 * The cached value of the '{@link #getVariants() <em>Variants</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * @since 5.0
-	 * <!-- end-user-doc -->
-	 * @see #getVariants()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variant> variants;
-
-	/**
-	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEvents()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Event> events;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -381,50 +339,46 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Variable from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Variable> getVariables() {
-		if (variables == null) {
-			variables = new EObjectContainmentEList<Variable>(Variable.class, this, MachinePackage.MACHINE__VARIABLES);
-		}
-		return variables;
+		return getDerivedChildren(Variable.class, MachinePackage.MACHINE__VARIABLES);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Invariant from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Invariant> getInvariants() {
-		if (invariants == null) {
-			invariants = new EObjectContainmentEList<Invariant>(Invariant.class, this, MachinePackage.MACHINE__INVARIANTS);
-		}
-		return invariants;
+		return getDerivedChildren(Invariant.class, MachinePackage.MACHINE__INVARIANTS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Variant from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Variant> getVariants() {
-		if (variants == null) {
-			variants = new EObjectContainmentEList<Variant>(Variant.class, this, MachinePackage.MACHINE__VARIANTS);
-		}
-		return variants;
+		return getDerivedChildren(Variant.class, MachinePackage.MACHINE__VARIANTS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Event from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Event> getEvents() {
-		if (events == null) {
-			events = new EObjectContainmentEList<Event>(Event.class, this, MachinePackage.MACHINE__EVENTS);
-		}
-		return events;
+		return getDerivedChildren(Event.class, MachinePackage.MACHINE__EVENTS);
 	}
 
 	/**
@@ -573,13 +527,13 @@ public class MachineImpl extends EventBNamedCommentedComponentElementImpl implem
 			case MachinePackage.MACHINE__SEES_NAMES:
 				return !getSeesNames().isEmpty();
 			case MachinePackage.MACHINE__VARIABLES:
-				return variables != null && !variables.isEmpty();
+				return !getVariables().isEmpty();
 			case MachinePackage.MACHINE__INVARIANTS:
-				return invariants != null && !invariants.isEmpty();
+				return !getInvariants().isEmpty();
 			case MachinePackage.MACHINE__VARIANTS:
-				return variants != null && !variants.isEmpty();
+				return !getVariants().isEmpty();
 			case MachinePackage.MACHINE__EVENTS:
-				return events != null && !events.isEmpty();
+				return !getEvents().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
