@@ -173,7 +173,6 @@ public class EventBElementItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
 		}
@@ -219,13 +218,13 @@ public class EventBElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EventBElement.class)) {
+			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__REFERENCE:
 			case CorePackage.EVENT_BELEMENT__GENERATED:
 			case CorePackage.EVENT_BELEMENT__LOCAL_GENERATED:
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
 			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

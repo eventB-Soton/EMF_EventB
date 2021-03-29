@@ -47,7 +47,7 @@ public interface EventBElement extends EventBObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extensions</em>' containment reference list.
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_Extensions()
-	 * @model containment="true" resolveProxies="true" transient="true" volatile="true" derived="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<AbstractExtension> getExtensions();

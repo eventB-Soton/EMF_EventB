@@ -914,7 +914,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		addEParameter(op, ecorePackage.getEString(), "source", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(eventBElementEClass, EventBElement.class, "EventBElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getEventBElement_Extensions(), this.getAbstractExtension(), null, "extensions", null, 0, -1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEventBElement_Extensions(), this.getAbstractExtension(), null, "extensions", null, 0, -1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEventBElement_Attributes(), this.getStringToAttributeMapEntry(), null, "attributes", null, 0, -1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getEventBElement_Attributes().getEKeys().add(this.getStringToAttributeMapEntry_Key());
 		initEAttribute(getEventBElement_Reference(), ecorePackage.getEString(), "reference", "", 1, 1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
