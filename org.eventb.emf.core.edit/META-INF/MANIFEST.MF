@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eventb.emf.core.provider.EventbcoreEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eventb.emf.core.context.provider,
  org.eventb.emf.core.machine.provider,
  org.eventb.emf.core.provider

@@ -6,7 +6,7 @@ Bundle-Version: 5.0.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eventb.emf.core,
  org.eventb.emf.core.context,
  org.eventb.emf.core.context.impl,
