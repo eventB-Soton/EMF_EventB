@@ -35,7 +35,7 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="eventbcore.ecore#//EventBElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//EventBElement/extensions"/>
+      <genFeatures property="None" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//EventBElement/extensions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eventbcore.ecore#//EventBElement/attributes"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/reference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eventbcore.ecore#//EventBElement/generated"/>
