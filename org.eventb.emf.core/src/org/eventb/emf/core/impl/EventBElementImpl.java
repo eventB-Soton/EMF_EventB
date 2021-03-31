@@ -537,6 +537,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	
 	/**
 	 * This is for deriving type specific containments from orderedChildren
+	 * The returned list is obtained without resolving any elements.
 	 * 
 	 * @param <T>
 	 * @param dataClass - the class of the sub-type EventBElement
@@ -548,10 +549,12 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	@SuppressWarnings("unchecked")
 	protected <T extends EventBElement> EList<T> getDerivedChildren(Class<T> dataClass,  int featureId ){
 		List<T> typeData = new ArrayList<T>();
-	    for (EventBElement element : getOrderedChildren()) {
-	      if (dataClass.isInstance(element)) {
-	    	  typeData.add((T) element);	        
-	      }
+		BasicEList<EventBElement> children =  (BasicEList<EventBElement>) getOrderedChildren();
+	    for (int i=0; i < children.size(); i++ ) {
+	    	EventBElement element = children.basicGet(i);
+			if (dataClass.isInstance(element)) {
+				typeData.add((T) element);	        
+			}
 	    }
 		EList<T> ret = new EObjectResolvingEList<T>(dataClass, this, featureId);
 	    ((BasicEList<T>)ret).setData(typeData.size(), typeData.toArray());
