@@ -5,8 +5,10 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IInvariant;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.MachineFactory;
@@ -34,6 +36,11 @@ public class InvariantSynchroniser extends AbstractSynchroniser {
 		return MachineFactory.eINSTANCE.createInvariant();
 	}
 
+	@Override
+	protected EStructuralFeature getFeature() {
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
+	}
+	
 	@Override
 	protected IInternalElementType<?> getRodinType() {
 		return IInvariant.ELEMENT_TYPE;

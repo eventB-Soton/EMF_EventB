@@ -7,8 +7,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CoreFactory;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.Extension;
 import org.rodinp.core.IAttributeType;
@@ -39,6 +41,11 @@ public class ExtensionSynchroniser extends AbstractSynchroniser {
 	@Override
 	protected EventBElement createEventBElement() {
 		return CoreFactory.eINSTANCE.createExtension();
+	}
+	
+	@Override
+	protected EStructuralFeature getFeature() {
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
 
 	@Override
