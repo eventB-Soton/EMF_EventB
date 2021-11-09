@@ -207,6 +207,7 @@ public interface EventBElement extends EventBObject {
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_OrderedChildren()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
+	 * @since 6.0
 	 */
 	EList<EventBElement> getOrderedChildren();
 
