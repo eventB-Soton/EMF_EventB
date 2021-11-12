@@ -146,6 +146,7 @@ public interface ContextPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int CONTEXT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__ORDERED_CHILDREN;
 
@@ -300,6 +301,7 @@ public interface ContextPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int CONSTANT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
@@ -409,6 +411,7 @@ public interface ContextPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int CARRIER_SET__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
@@ -518,6 +521,7 @@ public interface ContextPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int AXIOM__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 

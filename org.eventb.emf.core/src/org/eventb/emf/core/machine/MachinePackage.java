@@ -147,6 +147,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int MACHINE__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__ORDERED_CHILDREN;
 
@@ -329,6 +330,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int VARIABLE__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
@@ -438,6 +440,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int INVARIANT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
@@ -565,6 +568,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int VARIANT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ORDERED_CHILDREN;
 
@@ -684,6 +688,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int EVENT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
@@ -865,6 +870,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int PARAMETER__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
@@ -974,6 +980,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int GUARD__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
@@ -1101,6 +1108,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int WITNESS__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
@@ -1219,6 +1227,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	int ACTION__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ACTION_ELEMENT__ORDERED_CHILDREN;
 

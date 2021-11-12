@@ -146,6 +146,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * @see #getOrderedChildren()
 	 * @generated
 	 * @ordered
+	 * @since 6.0
 	 */
 	protected EList<EventBElement> orderedChildren;
 
@@ -548,6 +549,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * @return
 	 * 
 	 * @custom
+	 * @since 6.0
 	 */
 	@SuppressWarnings("unchecked")
 	protected <T extends EventBElement> EList<T> getDerivedChildren(Class<T> dataClass,  int featureId ){
