@@ -21,10 +21,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IAction;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.MachineFactory;
-import org.eventb.emf.core.machine.MachinePackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
@@ -50,9 +50,9 @@ public class ActionSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getEvent_Actions();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
-
+	
 	@Override
 	protected IInternalElementType<?> getRodinType() {
 		return IAction.ELEMENT_TYPE;

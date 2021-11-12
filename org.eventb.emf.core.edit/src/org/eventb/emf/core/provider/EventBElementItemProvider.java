@@ -34,6 +34,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.context.ContextFactory;
+import org.eventb.emf.core.machine.MachineFactory;
 
 /**
  * This is the item provider adapter for a {@link org.eventb.emf.core.EventBElement} object.
@@ -174,8 +176,8 @@ public class EventBElementItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES);
+			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
 		}
 		return childrenFeatures;
 	}
@@ -219,14 +221,15 @@ public class EventBElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EventBElement.class)) {
+			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__REFERENCE:
 			case CorePackage.EVENT_BELEMENT__GENERATED:
 			case CorePackage.EVENT_BELEMENT__LOCAL_GENERATED:
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}

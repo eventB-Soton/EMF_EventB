@@ -46,6 +46,7 @@ import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachineFactory;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Parameter;
+import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.Witness;
 
 /**
@@ -118,46 +119,6 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 	 * @ordered
 	 */
 	protected EList<Event> refines;
-
-	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> parameters;
-
-	/**
-	 * The cached value of the '{@link #getGuards() <em>Guards</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuards()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Guard> guards;
-
-	/**
-	 * The cached value of the '{@link #getWitnesses() <em>Witnesses</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWitnesses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Witness> witnesses;
-
-	/**
-	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Action> actions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -336,50 +297,46 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Parameter from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, MachinePackage.EVENT__PARAMETERS);
-		}
-		return parameters;
+		return getDerivedChildren(Parameter.class, MachinePackage.EVENT__PARAMETERS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Guard from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Guard> getGuards() {
-		if (guards == null) {
-			guards = new EObjectContainmentEList<Guard>(Guard.class, this, MachinePackage.EVENT__GUARDS);
-		}
-		return guards;
+		return getDerivedChildren(Guard.class, MachinePackage.EVENT__GUARDS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Witness from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Witness> getWitnesses() {
-		if (witnesses == null) {
-			witnesses = new EObjectContainmentEList<Witness>(Witness.class, this, MachinePackage.EVENT__WITNESSES);
-		}
-		return witnesses;
+		return getDerivedChildren(Witness.class, MachinePackage.EVENT__WITNESSES);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Action from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Action> getActions() {
-		if (actions == null) {
-			actions = new EObjectContainmentEList<Action>(Action.class, this, MachinePackage.EVENT__ACTIONS);
-		}
-		return actions;
+		return getDerivedChildren(Action.class, MachinePackage.EVENT__ACTIONS);
 	}
 
 	/**
@@ -526,13 +483,13 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 			case MachinePackage.EVENT__REFINES_NAMES:
 				return !getRefinesNames().isEmpty();
 			case MachinePackage.EVENT__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+				return !getParameters().isEmpty();
 			case MachinePackage.EVENT__GUARDS:
-				return guards != null && !guards.isEmpty();
+				return !getGuards().isEmpty();
 			case MachinePackage.EVENT__WITNESSES:
-				return witnesses != null && !witnesses.isEmpty();
+				return !getWitnesses().isEmpty();
 			case MachinePackage.EVENT__ACTIONS:
-				return actions != null && !actions.isEmpty();
+				return !getActions().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

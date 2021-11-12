@@ -24,10 +24,10 @@ import org.eventb.core.EventBAttributes;
 import org.eventb.core.IConvergenceElement.Convergence;
 import org.eventb.core.IEvent;
 import org.eventb.core.IRefinesEvent;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.MachineFactory;
-import org.eventb.emf.core.machine.MachinePackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
@@ -57,9 +57,9 @@ public class EventSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getMachine_Events();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
-
+	
 	@Override
 	protected IInternalElementType<?> getRodinType() {
 		return IEvent.ELEMENT_TYPE;

@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -73,36 +72,6 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 	 * @ordered
 	 */
 	protected EList<Context> extends_;
-
-	/**
-	 * The cached value of the '{@link #getSets() <em>Sets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSets()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CarrierSet> sets;
-
-	/**
-	 * The cached value of the '{@link #getConstants() <em>Constants</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstants()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Constant> constants;
-
-	/**
-	 * The cached value of the '{@link #getAxioms() <em>Axioms</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAxioms()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Axiom> axioms;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,40 +207,40 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of CarrierSet from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<CarrierSet> getSets() {
-		if (sets == null) {
-			sets = new EObjectContainmentEList<CarrierSet>(CarrierSet.class, this, ContextPackage.CONTEXT__SETS);
-		}
-		return sets;
+		return getDerivedChildren(CarrierSet.class, ContextPackage.CONTEXT__SETS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Constant from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Constant> getConstants() {
-		if (constants == null) {
-			constants = new EObjectContainmentEList<Constant>(Constant.class, this, ContextPackage.CONTEXT__CONSTANTS);
-		}
-		return constants;
+		return getDerivedChildren(Constant.class, ContextPackage.CONTEXT__CONSTANTS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Axiom from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Axiom> getAxioms() {
-		if (axioms == null) {
-			axioms = new EObjectContainmentEList<Axiom>(Axiom.class, this, ContextPackage.CONTEXT__AXIOMS);
-		}
-		return axioms;
+		return getDerivedChildren(Axiom.class, ContextPackage.CONTEXT__AXIOMS);
 	}
 
+	
+
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -385,11 +354,11 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 			case ContextPackage.CONTEXT__EXTENDS_NAMES:
 				return !getExtendsNames().isEmpty();
 			case ContextPackage.CONTEXT__SETS:
-				return sets != null && !sets.isEmpty();
+				return !getSets().isEmpty();
 			case ContextPackage.CONTEXT__CONSTANTS:
-				return constants != null && !constants.isEmpty();
+				return !getConstants().isEmpty();
 			case ContextPackage.CONTEXT__AXIOMS:
-				return axioms != null && !axioms.isEmpty();
+				return !getAxioms().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -508,9 +477,9 @@ public class ContextImpl extends EventBNamedCommentedComponentElementImpl implem
 				getExtends().move(newpos, oldpos);
 				break;
 			default: break;
-			}
+			}			
 		}
 		super.eNotify(notification);
-	}
-
+	}	
+		
 } //ContextImpl

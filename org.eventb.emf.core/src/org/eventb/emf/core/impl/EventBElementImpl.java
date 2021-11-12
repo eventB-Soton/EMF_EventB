@@ -13,18 +13,23 @@
  *******************************************************************************/
 package org.eventb.emf.core.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -48,22 +53,13 @@ import org.eventb.emf.core.Project;
  *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#isGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#isLocalGenerated <em>Local Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#getInternalId <em>Internal Id</em>}</li>
+ *   <li>{@link org.eventb.emf.core.impl.EventBElementImpl#getOrderedChildren <em>Ordered Children</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public abstract class EventBElementImpl extends EventBObjectImpl implements EventBElement {
-	/**
-	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractExtension> extensions;
-
 	/**
 	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' map.
 	 * <!-- begin-user-doc -->
@@ -144,6 +140,16 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	protected boolean internalIdESet;
 
 	/**
+	 * The cached value of the '{@link #getOrderedChildren() <em>Ordered Children</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrderedChildren()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EventBElement> orderedChildren;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * initialise internalId with a UUID
 	 * <!-- end-user-doc -->
@@ -166,14 +172,13 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Extension from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<AbstractExtension> getExtensions() {
-		if (extensions == null) {
-			extensions = new EObjectContainmentEList.Resolving<AbstractExtension>(AbstractExtension.class, this, CorePackage.EVENT_BELEMENT__EXTENSIONS);
-		}
-		return extensions;
+		return getDerivedChildren(AbstractExtension.class, CorePackage.EVENT_BELEMENT__EXTENSIONS);
 	}
 
 	/**
@@ -315,6 +320,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				return ((InternalEList<?>)getExtensions()).basicRemove(otherEnd, msgs);
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
 				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				return ((InternalEList<?>)getOrderedChildren()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -343,6 +350,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				return isLocalGenerated();
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				return getInternalId();
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				return getOrderedChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -373,6 +382,10 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				setInternalId((String)newValue);
 				return;
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				getOrderedChildren().clear();
+				getOrderedChildren().addAll((Collection<? extends EventBElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -401,6 +414,9 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				unsetInternalId();
 				return;
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				getOrderedChildren().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -414,7 +430,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
-				return extensions != null && !extensions.isEmpty();
+				return !getExtensions().isEmpty();
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
 				return attributes != null && !attributes.isEmpty();
 			case CorePackage.EVENT_BELEMENT__REFERENCE:
@@ -425,6 +441,8 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 				return localGenerated != LOCAL_GENERATED_EDEFAULT;
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				return isSetInternalId();
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
+				return orderedChildren != null && !orderedChildren.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -506,6 +524,151 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	public boolean isSetInternalId() {
 		return internalIdESet;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<EventBElement> getOrderedChildren() {
+		if (orderedChildren == null) {
+			orderedChildren = new EObjectContainmentEList.Resolving<EventBElement>(EventBElement.class, this, CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN);
+		}
+		return orderedChildren;
+	}
 	
+	
+	/**
+	 * This is for deriving type specific containments from orderedChildren
+	 * The returned list is obtained without resolving any elements.
+	 * 
+	 * @param <T>
+	 * @param dataClass - the class of the sub-type EventBElement
+	 * @param featureId	- the feature id of the derived feature
+	 * @return
+	 * 
+	 * @custom
+	 */
+	@SuppressWarnings("unchecked")
+	protected <T extends EventBElement> EList<T> getDerivedChildren(Class<T> dataClass,  int featureId ){
+		List<T> typeData = new ArrayList<T>();
+		BasicEList<EventBElement> children =  (BasicEList<EventBElement>) getOrderedChildren();
+	    for (int i=0; i < children.size(); i++ ) {
+	    	EventBElement element = children.basicGet(i);
+			if (dataClass.isInstance(element)) {
+				typeData.add((T) element);	        
+			}
+	    }
+		EList<T> ret = new EObjectResolvingEList<T>(dataClass, this, featureId);
+	    ((BasicEList<T>)ret).setData(typeData.size(), typeData.toArray());
+		return 	ret;
+	}
+	
+	/**
+	 * Overriden to always require notification. This is to ensure that changes to derived features can be reflected in the 
+	 * main features from which they are derived
+	 */
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotificationRequired()
+	 */
+	@Override
+	public boolean eNotificationRequired(){return true;}
+	
+	/**
+	 * Updates the ordered children if changes are made to any derived collections
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eNotify(Notification notification){
+	if (//FIXME: Is there a way to check that this feature is derived from orderedChildren?
+		notification.getFeature() instanceof EReference
+		 && ((EReference)notification.getFeature()).isDerived()
+		 && ((EReference)notification.getFeature()).getEType() instanceof EClass
+		 && CorePackage.Literals.EVENT_BELEMENT.isSuperTypeOf((EClass) ((EReference)notification.getFeature()).getEType())
+		){
+			int position = notification.getPosition();
+			EList<EventBElement> children = getOrderedChildren();
+			
+			switch (notification.getEventType()){
+			case Notification.SET: {
+				List<EventBElement> newElements = (List<EventBElement>)notification.getNewValue();
+				children.addAll(newElements);
+				break;
+			}
+			case Notification.UNSET: {
+				List<EventBElement> oldElements = (List<EventBElement>)notification.getOldValue();
+				children.removeAll(oldElements);
+				break;
+			}
+			case Notification.ADD: {
+				EventBElement newElement = (EventBElement)notification.getNewValue();
+				children.add(findTargetPos(position, newElement, children), newElement);
+				break;
+			}
+			case Notification.REMOVE: {
+				EventBElement oldElement = (EventBElement)notification.getOldValue();
+				children.remove(oldElement);
+				break;
+			}
+			case Notification.ADD_MANY: {
+				List<EventBElement> newElements = (List<EventBElement>)notification.getNewValue();
+				int targetPos = findTargetPos(position, newElements.get(0), children);
+				children.addAll(targetPos, newElements);
+				break;
+			}
+			case Notification.REMOVE_MANY: {
+				List<EventBElement> oldElements = (List<EventBElement>)notification.getOldValue();
+				children.removeAll(oldElements);
+				break;
+			}
+			case Notification.MOVE: {
+				EventBElement newElement = (EventBElement)notification.getNewValue();
+				children.move(findTargetPos(position, newElement, children), newElement);
+				break;
+			}
+			default: break;
+			}
+			
+		}
+		super.eNotify(notification);
+	}
+
+	/**
+	 * Calculate a target position in orderedChildren for an element to be added or moved.
+	 * Position is the new position in a derived list of elements of that kind.
+	 * 
+	 * The element is moved to be just behind the element at position-1 in the derived list.
+	 * if position is 0 the element is placed at the beginning of children
+	 * 
+	 * @param derivedposition - the new position of the element in a derived list of elements of that kind.
+	 * @param element - the element being moved or added
+	 * @param children - the list of all ordered children in which the element needs to be moved or added
+	 * @param newPosition - the new position for the element to be placed in children
+	 * @return
+	 */
+	private int findTargetPos(int derivedPosition, EventBElement element, EList<EventBElement> children) {
+		if (children.isEmpty() || derivedPosition==0) {
+			return 0;
+		}
+		int newPosition = 0;
+		if (derivedPosition>0 && derivedPosition < children.size()) {
+			int count = 0;
+			for (EventBElement ch : children) {
+				newPosition++;
+				if (element.getClass().isInstance(ch)) {
+					if (element.equals(ch)) { 	// if the element is being moved further on in its derived list do not count it
+						newPosition--;
+					}else {
+						if (count==derivedPosition-1) {
+						break;
+						}
+						count++;
+					}
+				}
+			}
+		}
+		return newPosition;
+	}
 	
 } //EventBElementImpl

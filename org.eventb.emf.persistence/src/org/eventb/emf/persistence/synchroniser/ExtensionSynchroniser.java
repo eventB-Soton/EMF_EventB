@@ -55,10 +55,10 @@ public class ExtensionSynchroniser extends AbstractSynchroniser {
 	protected EventBElement createEventBElement() {
 		return CoreFactory.eINSTANCE.createExtension();
 	}
-
+	
 	@Override
 	protected EStructuralFeature getFeature() {
-		return CorePackage.eINSTANCE.getEventBElement_Extensions();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
 
 	@Override

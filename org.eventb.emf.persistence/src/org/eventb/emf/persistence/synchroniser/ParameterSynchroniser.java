@@ -18,9 +18,9 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.IParameter;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.MachineFactory;
-import org.eventb.emf.core.machine.MachinePackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 
@@ -40,9 +40,9 @@ public class ParameterSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getEvent_Parameters();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
-
+	
 	@Override
 	protected IInternalElementType<?> getRodinType() {
 		return IParameter.ELEMENT_TYPE;

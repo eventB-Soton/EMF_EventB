@@ -139,7 +139,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Parameters()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Parameter> getParameters();
@@ -155,7 +155,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Guards</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Guards()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Guard> getGuards();
@@ -171,7 +171,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Witnesses</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Witnesses()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Witness> getWitnesses();
@@ -187,7 +187,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Actions()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Action> getActions();

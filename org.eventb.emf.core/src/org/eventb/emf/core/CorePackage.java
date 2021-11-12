@@ -171,13 +171,23 @@ public interface CorePackage extends EPackage {
 	int EVENT_BELEMENT__INTERNAL_ID = EVENT_BOBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BELEMENT__ORDERED_CHILDREN = EVENT_BOBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Event BElement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_BELEMENT_FEATURE_COUNT = EVENT_BOBJECT_FEATURE_COUNT + 6;
+	int EVENT_BELEMENT_FEATURE_COUNT = EVENT_BOBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.eventb.emf.core.impl.EventBCommentedImpl <em>Event BCommented</em>}' class.
@@ -279,6 +289,16 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_BCOMMENTED_ELEMENT__INTERNAL_ID = EVENT_BELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BCOMMENTED_ELEMENT__ORDERED_CHILDREN = EVENT_BELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -410,6 +430,16 @@ public interface CorePackage extends EPackage {
 	int EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID = EVENT_BCOMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN = EVENT_BCOMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +546,16 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ORDERED_CHILDREN = EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -677,6 +717,16 @@ public interface CorePackage extends EPackage {
 	int EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__ORDERED_CHILDREN = EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -812,6 +862,16 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN = EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -960,6 +1020,16 @@ public interface CorePackage extends EPackage {
 	int EVENT_BNAMED_COMMENTED_ACTION_ELEMENT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BNAMED_COMMENTED_ACTION_ELEMENT__ORDERED_CHILDREN = EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1069,6 +1139,16 @@ public interface CorePackage extends EPackage {
 	int EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__ORDERED_CHILDREN = EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1167,6 +1247,16 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PROJECT__INTERNAL_ID = EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int PROJECT__ORDERED_CHILDREN = EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -1278,6 +1368,16 @@ public interface CorePackage extends EPackage {
 	int ABSTRACT_EXTENSION__INTERNAL_ID = EVENT_BELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int ABSTRACT_EXTENSION__ORDERED_CHILDREN = EVENT_BELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1367,6 +1467,16 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTENSION__INTERNAL_ID = ABSTRACT_EXTENSION__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 * @since 6.0
+	 */
+	int EXTENSION__ORDERED_CHILDREN = ABSTRACT_EXTENSION__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
@@ -1686,6 +1796,18 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEventBElement_InternalId();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eventb.emf.core.EventBElement#getOrderedChildren <em>Ordered Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Ordered Children</em>'.
+	 * @see org.eventb.emf.core.EventBElement#getOrderedChildren()
+	 * @see #getEventBElement()
+	 * @generated
+	 * @since 6.0
+	 */
+	EReference getEventBElement_OrderedChildren();
 
 	/**
 	 * Returns the meta object for class '{@link org.eventb.emf.core.EventBCommented <em>Event BCommented</em>}'.
@@ -2208,6 +2330,15 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT_BELEMENT__INTERNAL_ID = eINSTANCE.getEventBElement_InternalId();
+
+		/**
+		 * The meta object literal for the '<em><b>Ordered Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 * @since 6.0
+		 */
+		EReference EVENT_BELEMENT__ORDERED_CHILDREN = eINSTANCE.getEventBElement_OrderedChildren();
 
 		/**
 		 * The meta object literal for the '{@link org.eventb.emf.core.impl.EventBCommentedImpl <em>Event BCommented</em>}' class.
