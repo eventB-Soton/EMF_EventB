@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eventb.emf.core.machine.*;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Convergence;
 import org.eventb.emf.core.machine.Event;

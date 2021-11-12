@@ -28,7 +28,6 @@ import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
-import org.eventb.emf.core.context.*;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;

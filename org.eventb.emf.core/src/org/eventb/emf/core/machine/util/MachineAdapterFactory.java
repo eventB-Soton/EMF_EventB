@@ -32,7 +32,6 @@ import org.eventb.emf.core.EventBNamedCommentedExpressionElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
-import org.eventb.emf.core.machine.*;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
