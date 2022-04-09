@@ -34,8 +34,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.context.ContextFactory;
-import org.eventb.emf.core.machine.MachineFactory;
 
 /**
  * This is the item provider adapter for a {@link org.eventb.emf.core.EventBElement} object.

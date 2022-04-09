@@ -26,7 +26,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 
 /**

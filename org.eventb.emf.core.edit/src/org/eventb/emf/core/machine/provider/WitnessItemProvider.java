@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.machine.Witness;
 import org.eventb.emf.core.provider.EventBNamedCommentedPredicateElementItemProvider;
 import org.eventb.emf.core.provider.EventbcoreEditPlugin;
