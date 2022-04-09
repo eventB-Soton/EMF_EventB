@@ -142,11 +142,11 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	/**
 	 * The cached value of the '{@link #getOrderedChildren() <em>Ordered Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @since 6.0
 	 * <!-- end-user-doc -->
 	 * @see #getOrderedChildren()
 	 * @generated
 	 * @ordered
-	 * @since 6.0
 	 */
 	protected EList<EventBElement> orderedChildren;
 
