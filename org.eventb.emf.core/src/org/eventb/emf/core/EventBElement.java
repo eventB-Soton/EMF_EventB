@@ -205,12 +205,12 @@ public interface EventBElement extends EventBObject {
 	 * If the meaning of the '<em>Ordered Children</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
+	 * @since 6.0
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ordered Children</em>' containment reference list.
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_OrderedChildren()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
-	 * @since 6.0
 	 */
 	EList<EventBElement> getOrderedChildren();
 
