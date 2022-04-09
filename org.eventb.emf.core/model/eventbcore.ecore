@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://emf.eventb.org/models/core/2014" nsPrefix="core">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://emf.eventb.org/models/core/2022" nsPrefix="core">
   <eClassifiers xsi:type="ecore:EClass" name="EventBObject" abstract="true" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//EObject">
     <eOperations name="getContaining" lowerBound="1" eType="#//EventBObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -145,7 +145,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
-  <eSubpackages name="machine" nsURI="http://emf.eventb.org/models/core/machine/2014"
+  <eSubpackages name="machine" nsURI="http://emf.eventb.org/models/core/machine/2022"
       nsPrefix="machine">
     <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="#//EventBNamedCommentedComponentElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="refines" upperBound="-1"
@@ -207,7 +207,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Witness" eSuperTypes="#//EventBNamedCommentedPredicateElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//EventBNamedCommentedActionElement"/>
   </eSubpackages>
-  <eSubpackages name="context" nsURI="http://emf.eventb.org/models/core/context/2014"
+  <eSubpackages name="context" nsURI="http://emf.eventb.org/models/core/context/2022"
       nsPrefix="context">
     <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//EventBNamedCommentedComponentElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"

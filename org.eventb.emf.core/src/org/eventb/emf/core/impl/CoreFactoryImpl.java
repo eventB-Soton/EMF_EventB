@@ -44,7 +44,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 */
 	public static CoreFactory init() {
 		try {
-			CoreFactory theCoreFactory = (CoreFactory)EPackage.Registry.INSTANCE.getEFactory("http://emf.eventb.org/models/core/2014"); //$NON-NLS-1$ 
+			CoreFactory theCoreFactory = (CoreFactory)EPackage.Registry.INSTANCE.getEFactory("http://emf.eventb.org/models/core/2022"); //$NON-NLS-1$ 
 			if (theCoreFactory != null) {
 				return theCoreFactory;
 			}

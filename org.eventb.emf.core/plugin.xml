@@ -19,21 +19,21 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://emf.eventb.org/models/core/2014"
+            uri="http://emf.eventb.org/models/core/2022"
             class="org.eventb.emf.core.CorePackage"
             genModel="model/eventbcore.genmodel"/>
    </extension>
    
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://emf.eventb.org/models/core/machine/2014"
+            uri="http://emf.eventb.org/models/core/machine/2022"
             class="org.eventb.emf.core.machine.MachinePackage"
             genModel="model/eventbcore.genmodel"/>
    </extension>
    
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://emf.eventb.org/models/core/context/2014"
+            uri="http://emf.eventb.org/models/core/context/2022"
             class="org.eventb.emf.core.context.ContextPackage"
             genModel="model/eventbcore.genmodel"/>
    </extension>

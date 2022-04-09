@@ -50,7 +50,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://emf.eventb.org/models/core/machine/2014";
+	String eNS_URI = "http://emf.eventb.org/models/core/machine/2022";
 
 	/**
 	 * The package namespace name.
