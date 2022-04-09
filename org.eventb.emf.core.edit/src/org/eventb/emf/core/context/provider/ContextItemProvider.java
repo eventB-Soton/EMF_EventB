@@ -161,12 +161,10 @@ public class ContextItemProvider
 
 		switch (notification.getFeatureID(Context.class)) {
 			case ContextPackage.CONTEXT__EXTENDS_NAMES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case ContextPackage.CONTEXT__SETS:
 			case ContextPackage.CONTEXT__CONSTANTS:
 			case ContextPackage.CONTEXT__AXIOMS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
