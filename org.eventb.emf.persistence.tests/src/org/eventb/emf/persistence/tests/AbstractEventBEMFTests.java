@@ -18,6 +18,7 @@ import java.util.Iterator;
 
 import junit.framework.TestCase;
 
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eventb.emf.core.context.Axiom;
@@ -34,6 +35,7 @@ import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.Variant;
 import org.eventb.emf.core.machine.Witness;
 import org.eventb.emf.persistence.EMFRodinDB;
+import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.junit.Before;
 
 import ch.ethz.eventb.utils.tests.AbstractEventBTests;
@@ -82,6 +84,20 @@ public abstract class AbstractEventBEMFTests extends AbstractEventBTests {
 		domain = emfRodinDB.getEditingDomain();
 	}
 
+	/**
+	 * Saves any resources in the editing domain that are modified
+	 * 
+	 * @param domain
+	 * @throws ExecutionException
+	 * @since 0.2
+	 */
+	protected void save() throws ExecutionException {
+		SaveResourcesCommand saveResourcesCommand = new SaveResourcesCommand(domain);
+		assertTrue("Save command must be able to execute",
+				saveResourcesCommand.canExecute());
+		saveResourcesCommand.execute(null, null);
+	}
+	
 	// =========================================================================
 	// (BEGIN) Utility methods for testing Context elements.
 	// =========================================================================
