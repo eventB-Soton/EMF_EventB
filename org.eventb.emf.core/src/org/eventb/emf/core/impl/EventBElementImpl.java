@@ -585,13 +585,16 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eNotify(Notification notification){
+		Object feature = notification.getFeature();		
 	if (//FIXME: Is there a way to check that this feature is derived from orderedChildren?
-		notification.getFeature() instanceof EReference
-		 && ((EReference)notification.getFeature()).isDerived()
-		 && ((EReference)notification.getFeature()).getEType() instanceof EClass
-		 && CorePackage.Literals.EVENT_BELEMENT.isSuperTypeOf((EClass) ((EReference)notification.getFeature()).getEType())
+		feature instanceof EReference
+		 && ((EReference)feature).isContainment()
+		 && ((EReference)feature).isDerived()
+		 && ((EReference)feature).getEType() instanceof EClass
+		 && CorePackage.Literals.EVENT_BELEMENT.isSuperTypeOf((EClass) ((EReference)feature).getEType())
 		){
 			int position = notification.getPosition();
+			EList<EventBElement> derivedchildren = (EList<EventBElement>) this.eGet((EReference)feature);
 			EList<EventBElement> children = getOrderedChildren();
 			
 			switch (notification.getEventType()){
@@ -607,7 +610,12 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			}
 			case Notification.ADD: {
 				EventBElement newElement = (EventBElement)notification.getNewValue();
-				children.add(findTargetPos(position, newElement, children), newElement);
+				try {
+					children.add(findTargetPos(position, derivedchildren, children), newElement);
+				} catch (Exception e) {
+					System.out.println("Exception while adding element - "+newElement+"  :" + e);
+					e.printStackTrace();
+				}
 				break;
 			}
 			case Notification.REMOVE: {
@@ -617,8 +625,13 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			}
 			case Notification.ADD_MANY: {
 				List<EventBElement> newElements = (List<EventBElement>)notification.getNewValue();
-				int targetPos = findTargetPos(position, newElements.get(0), children);
-				children.addAll(targetPos, newElements);
+				try {
+					children.addAll(findTargetPos(position, derivedchildren, children), newElements);
+				} catch (Exception e) {
+					System.out.println("Exception while adding all element - "+newElements+"  :" + e);
+					e.printStackTrace();
+				}
+
 				break;
 			}
 			case Notification.REMOVE_MANY: {
@@ -628,7 +641,12 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 			}
 			case Notification.MOVE: {
 				EventBElement newElement = (EventBElement)notification.getNewValue();
-				children.move(findTargetPos(position, newElement, children), newElement);
+				try {
+					children.move(findTargetPos(position, derivedchildren, children), newElement);
+				} catch (Exception e) {
+					System.out.println("Exception while moving element - "+newElement+"  :" + e);
+					e.printStackTrace();
+				}
 				break;
 			}
 			default: break;
@@ -639,40 +657,37 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	}
 
 	/**
-	 * Calculate a target position in orderedChildren for an element to be added or moved.
-	 * Position is the new position in a derived list of elements of that kind.
+	 * Given a position in a derived list of children, for an element to be added or moved to,
+	 * calculate a corresponding target position in the main list of children.
+	 * The position should be as late as possible in the main list while preserving the correct
+	 * order in the derived children. I.e. just before the next derived child if any.
 	 * 
-	 * The element is moved to be just behind the element at position-1 in the derived list.
-	 * if position is 0 the element is placed at the beginning of children
 	 * 
 	 * @param derivedposition - the new position of the element in a derived list of elements of that kind.
-	 * @param element - the element being moved or added
-	 * @param children - the list of all ordered children in which the element needs to be moved or added
-	 * @param newPosition - the new position for the element to be placed in children
-	 * @return
+	 * @param derivedChildren - the derived list of children being moved or added to
+	 * @param children - the main list of all children in which the element needs to be moved or added
+	 * @return - the position in the main list of children
+	 * @throws Exception 
 	 */
-	private int findTargetPos(int derivedPosition, EventBElement element, EList<EventBElement> children) {
-		if (children.isEmpty() || derivedPosition==0) {
+	private int findTargetPos(int derivedPosition, EList<EventBElement> derivedChildren, EList<EventBElement> children) throws Exception {
+		//if children is empty we can only put it at the beginning
+		if (children.isEmpty()) {
 			return 0;
 		}
-		int newPosition = 0;
-		if (derivedPosition>0 && derivedPosition < children.size()) {
-			int count = 0;
-			for (EventBElement ch : children) {
-				newPosition++;
-				if (element.getClass().isInstance(ch)) {
-					if (element.equals(ch)) { 	// if the element is being moved further on in its derived list do not count it
-						newPosition--;
-					}else {
-						if (count==derivedPosition-1) {
-						break;
-						}
-						count++;
-					}
-				}
-			}
+		//if derivedPosition is at the end of derived children, put it at the very end
+		if (derivedPosition>=derivedChildren.size()) {
+			return children.size();
 		}
-		return newPosition;
+		//otherwise put it just before the next derived child 
+		//(i.e.. the derived child currently at the derivedPosition in the derivedChildren)
+		EventBElement nextChild = derivedChildren.get(derivedPosition);
+		if (children.contains(nextChild)) {
+			return children.indexOf(nextChild);
+		}
+		
+		//should not get to here
+		throw new Exception("Could not calculate a new position in containment feature");
+		
 	}
 	
 } //EventBElementImpl
