@@ -144,8 +144,6 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 	 * <!-- begin-user-doc -->
 	 * @since 6.0
 	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered	 * <!-- end-user-doc -->
 	 * @see #getOrderedChildren()
 	 * @generated
 	 * @ordered
