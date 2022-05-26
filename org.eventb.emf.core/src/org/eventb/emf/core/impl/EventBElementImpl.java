@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
@@ -60,6 +61,7 @@ import org.eventb.emf.core.Project;
  * @generated
  */
 public abstract class EventBElementImpl extends EventBObjectImpl implements EventBElement {
+	
 	/**
 	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' map.
 	 * <!-- begin-user-doc -->
@@ -654,6 +656,31 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 		super.eNotify(notification);
 	}
 
+	/**
+	 * Overridden to exclude the containments derived from orderedChildren
+	 * we assume that a derived collection of EventBElement that are all contained in ordered children
+	 * has been derived from ordered children and therefore should not be repeated
+	 */
+	@Override
+	public EList<EObject> eContents() {
+		List<EStructuralFeature> notDerived = new ArrayList<EStructuralFeature>();
+		EList<EReference> containments = this.eClass().getEAllContainments();
+		for (EReference containment : containments) {
+			if (!(
+				containment.isDerived() &&
+				containment.isMany() &&
+				containment.getEType().eClass().isSuperTypeOf(CorePackage.Literals.EVENT_BELEMENT) &&
+				((Collection<?>)this.eGet(containment)).size()>0 &&
+				orderedChildren.containsAll((Collection<?>) this.eGet(containment)) ))
+			{
+				notDerived.add(containment);
+			}
+		}
+	    return 
+	        new EContentsEList<EObject>(this,  notDerived.toArray(new EStructuralFeature[0]));
+	}
+	
+	
 	/**
 	 * Given a position in a derived list of children, for an element to be added or moved to,
 	 * calculate a corresponding target position in the main list of children.
