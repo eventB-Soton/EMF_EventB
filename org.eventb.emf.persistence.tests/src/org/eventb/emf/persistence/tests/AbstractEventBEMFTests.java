@@ -21,6 +21,8 @@ import junit.framework.TestCase;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -650,6 +652,47 @@ public abstract class AbstractEventBEMFTests extends AbstractEventBTests {
 				+ ":" + act.getAction());
 	}
 
+	/**
+	 * Utility method for testing the order of elements in the ordered children.
+	 * 
+	 * @param msg
+	 *            a message
+	 * @param act
+	 *            the ch under test
+	 * @param expected
+	 *            expected pretty-print action. The action is "pretty-printed"
+	 *            as follows: "label:assignmentString".
+	 * @since 0.2
+	 */
+	protected void testOrderedChildren(String msg, EventBElement element, String... expected) {
+		EList<EventBElement> children = element.getOrderedChildren();
+		assertEquals(msg + ": Incorrect number of children",
+				expected.length, children.size());
+		Iterator<EventBElement> iterator = children.iterator();
+		for (int i = 0; i < expected.length; i++) {
+			testElement(msg, iterator.next(), expected[i]);
+		}
+	}
+	
+	/**
+	 * Utility method for testing an element.
+	 * 
+	 * @param msg
+	 *            a message
+	 * @param act
+	 *            the action under test
+	 * @param expected
+	 *            expected pretty-print action. The action is "pretty-printed"
+	 *            as follows: "label:assignmentString".
+	 * @since 0.2
+	 */
+	protected void testElement(String msg, EventBElement element, String expected) {
+		if (element instanceof EventBNamed)
+			assertEquals(msg + ": Incorrect element", expected, element.eClass().getName()+":"+((EventBNamed)element).getName());
+		else
+			assertEquals(msg + ": Incorrect element", expected, element.eClass().getName());
+	}
+	
 	// =========================================================================
 	// (BEGIN) Utility methods for testing Machine elements.
 	// =========================================================================
