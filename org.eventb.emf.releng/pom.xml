@@ -1,5 +1,5 @@
 <!--
-    Copyright (c) 2014, 2021 University of Southampton.
+    Copyright (c) 2014, 2022 University of Southampton.
    
     This program and the accompanying materials
     are made available under the terms of the Eclipse Public License 2.0
@@ -28,8 +28,8 @@
     <maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
     <!-- URL for Eclipse repository -->
     <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.18/</eclipse-repo.url>
-    <!-- URL for Rodin Platform (3.6) -->
-    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.6</rodin-repo.url>
+    <!-- URL for Rodin Platform (3.7) -->
+    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
     <!-- URL for EMF Update site -->
     <emf_core-repo.url>http://download.eclipse.org/modeling/emf/emf/builds/release/2.21</emf_core-repo.url>
