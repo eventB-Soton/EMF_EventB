@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 University of Southampton.
+ * Copyright (c) 2006, 2018 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -9,7 +9,8 @@
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *    University of Southampton - initial API and implementation
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
  *******************************************************************************/
 package org.eventb.emf.core.machine;
 
