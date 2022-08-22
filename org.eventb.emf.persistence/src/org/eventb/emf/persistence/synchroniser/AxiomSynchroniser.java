@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    	 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.persistence.synchroniser;
 
 import java.util.HashSet;
@@ -8,10 +22,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eventb.core.EventBAttributes;
 import org.eventb.core.IAxiom;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.ContextFactory;
-import org.eventb.emf.core.context.ContextPackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
@@ -35,10 +49,10 @@ public class AxiomSynchroniser extends AbstractSynchroniser {
 	protected EventBElement createEventBElement() {
 		return ContextFactory.eINSTANCE.createAxiom();
 	}
-
+	
 	@Override
 	protected EStructuralFeature getFeature() {
-		return ContextPackage.eINSTANCE.getContext_Axioms();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
 
 	@Override

@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2022 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.machine;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -47,7 +51,7 @@ public interface MachinePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://emf.eventb.org/models/core/machine/2014";
+	String eNS_URI = "http://emf.eventb.org/models/core/machine/2022";
 
 	/**
 	 * The package namespace name.
@@ -137,6 +141,16 @@ public interface MachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -312,6 +326,16 @@ public interface MachinePackage extends EPackage {
 	int VARIABLE__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -410,6 +434,16 @@ public interface MachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int INVARIANT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVARIANT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -530,6 +564,16 @@ public interface MachinePackage extends EPackage {
 	int VARIANT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIANT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_EXPRESSION_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -638,6 +682,16 @@ public interface MachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -812,6 +866,16 @@ public interface MachinePackage extends EPackage {
 	int PARAMETER__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -910,6 +974,16 @@ public interface MachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int GUARD__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUARD__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_DERIVED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -1030,6 +1104,16 @@ public interface MachinePackage extends EPackage {
 	int WITNESS__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WITNESS__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_PREDICATE_ELEMENT__ORDERED_CHILDREN;
+
+	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1137,6 +1221,16 @@ public interface MachinePackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTION__INTERNAL_ID = CorePackage.EVENT_BNAMED_COMMENTED_ACTION_ELEMENT__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__ORDERED_CHILDREN = CorePackage.EVENT_BNAMED_COMMENTED_ACTION_ELEMENT__ORDERED_CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.

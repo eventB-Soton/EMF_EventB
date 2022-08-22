@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.context;
 
 import org.eclipse.emf.common.util.EList;
@@ -77,7 +81,7 @@ public interface Context extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sets</em>' containment reference list.
 	 * @see org.eventb.emf.core.context.ContextPackage#getContext_Sets()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<CarrierSet> getSets();
@@ -93,7 +97,7 @@ public interface Context extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constants</em>' containment reference list.
 	 * @see org.eventb.emf.core.context.ContextPackage#getContext_Constants()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Constant> getConstants();
@@ -109,7 +113,7 @@ public interface Context extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Axioms</em>' containment reference list.
 	 * @see org.eventb.emf.core.context.ContextPackage#getContext_Axioms()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Axiom> getAxioms();

@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2022 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core;
 
 import org.eclipse.emf.common.util.EList;
@@ -27,6 +31,7 @@ import org.eclipse.emf.common.util.EMap;
  *   <li>{@link org.eventb.emf.core.EventBElement#isGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.EventBElement#isLocalGenerated <em>Local Generated</em>}</li>
  *   <li>{@link org.eventb.emf.core.EventBElement#getInternalId <em>Internal Id</em>}</li>
+ *   <li>{@link org.eventb.emf.core.EventBElement#getOrderedChildren <em>Ordered Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,7 +51,7 @@ public interface EventBElement extends EventBObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extensions</em>' containment reference list.
 	 * @see org.eventb.emf.core.CorePackage#getEventBElement_Extensions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<AbstractExtension> getExtensions();
@@ -194,6 +199,23 @@ public interface EventBElement extends EventBObject {
 	boolean isSetInternalId();
 
 	/**
+	 * Returns the value of the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eventb.emf.core.EventBElement}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ordered Children</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * @since 6.0
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ordered Children</em>' containment reference list.
+	 * @see org.eventb.emf.core.CorePackage#getEventBElement_OrderedChildren()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<EventBElement> getOrderedChildren();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -201,7 +223,7 @@ public interface EventBElement extends EventBObject {
 	 * <PackageNSURI>::<class>::<parentageBelowProject>.<id>
 	 * Where id is either the 'name' attribute or a UUID
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.eIsProxy()){\n\treturn ((InternalEObject)this).eProxyURI().fragment();\n}else{\n\tString ref = getElementIdentification();\n\tEObject container = this.eContainer();\n\twhile (container instanceof EventBElementImpl &amp;&amp; !(container instanceof Project)){\n\t\tref = ((EventBElementImpl)container).getElementIdentification()+\".\"+ref;\n\t\tcontainer = container.eContainer();\n\t}\n\tref = getElementTypePrefix()+\"::\"+ref;\n\treturn ref;\n}'"
+	 * @model
 	 * @generated
 	 */
 	String doGetReference();
@@ -213,7 +235,6 @@ public interface EventBElement extends EventBObject {
 	 * This returns the prefix part of a reference for the type of this element
 	 * <!-- end-model-doc -->
 	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.eClass().getEPackage().getNsURI()+\"::\"+this.eClass().getName();'"
 	 * @generated
 	 */
 	String getElementTypePrefix();

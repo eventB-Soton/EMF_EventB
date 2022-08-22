@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.machine.impl;
 
 import java.util.ArrayList;
@@ -28,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -115,46 +118,6 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 	 * @ordered
 	 */
 	protected EList<Event> refines;
-
-	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> parameters;
-
-	/**
-	 * The cached value of the '{@link #getGuards() <em>Guards</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuards()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Guard> guards;
-
-	/**
-	 * The cached value of the '{@link #getWitnesses() <em>Witnesses</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWitnesses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Witness> witnesses;
-
-	/**
-	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Action> actions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -333,50 +296,46 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Parameter from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, MachinePackage.EVENT__PARAMETERS);
-		}
-		return parameters;
+		return getDerivedChildren(Parameter.class, MachinePackage.EVENT__PARAMETERS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Guard from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Guard> getGuards() {
-		if (guards == null) {
-			guards = new EObjectContainmentEList<Guard>(Guard.class, this, MachinePackage.EVENT__GUARDS);
-		}
-		return guards;
+		return getDerivedChildren(Guard.class, MachinePackage.EVENT__GUARDS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Witness from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Witness> getWitnesses() {
-		if (witnesses == null) {
-			witnesses = new EObjectContainmentEList<Witness>(Witness.class, this, MachinePackage.EVENT__WITNESSES);
-		}
-		return witnesses;
+		return getDerivedChildren(Witness.class, MachinePackage.EVENT__WITNESSES);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Derives a notifying containment EList of Action from the orderedChildren of this element
+	 * The list can be modified and children will be updated to match.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Action> getActions() {
-		if (actions == null) {
-			actions = new EObjectContainmentEList<Action>(Action.class, this, MachinePackage.EVENT__ACTIONS);
-		}
-		return actions;
+		return getDerivedChildren(Action.class, MachinePackage.EVENT__ACTIONS);
 	}
 
 	/**
@@ -523,13 +482,13 @@ public class EventImpl extends EventBNamedCommentedElementImpl implements Event 
 			case MachinePackage.EVENT__REFINES_NAMES:
 				return !getRefinesNames().isEmpty();
 			case MachinePackage.EVENT__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+				return !getParameters().isEmpty();
 			case MachinePackage.EVENT__GUARDS:
-				return guards != null && !guards.isEmpty();
+				return !getGuards().isEmpty();
 			case MachinePackage.EVENT__WITNESSES:
-				return witnesses != null && !witnesses.isEmpty();
+				return !getWitnesses().isEmpty();
 			case MachinePackage.EVENT__ACTIONS:
-				return actions != null && !actions.isEmpty();
+				return !getActions().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

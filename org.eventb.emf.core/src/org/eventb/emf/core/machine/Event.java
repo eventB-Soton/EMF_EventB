@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.machine;
 
 import org.eclipse.emf.common.util.EList;
@@ -136,7 +140,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Parameters()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Parameter> getParameters();
@@ -152,7 +156,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Guards</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Guards()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Guard> getGuards();
@@ -168,7 +172,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Witnesses</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Witnesses()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Witness> getWitnesses();
@@ -184,7 +188,7 @@ public interface Event extends EventBNamedCommentedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getEvent_Actions()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Action> getActions();

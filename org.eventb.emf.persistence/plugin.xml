@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
+<!--
+    Copyright (c) 2006, 2022 University of Southampton, Heinrich-Heine University Dusseldorf and others.
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
+   
+    Contributors:
+       University of Southampton, Heinrich-Heine University Dusseldorf and others.
+        - initial API and implementation
+ -->
+
 <plugin>
    <extension-point id="org.eventb.emf.persistence.synchroniser" name="Persistency synchronisers" schema="schema/org.eventb.emf.persistence.synchroniser.exsd"/>
 
@@ -42,7 +57,7 @@
          point="org.eventb.emf.persistence.synchroniser">
             <emfPackage
                   name="MachinePackage"
-                  nsURI="http://emf.eventb.org/models/core/machine/2014">
+                  nsURI="http://emf.eventb.org/models/core/machine/2022">
                <synchroniser
                      synchroniser_class="org.eventb.emf.persistence.synchroniser.MachineSynchroniser"
                      emf_class="Machine"
@@ -100,7 +115,7 @@
             </emfPackage>
             <emfPackage
                   name="ContextPackage"
-                  nsURI="http://emf.eventb.org/models/core/context/2014">
+                  nsURI="http://emf.eventb.org/models/core/context/2022">
                <synchroniser
 		            synchroniser_class="org.eventb.emf.persistence.synchroniser.ContextSynchroniser"
 		            emf_class="Context"
@@ -128,7 +143,7 @@
             </emfPackage>
             <emfPackage
                   name="CorePackage"
-                  nsURI="http://emf.eventb.org/models/core/2014">
+                  nsURI="http://emf.eventb.org/models/core/2022">
                <synchroniser
                      emf_class="Project"
                      name="Project"

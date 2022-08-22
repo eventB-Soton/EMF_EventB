@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://emf.eventb.org/models/core/2014" nsPrefix="core">
-  <eClassifiers xsi:type="ecore:EClass" name="EventBObject" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://emf.eventb.org/models/core/2022" nsPrefix="core">
+  <eClassifiers xsi:type="ecore:EClass" name="EventBObject" abstract="true" eSuperTypes="http://www.eclipse.org/emf/2002/Ecore#//EObject">
     <eOperations name="getContaining" lowerBound="1" eType="#//EventBObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="EventBObject bObject = this;&#xA;while (!eClass.isSuperTypeOf(bObject.eClass()))&#xA;&#x9;if (bObject.eContainer() instanceof EventBObject) bObject=(EventBObject)bObject.eContainer();&#xA;&#x9;else return null;&#xA;return bObject;"/>
         <details key="documentation" value="returns the nearest container of this element that is a sub-type eClass&#xD;or null if no container of that type&#xA;@param &#x9;the EClass that is the super-type of the returned elements&#xA;@return &#x9;containing EventBObject that is a sub-type of eClass&#xA;"/>
       </eAnnotations>
-      <eParameters name="eClass" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+      <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>
     <eOperations name="getAllContained">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="EList&lt;EObject> typeObjects = new BasicEList&lt;EObject>();&#xA;typeObjects.add(null);&#x9;//include the null object&#xA;for (TreeIterator&lt;EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){&#xA;&#x9;EObject o = trit.next();&#xA;&#x9;if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);&#xA;}&#xA;return typeObjects;"/>
         <details key="documentation" value="returns a list of elements that sub-type eClass and&#xD;that are contained (directly or indirectly) by this element&#xA;@param  eClass - &#x9;the EClass that is the super-type of the returned elements&#xD;@param resolve - &#x9;whether to resolve proxies&#xA;"/>
       </eAnnotations>
-      <eGenericType eClassifier="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EEList">
-        <eTypeArguments eClassifier="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
       </eGenericType>
-      <eParameters name="eClass" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+      <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
       <eParameters name="resolve" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="getAnnotation" eType="#//Annotation">
@@ -25,7 +25,7 @@
         <details key="body" value="for (Annotation annotation : getAnnotations()){&#xA;&#x9;if (source.equals(annotation.getSource())) return annotation;&#xA;}&#xA;return null;"/>
         <details key="documentation" value="returns the annotation with the specified source or null if no such annotation is contained by this element&#xA;@param  source - &#x9;the source (string) of the Annotation to be retrieved&#xD;&#xA;"/>
       </eAnnotations>
-      <eParameters name="source" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eParameters name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="#//Annotation" containment="true" resolveProxies="false" eOpposite="#//Annotation/eventBObject"/>
@@ -44,20 +44,22 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
-        eType="#//AbstractExtension" containment="true"/>
+        eType="#//AbstractExtension" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
         eType="#//StringToAttributeMapEntry" containment="true" eKeys="#//StringToAttributeMapEntry/key"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="reference" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
         volatile="true" transient="true" defaultValueLiteral="" derived="true" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="generated" lowerBound="1"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        volatile="true" transient="true" defaultValueLiteral="false" derived="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" volatile="true"
+        transient="true" defaultValueLiteral="false" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="localGenerated" lowerBound="1"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedChildren" upperBound="-1"
+        eType="#//EventBElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventBCommented" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -128,22 +130,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensionId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringToStringMapEntry" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Annotation" eSuperTypes="#//EventBObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="details" upperBound="-1"
         eType="#//StringToStringMapEntry" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eventBObject" eType="#//EventBObject"
         transient="true" resolveProxies="false" eOpposite="#//EventBObject/annotations"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
-        containment="true" resolveProxies="false"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"
+        resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
-  <eSubpackages name="machine" nsURI="http://emf.eventb.org/models/core/machine/2014"
+  <eSubpackages name="machine" nsURI="http://emf.eventb.org/models/core/machine/2022"
       nsPrefix="machine">
     <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="#//EventBNamedCommentedComponentElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="refines" upperBound="-1"
@@ -157,13 +159,17 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-          eType="#//machine/Variable" containment="true" resolveProxies="false"/>
+          eType="#//machine/Variable" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="invariants" upperBound="-1"
-          eType="#//machine/Invariant" containment="true" resolveProxies="false"/>
+          eType="#//machine/Invariant" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variants" upperBound="-1"
-          eType="#//machine/Variant" containment="true" resolveProxies="false"/>
+          eType="#//machine/Variant" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
-          eType="#//machine/Event" containment="true" resolveProxies="false"/>
+          eType="#//machine/Event" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//EventBNamedCommentedElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Invariant" eSuperTypes="#//EventBNamedCommentedDerivedPredicateElement"/>
@@ -179,13 +185,17 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-          eType="#//machine/Parameter" containment="true" resolveProxies="false"/>
+          eType="#//machine/Parameter" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="guards" upperBound="-1"
-          eType="#//machine/Guard" containment="true" resolveProxies="false"/>
+          eType="#//machine/Guard" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="witnesses" upperBound="-1"
-          eType="#//machine/Witness" containment="true" resolveProxies="false"/>
+          eType="#//machine/Witness" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-          eType="#//machine/Action" containment="true" resolveProxies="false"/>
+          eType="#//machine/Action" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="Convergence">
       <eLiterals name="ordinary" literal="ordinary"/>
@@ -197,7 +207,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Witness" eSuperTypes="#//EventBNamedCommentedPredicateElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//EventBNamedCommentedActionElement"/>
   </eSubpackages>
-  <eSubpackages name="context" nsURI="http://emf.eventb.org/models/core/context/2014"
+  <eSubpackages name="context" nsURI="http://emf.eventb.org/models/core/context/2022"
       nsPrefix="context">
     <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//EventBNamedCommentedComponentElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
@@ -206,11 +216,14 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sets" upperBound="-1"
-          eType="#//context/CarrierSet" containment="true" resolveProxies="false"/>
+          eType="#//context/CarrierSet" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="constants" upperBound="-1"
-          eType="#//context/Constant" containment="true" resolveProxies="false"/>
+          eType="#//context/Constant" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="axioms" upperBound="-1"
-          eType="#//context/Axiom" containment="true" resolveProxies="false"/>
+          eType="#//context/Axiom" volatile="true" transient="true" derived="true"
+          containment="true" resolveProxies="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//EventBNamedCommentedElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="CarrierSet" eSuperTypes="#//EventBNamedCommentedElement"/>

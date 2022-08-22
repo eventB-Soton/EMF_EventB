@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    	 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.persistence.synchroniser;
 
 import java.util.HashSet;
@@ -11,10 +25,10 @@ import org.eventb.core.EventBAttributes;
 import org.eventb.core.IConvergenceElement.Convergence;
 import org.eventb.core.IEvent;
 import org.eventb.core.IRefinesEvent;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.MachineFactory;
-import org.eventb.emf.core.machine.MachinePackage;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IInternalElementType;
 import org.rodinp.core.IRodinElement;
@@ -44,9 +58,9 @@ public class EventSynchroniser extends AbstractSynchroniser {
 
 	@Override
 	protected EStructuralFeature getFeature() {
-		return MachinePackage.eINSTANCE.getMachine_Events();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
-
+	
 	@Override
 	protected IInternalElementType<?> getRodinType() {
 		return IEvent.ELEMENT_TYPE;

@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.machine;
 
 import org.eclipse.emf.common.util.EList;
@@ -113,7 +117,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variables</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variables()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Variable> getVariables();
@@ -129,7 +133,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Invariants</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Invariants()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Invariant> getInvariants();
@@ -146,7 +150,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variants</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Variants()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Variant> getVariants();
@@ -162,7 +166,7 @@ public interface Machine extends EventBNamedCommentedComponentElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.eventb.emf.core.machine.MachinePackage#getMachine_Events()
-	 * @model containment="true"
+	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Event> getEvents();

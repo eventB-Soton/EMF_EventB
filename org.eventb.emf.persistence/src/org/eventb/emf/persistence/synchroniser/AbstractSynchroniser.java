@@ -1,9 +1,16 @@
 /*******************************************************************************
- * Copyright (c) 2011 University of Duesseldorf, University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    	 - initial API and implementation
  *******************************************************************************/
 
 package org.eventb.emf.persistence.synchroniser;
@@ -97,6 +104,19 @@ public abstract class AbstractSynchroniser implements ISynchroniser {
 	protected abstract EventBElement createEventBElement();
 
 	protected abstract EStructuralFeature getFeature();
+	
+//	/**
+//	 * This returns the feature (meta) that is used to load and save elements of the type that this synchroniser synchronises
+//	 * 
+//	 * This default returns the EventBElement orderedChildren feature, which is correct for all features that at derived from orderedChildren
+//	 * 
+//	 * OVERRIDE THIS METHOD IF THE SYNCHRONISER IS FOR A CONTAINMENT THAT IS NOT DERIVED FROM ORDERED CHILDREN
+//	 * 
+//	 * @return the feature used to load/save the elements of this synchroniser
+//	 */
+//	protected EStructuralFeature getFeature() {
+//		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
+//	}
 
 	protected abstract IInternalElementType<?> getRodinType();
 

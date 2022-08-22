@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2020 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core;
 
 import org.eclipse.emf.common.util.EList;
@@ -51,14 +55,6 @@ public interface EventBObject extends EObject {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 *
-	 * returns the nearest container of this element that is a sub-type eClass
-	 * or null if no container of that type
-	 * 
-	 * 	 * N.B. currently this returns the element itself if it is a subclass of the required kind
-	 *
-	 * @param 	the EClass that is the super-type of the returned elements
-	 * @return 	containing EventBObject that is a sub-type of eClass
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * returns the nearest container of this element that is a sub-type eClass
@@ -68,7 +64,6 @@ public interface EventBObject extends EObject {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @model required="true" eClassRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EventBObject bObject = this;\nwhile (!eClass.isSuperTypeOf(bObject.eClass()))\n\tif (bObject.eContainer() instanceof EventBObject) bObject=(EventBObject)bObject.eContainer();\n\telse return null;\nreturn bObject;'"
 	 * @generated
 	 */
 	EventBObject getContaining(EClass eClass);
@@ -90,7 +85,6 @@ public interface EventBObject extends EObject {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @model many="false" eClassRequired="true" resolveRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EList&lt;EObject&gt; typeObjects = new BasicEList&lt;EObject&gt;();\ntypeObjects.add(null);\t//include the null object\nfor (TreeIterator&lt;EObject&gt;trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){\n\tEObject o = trit.next();\n\tif (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);\n}\nreturn typeObjects;'"
 	 * @generated
 	 */
 	EList<EObject> getAllContained(EClass eClass, boolean resolve);
@@ -103,7 +97,7 @@ public interface EventBObject extends EObject {
 	 * @param  source - 	the source (string) of the Annotation to be retrieved
 	 * 
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='for (Annotation annotation : getAnnotations()){\n\tif (source.equals(annotation.getSource())) return annotation;\n}\nreturn null;'"
+	 * @model
 	 * @generated
 	 */
 	Annotation getAnnotation(String source);

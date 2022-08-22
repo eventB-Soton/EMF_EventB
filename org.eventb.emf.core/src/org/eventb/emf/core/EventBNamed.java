@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2020 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core;
 
 import org.eclipse.emf.ecore.EObject;
@@ -60,7 +64,7 @@ public interface EventBNamed extends EObject {
 	 * Returns this element's name or, if it is a proxy, gets the name from the URI fragment
 	 * (Calling this method will not resolve any unresolved proxies).
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.eIsProxy()){\n\tString fragment = ((InternalEObject)this).eProxyURI().fragment();\n\tint ind = fragment.lastIndexOf(\"::\");\n\tif (ind&gt;-1) fragment = fragment.substring(ind+2);\n\tfragment = fragment.substring(fragment.lastIndexOf(\'.\')+1);\n\treturn fragment;\n}else{\n\treturn name;\n}'"
+	 * @model
 	 * @generated
 	 */
 	String doGetName();

@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2020 University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    	 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.persistence.synchroniser;
 
 import java.util.ArrayList;
@@ -55,7 +69,8 @@ public class SyncManager {
 								if (eClassifier != null) {
 									emfMapping.put((EClass) eClassifier, synchroniser);
 								}
-							} catch (final CoreException e) {
+							} catch (final Exception e) {
+								System.out.print(e);
 								// to log an error we would need to give this
 								// plugin an
 								// Activator Class

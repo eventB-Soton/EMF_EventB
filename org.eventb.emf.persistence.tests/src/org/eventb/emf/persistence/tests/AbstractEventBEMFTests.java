@@ -1,12 +1,15 @@
 /*******************************************************************************
- * Copyright (c) 2015 University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * Copyright (c) 2014, 2022 University of Southampton.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
- *     University of Southampton - initial API and implementation
+ *    University of Southampton - initial API and implementation
  *******************************************************************************/
 
 package org.eventb.emf.persistence.tests;
@@ -15,8 +18,11 @@ import java.util.Iterator;
 
 import junit.framework.TestCase;
 
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBNamed;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -31,6 +37,7 @@ import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.Variant;
 import org.eventb.emf.core.machine.Witness;
 import org.eventb.emf.persistence.EMFRodinDB;
+import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.junit.Before;
 
 import ch.ethz.eventb.utils.tests.AbstractEventBTests;
@@ -79,6 +86,20 @@ public abstract class AbstractEventBEMFTests extends AbstractEventBTests {
 		domain = emfRodinDB.getEditingDomain();
 	}
 
+	/**
+	 * Saves any resources in the editing domain that are modified
+	 * 
+	 * @param domain
+	 * @throws ExecutionException
+	 * @since 0.2
+	 */
+	protected void save() throws ExecutionException {
+		SaveResourcesCommand saveResourcesCommand = new SaveResourcesCommand(domain);
+		assertTrue("Save command must be able to execute",
+				saveResourcesCommand.canExecute());
+		saveResourcesCommand.execute(null, null);
+	}
+	
 	// =========================================================================
 	// (BEGIN) Utility methods for testing Context elements.
 	// =========================================================================
@@ -631,6 +652,47 @@ public abstract class AbstractEventBEMFTests extends AbstractEventBTests {
 				+ ":" + act.getAction());
 	}
 
+	/**
+	 * Utility method for testing the order of elements in the ordered children.
+	 * 
+	 * @param msg
+	 *            a message
+	 * @param act
+	 *            the ch under test
+	 * @param expected
+	 *            expected pretty-print action. The action is "pretty-printed"
+	 *            as follows: "label:assignmentString".
+	 * @since 0.2
+	 */
+	protected void testOrderedChildren(String msg, EventBElement element, String... expected) {
+		EList<EventBElement> children = element.getOrderedChildren();
+		assertEquals(msg + ": Incorrect number of children",
+				expected.length, children.size());
+		Iterator<EventBElement> iterator = children.iterator();
+		for (int i = 0; i < expected.length; i++) {
+			testElement(msg, iterator.next(), expected[i]);
+		}
+	}
+	
+	/**
+	 * Utility method for testing an element.
+	 * 
+	 * @param msg
+	 *            a message
+	 * @param act
+	 *            the action under test
+	 * @param expected
+	 *            expected pretty-print action. The action is "pretty-printed"
+	 *            as follows: "label:assignmentString".
+	 * @since 0.2
+	 */
+	protected void testElement(String msg, EventBElement element, String expected) {
+		if (element instanceof EventBNamed)
+			assertEquals(msg + ": Incorrect element", expected, element.eClass().getName()+":"+((EventBNamed)element).getName());
+		else
+			assertEquals(msg + ": Incorrect element", expected, element.eClass().getName());
+	}
+	
 	// =========================================================================
 	// (BEGIN) Utility methods for testing Machine elements.
 	// =========================================================================

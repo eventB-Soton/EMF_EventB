@@ -1,3 +1,16 @@
+<!--
+    Copyright (c) 2014, 2022 University of Southampton.
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
+   
+    Contributors:
+       University of Southampton - initial API and implementation
+ -->
 <project>
   <modelVersion>4.0.0</modelVersion>
   <!-- REQUIRED: Group ID is the feature ID -->
@@ -5,19 +18,18 @@
   <!-- ID of this artifact -->
   <artifactId>releng</artifactId>
   <!-- REQUIRED: Version number (using semantic versioning) -->
-  <version>6.1.0.release</version>
+  <version>7.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
-    <tycho.version>1.6.0</tycho.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Plug-in versions -->
-    <tycho-version>1.6.0</tycho-version>
+    <tycho-version>2.0.0</tycho-version>
     <maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
-    <!-- URL for Eclipse repository (Oxygen) -->
-    <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.7/</eclipse-repo.url>
-    <!-- URL for Rodin Platform @ Soton -->
-    <rodin-repo.url>http://eventb-soton.github.io/media_bin/org.rodinp.dev-3.4.0</rodin-repo.url>
+    <!-- URL for Eclipse repository -->
+    <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.18/</eclipse-repo.url>
+    <!-- URL for Rodin Platform -->
+    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
     <!-- URL for EMF Update site -->
     <emf_core-repo.url>http://download.eclipse.org/modeling/emf/emf/builds/release/2.21</emf_core-repo.url>

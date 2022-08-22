@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2022 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.provider;
 
 
@@ -171,8 +175,8 @@ public class EventBElementItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS);
 			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ATTRIBUTES);
+			childrenFeatures.add(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
 		}
 		return childrenFeatures;
 	}
@@ -216,14 +220,15 @@ public class EventBElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EventBElement.class)) {
+			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__REFERENCE:
 			case CorePackage.EVENT_BELEMENT__GENERATED:
 			case CorePackage.EVENT_BELEMENT__LOCAL_GENERATED:
 			case CorePackage.EVENT_BELEMENT__INTERNAL_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CorePackage.EVENT_BELEMENT__EXTENSIONS:
 			case CorePackage.EVENT_BELEMENT__ATTRIBUTES:
+			case CorePackage.EVENT_BELEMENT__ORDERED_CHILDREN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}

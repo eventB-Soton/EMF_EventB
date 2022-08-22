@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    	 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.persistence.synchroniser;
 
 import java.util.HashSet;
@@ -42,10 +56,10 @@ public class ExtensionSynchroniser extends AbstractSynchroniser {
 	protected EventBElement createEventBElement() {
 		return CoreFactory.eINSTANCE.createExtension();
 	}
-
+	
 	@Override
 	protected EStructuralFeature getFeature() {
-		return CorePackage.eINSTANCE.getEventBElement_Extensions();
+		return CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN;
 	}
 
 	@Override

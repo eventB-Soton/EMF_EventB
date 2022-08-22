@@ -1,13 +1,17 @@
-/**
- * Copyright (c) 2006, 2009 
- * University of Southampton, Heinrich-Heine University Dusseldorf and others.
- * All rights reserved. This program and the accompanying materials  are made
- * available under the terms of the Eclipse Public License v1.0 which accompanies this 
- * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
- * 
+/*******************************************************************************
+ * Copyright (c) 2006, 2021 University of Southampton, Heinrich-Heine University Dusseldorf and others.
  *
- * $Id$
- */
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    University of Southampton, Heinrich-Heine University Dusseldorf and others.
+ *    		 - initial API and implementation
+ *******************************************************************************/
 package org.eventb.emf.core.impl;
 
 import java.util.Map;
@@ -19,7 +23,6 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.Annotation;
@@ -263,9 +266,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-
 		// Obtain or create and register interdependencies
 		MachinePackageImpl theMachinePackage = (MachinePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MachinePackage.eNS_URI) instanceof MachinePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MachinePackage.eNS_URI) : MachinePackage.eINSTANCE);
 		ContextPackageImpl theContextPackage = (ContextPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ContextPackage.eNS_URI) instanceof ContextPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ContextPackage.eNS_URI) : ContextPackage.eINSTANCE);
@@ -368,6 +368,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 */
 	public EAttribute getEventBElement_InternalId() {
 		return (EAttribute)eventBElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEventBElement_OrderedChildren() {
+		return (EReference)eventBElementEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -768,6 +777,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(eventBElementEClass, EVENT_BELEMENT__GENERATED);
 		createEAttribute(eventBElementEClass, EVENT_BELEMENT__LOCAL_GENERATED);
 		createEAttribute(eventBElementEClass, EVENT_BELEMENT__INTERNAL_ID);
+		createEReference(eventBElementEClass, EVENT_BELEMENT__ORDERED_CHILDREN);
 
 		eventBCommentedEClass = createEClass(EVENT_BCOMMENTED);
 		createEAttribute(eventBCommentedEClass, EVENT_BCOMMENTED__COMMENT);
@@ -858,7 +868,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Obtain other dependent packages
 		MachinePackage theMachinePackage = (MachinePackage)EPackage.Registry.INSTANCE.getEPackage(MachinePackage.eNS_URI);
 		ContextPackage theContextPackage = (ContextPackage)EPackage.Registry.INSTANCE.getEPackage(ContextPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theMachinePackage);
@@ -869,7 +878,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		eventBObjectEClass.getESuperTypes().add(theEcorePackage.getEObject());
+		eventBObjectEClass.getESuperTypes().add(ecorePackage.getEObject());
 		eventBElementEClass.getESuperTypes().add(this.getEventBObject());
 		eventBCommentedElementEClass.getESuperTypes().add(this.getEventBElement());
 		eventBCommentedElementEClass.getESuperTypes().add(this.getEventBCommented());
@@ -895,27 +904,28 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEReference(getEventBObject_Annotations(), this.getAnnotation(), this.getAnnotation_EventBObject(), "annotations", null, 0, -1, EventBObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		EOperation op = addEOperation(eventBObjectEClass, this.getEventBObject(), "getContaining", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theEcorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(eventBObjectEClass, null, "getAllContained", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theEcorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 		addEParameter(op, ecorePackage.getEBoolean(), "resolve", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		EGenericType g1 = createEGenericType(theEcorePackage.getEEList());
-		EGenericType g2 = createEGenericType(theEcorePackage.getEObject());
+		EGenericType g1 = createEGenericType(ecorePackage.getEEList());
+		EGenericType g2 = createEGenericType(ecorePackage.getEObject());
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
 		op = addEOperation(eventBObjectEClass, this.getAnnotation(), "getAnnotation", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theEcorePackage.getEString(), "source", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "source", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(eventBElementEClass, EventBElement.class, "EventBElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getEventBElement_Extensions(), this.getAbstractExtension(), null, "extensions", null, 0, -1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEventBElement_Extensions(), this.getAbstractExtension(), null, "extensions", null, 0, -1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEventBElement_Attributes(), this.getStringToAttributeMapEntry(), null, "attributes", null, 0, -1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getEventBElement_Attributes().getEKeys().add(this.getStringToAttributeMapEntry_Key());
 		initEAttribute(getEventBElement_Reference(), ecorePackage.getEString(), "reference", "", 1, 1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getEventBElement_Generated(), theEcorePackage.getEBoolean(), "generated", "false", 1, 1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getEventBElement_LocalGenerated(), theEcorePackage.getEBoolean(), "localGenerated", "false", 1, 1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getEventBElement_Generated(), ecorePackage.getEBoolean(), "generated", "false", 1, 1, EventBElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEAttribute(getEventBElement_LocalGenerated(), ecorePackage.getEBoolean(), "localGenerated", "false", 1, 1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEAttribute(getEventBElement_InternalId(), ecorePackage.getEString(), "internalId", "", 0, 1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEReference(getEventBElement_OrderedChildren(), this.getEventBElement(), null, "orderedChildren", null, 0, -1, EventBElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		addEOperation(eventBElementEClass, ecorePackage.getEString(), "doGetReference", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
@@ -972,15 +982,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getAbstractExtension_ExtensionId(), ecorePackage.getEString(), "extensionId", null, 0, 1, AbstractExtension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getStringToStringMapEntry_Key(), theEcorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getStringToStringMapEntry_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getStringToStringMapEntry_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getStringToStringMapEntry_Value(), ecorePackage.getEString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getAnnotation_Source(), theEcorePackage.getEString(), "source", null, 0, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getAnnotation_Source(), ecorePackage.getEString(), "source", null, 0, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAnnotation_Details(), this.getStringToStringMapEntry(), null, "details", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAnnotation_EventBObject(), this.getEventBObject(), this.getEventBObject_Annotations(), "eventBObject", null, 0, 1, Annotation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAnnotation_Contents(), theEcorePackage.getEObject(), null, "contents", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAnnotation_References(), theEcorePackage.getEObject(), null, "references", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAnnotation_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAnnotation_References(), ecorePackage.getEObject(), null, "references", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(attributeTypeEEnum, AttributeType.class, "AttributeType"); //$NON-NLS-1$
