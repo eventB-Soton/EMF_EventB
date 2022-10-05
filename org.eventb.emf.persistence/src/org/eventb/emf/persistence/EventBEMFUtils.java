@@ -21,13 +21,11 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eventb.core.IConfigurationElement;
 import org.eventb.core.IContextRoot;
 import org.eventb.core.IEventBProject;
 import org.eventb.core.IMachineRoot;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -503,28 +501,6 @@ public class EventBEMFUtils {
 		domain.getCommandStack().execute(cmd);
 
 		return act;
-	}
-
-	/**
-	 * Utility method to save an Event-B EMF element to the underlying resource.
-	 *
-	 * @param emfRodinDB
-	 *            the EMF Rodin DB to save the resource.
-	 * @param element
-	 *            the element to be saved.
-	 *            
-	 * @deprecated - use {@link SaveResourcesCommand} 
-	 */
-	public static void save(EMFRodinDB emfRodinDB, EventBElement element) { 
-		TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
-		Command command = new RecordingCommand(editingDomain, "Saving") {
-			public void doExecute() {
-				emfRodinDB.saveResource(EcoreUtil.getURI(element), element);
-			}
-		};
-		if (command.canExecute()){
-			editingDomain.getCommandStack().execute(command);
-		}
 	}
 
 	/**

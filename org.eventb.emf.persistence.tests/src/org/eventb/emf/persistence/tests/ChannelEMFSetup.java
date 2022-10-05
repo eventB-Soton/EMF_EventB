@@ -14,12 +14,28 @@
 
 package org.eventb.emf.persistence.tests;
 
+import java.io.IOException;
+import java.util.Collections;
+
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eventb.core.IEvent;
 import org.eventb.core.IEventBProject;
+import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -34,6 +50,8 @@ import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.Witness;
 import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.EventBEMFUtils;
+import org.eventb.emf.persistence.SaveResourcesCommand;
+import org.rodinp.core.RodinCore;
 
 import ch.ethz.eventb.utils.EventBUtils;
 
@@ -237,7 +255,7 @@ public class ChannelEMFSetup {
 
 	private static Action EO_receives_act_3;
 
-	public static void setup() throws CoreException {
+	public static void setup() throws Exception {
 		IProgressMonitor nullMonitor = new NullProgressMonitor();
 		EMFRodinDB emfRodinDB = new EMFRodinDB();
 		TransactionalEditingDomain domain = emfRodinDB.getEditingDomain();
@@ -265,7 +283,7 @@ public class ChannelEMFSetup {
 				"axm1", "finite(MESSAGE)", false);
 		message_ctx_thm_1 = EventBEMFUtils.createAxiom(domain, message_ctx,
 				"thm1", "card(MESSAGE) ∈ ℕ1", true);
-		EventBEMFUtils.save(emfRodinDB, message_ctx);
+		save(emfRodinDB, message_ctx);
 
 		// Create content for size_ctx
 		// CONTEXT size_ctx
@@ -276,7 +294,7 @@ public class ChannelEMFSetup {
 		max_size = EventBEMFUtils.createConstant(domain, size_ctx, "max_size");
 		size_ctx_axm_1 = EventBEMFUtils.createAxiom(domain, size_ctx, "axm1",
 				"max_size ∈ ℕ1", false);
-		EventBEMFUtils.save(emfRodinDB, size_ctx);
+		save(emfRodinDB, size_ctx);
 
 		// Create some machines inside the projects.
 		channelMch = EventBEMFUtils.createMachine(emfRodinDB, channelPrj,
@@ -352,7 +370,7 @@ public class ChannelEMFSetup {
 				channel_receives, "act1", "r_count ≔ r_count + 1");
 
 		// Save channel
-		EventBEMFUtils.save(emfRodinDB, channelMch);
+		save(emfRodinDB, channelMch);
 
 		// Create content for EO.
 		// MACHINE EO
@@ -470,7 +488,7 @@ public class ChannelEMFSetup {
 				"act3", "receiveds(r_count + 1) ≔ idx");
 
 		// Save EO
-		EventBEMFUtils.save(emfRodinDB, EOMch);
+		save(emfRodinDB, EOMch);
 
 		// Create content for EOIO.
 		// MACHINE EOIO
@@ -544,7 +562,7 @@ public class ChannelEMFSetup {
 				"grd2", "idx = r_count + 1", false);
 
 		// Save EOIO
-		EventBEMFUtils.save(emfRodinDB, EOIOMch);
+		save(emfRodinDB, EOIOMch);
 	}
 
 	/**
@@ -615,6 +633,58 @@ public class ChannelEMFSetup {
 	 */
 	public static Event getChannelSendsEvent() {
 		return channel_sends;
+	}
+
+	/**
+	 * save an Event-B EMF element to the underlying resource.
+	 *
+	 * @param emfRodinDB
+	 *            the EMF Rodin DB to save the resource.
+	 * @param element
+	 *            the element to be saved.
+	 * @since 0.2
+	 */
+	public static void save(EMFRodinDB emfRodinDB, EventBElement element) { 
+		TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
+		Command command = new RecordingCommand(editingDomain, "Saving") {
+			public void doExecute() {
+				saveResource(EcoreUtil.getURI(element), element, editingDomain);
+			}
+		};
+		if (command.canExecute()){
+			editingDomain.getCommandStack().execute(command);
+		}
+	}
+	
+	/**
+	 * saves an Event-B component (URI) as an EMF Resource
+	 *
+	 * @param uri - of file for saving
+	 * @param element - to be saved
+	 * @param editing domain
+	 * @return the saved Resource
+	 * @since 0.2
+	 * 
+	 */
+	public static Resource saveResource(URI fileURI, EventBElement element, TransactionalEditingDomain editingDomain) {
+		ResourceSet resourceSet = editingDomain.getResourceSet();
+		Resource resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
+		if (resource == null) {
+			resource = resourceSet.createResource(fileURI);
+		}
+		boolean deliver = resource.eDeliver();
+		resource.eSetDeliver(false); // turn off notifications
+		resource.getContents().clear();
+		resource.getContents().add(element);
+		try {
+			resource.save(Collections.emptyMap());
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		} finally {
+			resource.eSetDeliver(deliver); // turn notifications back on
+		}
+		return resource;
 	}
 
 }
