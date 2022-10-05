@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2020 University of Southampton
+ * Copyright (c) 2014, 2022 University of Southampton
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -69,21 +69,6 @@ import org.rodinp.core.RodinCore;
  */
 public final class EMFRodinDB {
 
-	/**
-	 * A singleton instance of EMFRodinDB
-	 *
-	 * deprecated: using a singleton means that all resources are in the same
-	 * resource set and this has been found to cause sync problems rather than
-	 * solve them. Instead it is best for each client to create an instance and
-	 * maintain its own resource set. (A static instance is normally sufficient
-	 * for utilities where no editing domain is pre-existing, but for editors,
-	 * where an editing domain and/or resource set already exist and are used to
-	 * create the new instance, it may be better to create new instances for
-	 * each client instantiation).
-	 *
-	 */
-	@Deprecated
-	public final static EMFRodinDB INSTANCE = new EMFRodinDB();
 
 	private final static Set<IInternalElementType<?>> SupportedRoots = new HashSet<IInternalElementType<?>>();
 	static {
@@ -282,36 +267,6 @@ public final class EMFRodinDB {
 	 */
 	public EventBObject loadElement(URI uri) {
 		return (EventBObject) loadResource(uri).getEObject(uri.fragment());
-	}
-
-	/**
-	 * 
-	 * saves an Event-B component (URI) as an EMF Resource
-	 *
-	 * @param uri
-	 * @return the saved Resource
-	 * 
-	 * @deprecated - use {@link #getResource(URI)}, {@link #setContent(Resource, EventBElement)}, {@link SaveResourcesCommand} 
-	 */
-	public Resource saveResource(URI fileURI, EventBElement element) {
-		Resource resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
-		if (resource == null) {
-			resource = resourceSet.createResource(fileURI);
-		}
-		boolean deliver = resource.eDeliver();
-		resource.eSetDeliver(false); // turn off notifications
-		resource.getContents().clear();
-		resource.getContents().add(element);
-		try {
-			resource.save(Collections.emptyMap());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-
-		} finally {
-			resource.eSetDeliver(deliver); // turn notifications back on
-		}
-		return resource;
 	}
 	
 	/**
