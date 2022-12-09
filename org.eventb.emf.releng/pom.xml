@@ -27,16 +27,16 @@
     <tycho-version>2.7.5</tycho-version>
     <maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
     <!-- URL for Eclipse repository -->
-    <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.22/</eclipse-repo.url>
+    <eclipse-repo.url>https://download.eclipse.org/eclipse/updates/4.22/</eclipse-repo.url>
     <!-- URL for Rodin Platform -->
-    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
+    <rodin-repo.url>https://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
     <!-- URL for EMF Update site -->
-    <emf_core-repo.url>http://download.eclipse.org/modeling/emf/emf/builds/release/2.21</emf_core-repo.url>
+    <emf_core-repo.url>https://download.eclipse.org/modeling/emf/emf/builds/release/2.21</emf_core-repo.url>
     <!-- URL for EMF Transaction Update site -->
-    <emf_transaction-repo.url>http://download.eclipse.org/modeling/emf/transaction/updates/releases</emf_transaction-repo.url>
+    <emf_transaction-repo.url>https://download.eclipse.org/modeling/emf/transaction/updates/releases</emf_transaction-repo.url>
     <!-- URL for EMF Validation Update site -->
-    <emf_validation-repo.url>http://download.eclipse.org/modeling/emf/validation/updates/releases</emf_validation-repo.url>
+    <emf_validation-repo.url>https://download.eclipse.org/modeling/emf/validation/updates/releases</emf_validation-repo.url>
     <!-- <!-\- URL for GEF Legacy Update site -\-> -->
     <!-- <gef_legacy-repo.url>http://download.eclipse.org/tools/gef/updates/legacy/releases/</gef_legacy-repo.url> -->
     <!-- <!-\- URL for GMF Runtime Milestones Update site -\-> -->
@@ -46,9 +46,9 @@
     <!-- <!-\- URL for the Rodin Update site -\-> -->
     <!-- <rodin_update_site-repo.url>http://rodin-b-sharp.sourceforge.net/updates</rodin_update_site-repo.url> -->
     <!-- URL for the Soton Update site -->
-    <soton-repo.url>http://eventb-soton.github.io/updateSite</soton-repo.url>
+    <soton-repo.url>https://eventb-soton.github.io/updateSite</soton-repo.url>
     <!-- URL for the Rodin Licence Update site -->
-    <rodin_licence-repo.url>http://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
+    <rodin_licence-repo.url>https://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
   </properties>
 
   <repositories>

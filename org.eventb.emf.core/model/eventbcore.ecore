@@ -11,7 +11,7 @@
     </eOperations>
     <eOperations name="getAllContained">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="EList&lt;EObject> typeObjects = new BasicEList&lt;EObject>();&#xA;typeObjects.add(null);&#x9;//include the null object&#xA;for (TreeIterator&lt;EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){&#xA;&#x9;EObject o = trit.next();&#xA;&#x9;if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);&#xA;}&#xA;return typeObjects;"/>
+        <details key="body" value="EList&lt;EObject> typeObjects = new BasicEList&lt;EObject>();&#xA;for (TreeIterator&lt;EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){&#xA;&#x9;EObject o = trit.next();&#xA;&#x9;if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);&#xA;}&#xA;return typeObjects;"/>
         <details key="documentation" value="returns a list of elements that sub-type eClass and&#xD;that are contained (directly or indirectly) by this element&#xA;@param  eClass - &#x9;the EClass that is the super-type of the returned elements&#xD;@param resolve - &#x9;whether to resolve proxies&#xA;"/>
       </eAnnotations>
       <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">

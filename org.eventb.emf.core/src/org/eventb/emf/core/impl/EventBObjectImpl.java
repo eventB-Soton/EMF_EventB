@@ -119,7 +119,6 @@ public abstract class EventBObjectImpl extends EObjectImpl implements EventBObje
 	 */
 	public EList<EObject> getAllContained(EClass eClass, boolean resolve) {
 		EList<EObject> typeObjects = new BasicEList<EObject>();
-		typeObjects.add(null);	//include the null object
 		for (TreeIterator<EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){
 			EObject o = trit.next();
 			if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);

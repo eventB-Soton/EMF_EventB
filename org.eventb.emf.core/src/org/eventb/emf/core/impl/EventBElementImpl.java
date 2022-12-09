@@ -659,7 +659,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 
 	/**
 	 * Overridden to exclude the containments derived from orderedChildren
-	 * we assume that a derived collection of EventBElement that are all contained in ordered children
+	 * we assume that a derived containment
 	 * has been derived from ordered children and therefore should not be repeated
 	 */
 	@Override
@@ -667,12 +667,7 @@ public abstract class EventBElementImpl extends EventBObjectImpl implements Even
 		List<EStructuralFeature> notDerived = new ArrayList<EStructuralFeature>();
 		EList<EReference> containments = this.eClass().getEAllContainments();
 		for (EReference containment : containments) {
-			if (!(
-				containment.isDerived() &&
-				containment.isMany() &&
-				containment.getEType().eClass().isSuperTypeOf(CorePackage.Literals.EVENT_BELEMENT) &&
-				((Collection<?>)this.eGet(containment)).size()>0 &&
-				orderedChildren.containsAll((Collection<?>) this.eGet(containment)) ))
+			if (!(containment.isDerived() && containment.isMany()))
 			{
 				notDerived.add(containment);
 			}

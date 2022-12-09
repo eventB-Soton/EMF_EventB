@@ -25,7 +25,7 @@
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getContaining/eClass"/>
       </genOperations>
       <genOperations ecoreOperation="eventbcore.ecore#//EventBObject/getAllContained"
-          body="EList&lt;EObject> typeObjects = new BasicEList&lt;EObject>();&#xA;typeObjects.add(null);&#x9;//include the null object&#xA;for (TreeIterator&lt;EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){&#xA;&#x9;EObject o = trit.next();&#xA;&#x9;if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);&#xA;}&#xA;return typeObjects;">
+          body="EList&lt;EObject> typeObjects = new BasicEList&lt;EObject>();&#xA;for (TreeIterator&lt;EObject>trit = EcoreUtil.getAllContents(this, resolve); trit.hasNext();){&#xA;&#x9;EObject o = trit.next();&#xA;&#x9;if (eClass.isSuperTypeOf(o.eClass())) typeObjects.add(o);&#xA;}&#xA;return typeObjects;">
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getAllContained/eClass"/>
         <genParameters ecoreParameter="eventbcore.ecore#//EventBObject/getAllContained/resolve"/>
       </genOperations>
