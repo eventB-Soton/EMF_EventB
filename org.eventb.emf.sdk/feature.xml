@@ -15,7 +15,7 @@
 <feature
       id="org.eventb.emf.sdk"
       label="%featureName"
-      version="7.0.0.qualifier"
+      version="7.0.0.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
@@ -37,33 +37,19 @@
          version="0.0.0"/>
 
    <requires>
-      <import plugin="ch.ethz.eventb.utils.tests" version="0.2.0" match="compatible"/>
-      <import plugin="org.eventb.emf.core"/>
-      <import plugin="org.eventb.core" version="3.2.0" match="greaterOrEqual"/>
-      <import plugin="org.junit" version="4.11.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
-      <import plugin="org.rodinp.core" version="1.7.0" match="greaterOrEqual"/>
-      <import plugin="ch.ethz.eventb.utils" version="0.2.0" match="compatible"/>
-      <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eventb.emf.core" version="6.0.0" match="compatible"/>
+      <import plugin="org.eventb.core" version="3.2.0" match="compatible"/>
+      <import plugin="org.junit" version="4.11.0" match="compatible"/>
+      <import plugin="org.eventb.emf.persistence" version="4.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="compatible"/>
+      <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.10.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="compatible"/>
       <import plugin="org.eclipse.emf.workspace" version="1.5.1" match="compatible"/>
       <import plugin="org.eclipse.core.resources"/>
-      <import plugin="org.eventb.emf.persistence" version="4.0.0" match="compatible"/>
+      <import plugin="ch.ethz.eventb.utils.tests" version="0.3.0" match="compatible"/>
+      <import plugin="ch.ethz.eventb.utils" version="0.3.0" match="compatible"/>
    </requires>
-
-   <plugin
-         id="org.eventb.emf.persistence.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eventb.emf.persistence.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.eventb.emf.core.source"
@@ -88,6 +74,20 @@
 
    <plugin
          id="org.eventb.emf.persistence.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.persistence.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eventb.emf.persistence.tests.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
