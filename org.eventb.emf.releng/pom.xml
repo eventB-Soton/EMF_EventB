@@ -46,7 +46,7 @@
     <!-- <!-\- URL for the Rodin Update site -\-> -->
     <rodin_update_site-repo.url>https://rodin-b-sharp.sourceforge.net/updates</rodin_update_site-repo.url>
     <!-- <!-\- URL for the Soton Update site -\-> -->
-    <soton_update_site-repo.url>https://eventB-Soton.github.io/updateSite/releases</soton_update_site-repo.url>
+    <!-- <soton_update_site-repo.url>https://eventB-Soton.github.io/updateSite/releases</soton_update_site-repo.url> -->
     <!-- URL for the Rodin Licence Update site -->
     <rodin_licence-repo.url>https://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
   </properties>
@@ -108,11 +108,11 @@
       <layout>p2</layout>
     </repository>
     <!-- <!-\- Soton Update Site repository -\-> -->
-    <repository>
-      <id>soton-update-site</id>
-      <url>${soton_update_site-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
+    <!-- <repository> -->
+    <!--   <id>soton-update-site</id> -->
+    <!--   <url>${soton_update_site-repo.url}</url> -->
+    <!--   <layout>p2</layout> -->
+    <!-- </repository> -->
     <!-- Rodin Licence repository -->
     <repository>
       <id>rodin-licence</id>
